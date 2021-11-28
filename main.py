@@ -23,7 +23,8 @@ async def on_message(message):
     if message.content.startswith("tree "):
         gds = [x.name for x in client.guilds]
         msg = f"I\'m currently under-development , <@{message.author.id}> \n please try again later \n Your message content was \n ```{message.content}```\n"  
-        await message.channel.send(msg+"\n".join(gds))
+        await message.channel.send(gds)
+        await message.channel.send(msg)
 
 # Actual start logging-in
 client.run(TOKEN)
