@@ -21,7 +21,8 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content.startswith("tree "):
-        await message.channel.send("I'm currently under-development\n please try again later \n bye for now")
+        msg = f"I\'m currently under-development , {message.author}\n please try again later \n Your message content was {message.content}"  
+        await message.channel.send(msg)
 
 # Actual start logging-in
 client.run(TOKEN)
