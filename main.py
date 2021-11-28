@@ -24,7 +24,7 @@ async def on_message(message):
         msg = f"I\'m currently under-development , <@{message.author.id}> \n please try again later \n Your message content was \n ```{message.content}```\n"  
         await message.channel.send(msg)
 
-    if message.content.startswith("branches "):
+    if message.content.count("tree") == 1:
         gds = [x.name for x in client.guilds]
         await message.channel.send( "\n".join(gds) )
 
