@@ -20,11 +20,11 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if message.content.startswith("tree "):
+    if message.content.lower().startswith("tree "):
         msg = f"I\'m currently under-development , <@{message.author.id}> \n please try again later \n Your message content was \n ```{message.content}```\n"  
         await message.channel.send(msg)
 
-    if message.content.count("tree") == 1:
+    if message.content.lower() == "tree":
         gds = [x.name for x in client.guilds]
         await message.channel.send( "\n".join(gds) )
 
