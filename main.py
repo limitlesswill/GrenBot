@@ -55,10 +55,10 @@ async def on_message(message):
            if author.voice.channel.id != message.voice_client.channel.id:
               message.guild.voice_client.move_to(message.author.voice.channel)
            else:
-             await author.voice.channel.connect()
-             await message.add_reaction(emoji[4])
-             await message.add_reaction(emoji[1])
-             await message.reply("**I'm Connecting...**",mention_author=False)
+              await author.voice.channel.connect()
+              await message.add_reaction(emoji[4])
+              await message.add_reaction(emoji[1])
+              await message.reply("**I'm Connecting...**",mention_author=False)
      
 
 # Actual start logging-in
