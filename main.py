@@ -22,7 +22,7 @@ async def on_message(message):
         return
 
     if message.content.lower().startswith("tree "):
-        msg = f"I\'m currently under-development , <@{message.author.id}> \n please try again later \n Your message content was \n ```{message.content}```\n"  
+        msg = f"I\'m currently under-development , {message.author} \n please try again later \n Your message content was \n ```{message.content}```\n"  
         await message.reply(msg)
         emoji = ["👋","👉","👈"]
         await message.add_reaction(emoji[0])
