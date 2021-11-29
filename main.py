@@ -26,7 +26,7 @@ async def on_message(message):
     msg = message.content.lower()
     if msg.startswith(pfx) and len(msg) > 1 :
         rpl = f"I\'m currently under-development , {message.author} \n please try again later \n Your message content was \n ```{message.content}```\n"  
-        await message.reply(rpl+" \nVoice: {str(message.author.voice)}")
+        await message.reply(rpl+" \nVoice: {message.author.voice}")
         emoji = ["👋","👍"]
         await message.add_reaction(emoji[0])
         await message.add_reaction(emoji[1])
