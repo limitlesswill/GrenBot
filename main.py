@@ -20,13 +20,21 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+
     if message.content.lower().startswith("tree "):
         msg = f"I\'m currently under-development , <@{message.author.id}> \n please try again later \n Your message content was \n ```{message.content}```\n"  
         await message.channel.send(msg)
+        emoji = ["👋","👉","👈"]
+        await message.add_reaction(emoji[0])
+        await message.add_reaction(emoji[1])
+        await message.add_reaction(emoji[2])
 
     if message.content.lower() == "tree":
         gds = [x.name for x in client.guilds]
         await message.channel.send( "\n".join(gds) )
+        emoji = ["👋","👉","👈"]
+        for x in emoji:
+            await message.add_reaction(x)
 
 # Actual start logging-in
 client.run(TOKEN)
