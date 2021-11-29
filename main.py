@@ -10,6 +10,9 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 # Instantiate an object of the client
 client = discord.Client()
 
+# Prefix of the bot
+pfx = "."
+
 # A decorator function to start
 @client.event
 async def on_ready():
@@ -20,23 +23,22 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-
-    if message.content.lower().startswith("tree "):
-        msg = f"I\'m currently under-development , {message.author} \n please try again later \n Your message content was \n ```{message.content}```\n"  
-        await message.reply(msg)
-        emoji = ["👋","👉","👈"]
+    msg = message.content.lower()
+    if msg.startswith(pfx):
+        rpl = f"I\'m currently under-development , {message.author} \n please try again later \n Your message content was \n ```{message.content}```\n"  
+        await message.reply(rpl+" {str(message.author.voice))}")
+        emoji = ["👋","👍"]
         await message.add_reaction(emoji[0])
         await message.add_reaction(emoji[1])
-        await message.add_reaction(emoji[2])
 
-    if message.content.lower() == "tree":
+    if msg == pfx:
         gds = [x.name for x in client.guilds]
         await message.reply( "\n".join(gds), mention_author=False )
         emoji = ["👋","👉","👈"]
         await message.add_reaction(emoji[0])
         await message.add_reaction(emoji[1])
         await message.add_reaction(emoji[2])
-
+     
 
 # Actual start logging-in
 client.run(TOKEN)
