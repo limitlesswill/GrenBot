@@ -17,7 +17,7 @@ async def on_ready():
 
 # A decorator function to read message the send response
 @client.event
-async def on_messagelol(message):
+async def on_message(message):
     if message.author == client.user:
         return
 
