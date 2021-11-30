@@ -37,12 +37,12 @@ async def on_message(message):
         await message.add_reaction(emoji[3])
 
     elif msg == pfx+cmds[1]:
-        await message.reply(f"**Data**\n{message.guild.voice_client}")
+        await message.reply(f"**message.guild.voice_client**\n{message.guild.voice_client}**Ends here**")
         if message.guild.voice_client is None:
            await message.reply("I'm not even in a voice channel")
            return
         else:
-           await message.reply(f"**Data After voice_client is not None**\n{message.guild.voice_client}")
+           await message.reply(f"**Data After voice_client is not None AKA message.guild.voice_client :**\n{message.guild.voice_client}**Ends here**")
            await message.guild.voice_client.disconnect()
            await message.add_reaction(emoji[1])
            await message.reply("See you later")
