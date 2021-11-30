@@ -1,3 +1,4 @@
+import en_lang.py
 # importing OS to deal with future files at least ...
 import os
 
@@ -11,7 +12,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 client = discord.Client()
 
 # Prefix of the bot
-pfx = "."
+# pfx = "."
 cmds = {0:"join",1:"leave"}
 
 # A decorator function to start
