@@ -1,4 +1,3 @@
-import en
 # importing OS to deal with future files at least ...
 import os
 
@@ -12,7 +11,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 client = discord.Client()
 
 # Prefix of the bot
-# pfx = "."
+pfx = "."
 cmds = {0:"join",1:"leave"}
 
 # A decorator function to start
@@ -52,8 +51,8 @@ async def on_message(message):
            return
         else:
            if author.voice.channel.id != message.voice_client.channel.id:
-              message.guild.voice_client.move_to(message.author.voice.channel)
-              message.reply(f"Wait for me , I'm comming to {author.voice.channel.name}\n")
+              await message.guild.voice_client.move_to(message.author.voice.channel)
+              await message.reply(f"Wait for me , I'm comming to {author.voice.channel.name}\n")
            else:
               await author.voice.channel.connect()
               await message.add_reaction(emoji[4])
