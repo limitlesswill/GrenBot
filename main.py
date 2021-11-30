@@ -1,4 +1,4 @@
-import en_lang.py
+import en
 # importing OS to deal with future files at least ...
 import os
 
