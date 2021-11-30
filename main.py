@@ -36,7 +36,7 @@ async def on_message(message):
         await message.add_reaction(emoji[2])
         await message.add_reaction(emoji[3])
 
-    if msg == pfx+cmds[1]:
+    elif msg == pfx+cmds[0]:
         await message.channel.reply(f"**Data**\n{message.guild.voice_client}")
         if message.guild.voice_client is None:
            await message.channel.reply("I'm not even in a voice channel")
@@ -47,7 +47,7 @@ async def on_message(message):
            await message.add_reaction(emoji[1])
            await message.reply("See you later")
     
-    if msg == pfx+cmds[0]:
+    elif msg == pfx+cmds[1]:
         if author.voice is None:
            await message.reply("You are not in a **Voice Channel**")
            return
@@ -62,7 +62,7 @@ async def on_message(message):
               await message.add_reaction(emoji[1])
               await message.reply("**I'm Connecting...**",mention_author=False)
 
-    if msg.startswith(pfx) and msg[1:] not in cmds :
+    elif msg.startswith(pfx) and msg[1:] not in cmds :
         rpl = f"I\'m currently under-development , {author} \n please try again later \n Your message content was \n ```{message.content}```\n"  
         await message.reply(rpl)
         await message.add_reaction(emoji[1])
