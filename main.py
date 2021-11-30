@@ -36,23 +36,23 @@ async def on_message(message):
         await message.add_reaction(emoji[2])
         await message.add_reaction(emoji[3])
 
-    elif msg == pfx+cmds[0]:
-        await message.channel.reply(f"**Data**\n{message.guild.voice_client}")
+    elif msg == pfx+cmds[1]:
+        await message.reply(f"**Data**\n{message.guild.voice_client}")
         if message.guild.voice_client is None:
-           await message.channel.reply("I'm not even in a voice channel")
+           await message.reply("I'm not even in a voice channel")
            return
         else:
-           await message.channel.reply(f"**Data After voice_client is not None**\n{message.guild.voice_client}")
+           await message.reply(f"**Data After voice_client is not None**\n{message.guild.voice_client}")
            await message.guild.voice_client.disconnect()
            await message.add_reaction(emoji[1])
            await message.reply("See you later")
     
-    elif msg == pfx+cmds[1]:
+    elif msg == pfx+cmds[0]:
         if author.voice is None:
            await message.reply("You are not in a **Voice Channel**")
            return
         else:
-           await message.channel.reply(f"**Data**\nauthor.voice.channel.id:\n{author.voice.channel.id}\nmessage.voice_client.channel.id\n{message.voice_client.channel.id}")
+           await message.reply(f"**Data**\nauthor.voice.channel.id:\n{author.voice.channel.id}\nmessage.voice_client.channel.id\n{message.voice_client.channel.id}")
            if author.voice.channel.id != message.voice_client.channel.id:
               await message.guild.voice_client.move_to(message.author.voice.channel)
               await message.reply(f"Wait for me , I'm comming to {author.voice.channel.name}\n")
