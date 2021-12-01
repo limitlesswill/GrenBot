@@ -38,7 +38,7 @@ async def on_message(message):
 
     elif msg == pfx+cmds[1]:
         await message.reply(f"**message.guild.voice_client**\n{message.guild.voice_client}**Ends here**")
-        if message.guild.voice_client is None:
+        if message.guild.VoiceClient is None:
            await message.reply("I'm not even in a voice channel")
            return
         else:
