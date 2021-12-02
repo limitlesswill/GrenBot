@@ -38,8 +38,10 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
 
   if msg[len(pfx):] not in cmds:
-    rpl = f"**I'm currently under-development**,{author}\n"
-    await message.reply(rpl+str(count))
+    rpl = f"**I'm currently under-development**,{author}"
+    global count
+    count += 1
+    await message.reply(rpl+f"\ncount **{str(count)}**")
 
 
 # Actual start logging-in
