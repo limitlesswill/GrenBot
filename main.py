@@ -12,6 +12,7 @@ client = discord.Client()
 
 # Prefix of the bot
 pfx = "."
+cmds = {0:"join",1:"leave",2:"web"}
 
 # A decorator function to start
 @client.event
@@ -21,6 +22,7 @@ async def on_ready():
 # A decorator function to read message the send response
 @client.event
 async def on_message(message):
+  count = 0
   msg = message.content.lower()
   author = message.author
   emoji = ["👀","👋","👉","👈","👍"]
@@ -34,7 +36,10 @@ async def on_message(message):
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
-     
+
+  if msg == (pfx+msg[len(pfx):] not in cmds):
+    rpl = f"**I'm currently under-development,{author}"
+    await message.reply(rpl+"\n**"+str(count += 1)+"**")
 
 # Actual start logging-in
 client.run(TOKEN)
