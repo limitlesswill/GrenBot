@@ -1,6 +1,6 @@
 # importing OS to deal with future files at least ...
 import os
-
+from sweb import hweb
 # Importing discord library
 import discord
 
@@ -11,6 +11,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 client = discord.Client()
 
 # Prefix of the bot
+count = 0
 pfx = "."
 cmds = {"join","leave","web"}
 
@@ -22,7 +23,6 @@ async def on_ready():
 # A decorator function to read message the send response
 @client.event
 async def on_message(message):
-  count = 0
   msg = message.content.lower()
   author = message.author
   emoji = ["👀","👋","👉","👈","👍"]
@@ -41,6 +41,10 @@ async def on_message(message):
     rpl = f"**I'm currently under-development**,{author}"
     count += 1
     await message.reply(rpl+f"\nCount **{str(count)}**")
+  
+  if msg[len(pfx):] == cmds[2]:
+    obj = hweb()
+    await message.reply(obj.get_data())
 
 # Actual start logging-in
 client.run(TOKEN)
