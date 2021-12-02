@@ -1,8 +1,6 @@
 # importing OS to deal with future files at least ...
 import os
 
-from sweb import hweb
-
 # Importing discord library
 import discord
 
@@ -64,9 +62,9 @@ async def on_message(message):
           await message.add_reaction(emoji[1])
           await message.reply("**I'm Connecting...**",mention_author=False)
 
-  if msg == pfx+cmds[2]:
-    await obj = hweb()
-    await message.reply(obj.get_data())
+ # if msg == pfx+cmds[2]:
+   # await obj = hweb()
+   # await message.reply(obj.get_data())
 
   if msg.startswith(pfx) and msg[1:] not in cmds :
     rpl = f"I\'m currently under-development , {author} \n please try again later \n Your message content was \n ```{message.content}```\n"  
