@@ -57,10 +57,13 @@ async def on_message(message):
               await message.guild.voice_client.move_to(message.author.voice.channel)
               await message.reply(f"Wait for me , I'm comming to {author.voice.channel.name}\n")
            else:
-              await author.voice.channel.connect()
-              await message.add_reaction(emoji[4])
-              await message.add_reaction(emoji[1])
-              await message.reply("**I'm Connecting...**",mention_author=False)
+              try:
+                await author.voice.channel.connect()
+                await message.add_reaction(emoji[4])
+                await message.add_reaction(emoji[1])
+                await message.reply("**I'm Connecting...**",mention_author=False)
+              except:
+                await message.reply("exception")
 
     elif msg.startswith(pfx) and msg[1:] not in cmds :
         rpl = f"I\'m currently under-development , {author} \n please try again later \n Your message content was \n ```{message.content}```\n"  
