@@ -37,13 +37,13 @@ async def on_message(message):
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
 
-  if msg[len(pfx):] not in cmds and len(pfx) > 1:
+  if msg[len(pfx):] not in cmds and len(msg[len(pfx):]) > 1:
     rpl = f"**I'm currently under-development**,{author}"
     global count
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
 
-  if msg[len(pfx):] == cmds[3]:
+  if msg[len(pfx):] == cmds[2]:
     try:
       obj = hweb()
       txt = obj.get_data()
