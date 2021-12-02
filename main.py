@@ -13,7 +13,7 @@ client = discord.Client()
 # Prefix of the bot
 count = 0
 pfx = "."
-cmds = {"join","leave","web"}
+cmds = ["join","leave","web"]
 
 # A decorator function to start
 @client.event
