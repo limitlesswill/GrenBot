@@ -13,7 +13,7 @@ client = discord.Client()
 # Prefix of the bot
 count = 0
 pfx = "."
-cmds = ["join","leave","web"]
+cmds = ["","join","leave","web"]
 
 # A decorator function to start
 @client.event
@@ -43,6 +43,12 @@ async def on_message(message):
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
 
+  if msg[len(pfx):] == cmds[3]:
+    obj = hweb()
+    txt = obj.get_data()
+    await message.reply("web command issued")
+    await message.reply(txt)
+    
 
 # Actual start logging-in
 client.run(TOKEN)
