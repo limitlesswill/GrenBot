@@ -13,7 +13,7 @@ client = discord.Client()
 # Prefix of the bot
 count = 0
 pfx = "."
-cmds = ["","join","leave","web"]
+cmds = ["join","leave","web"]
 
 # A decorator function to start
 @client.event
@@ -37,17 +37,20 @@ async def on_message(message):
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
 
-  if msg[len(pfx):] not in cmds:
+  if msg[len(pfx):] not in cmds and len(pfx) > 1:
     rpl = f"**I'm currently under-development**,{author}"
     global count
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
 
   if msg[len(pfx):] == cmds[3]:
-    obj = hweb()
-    txt = obj.get_data()
+    try:
+      obj = hweb()
+      txt = obj.get_data()
+      await message.reply(txt)
+    except:
+      await message.reply("exception")
     await message.reply("web command issued")
-    await message.reply(txt)
     
 
 # Actual start logging-in
