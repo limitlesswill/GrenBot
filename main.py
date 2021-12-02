@@ -39,7 +39,8 @@ async def on_message(message):
 
   if msg[len(pfx):] not in cmds:
     rpl = f"**I'm currently under-development**,{author}"
-    await message.reply(rpl)
+    count += 1
+    await message.reply(rpl+f"\n**{str(count)}**")
 
 
 # Actual start logging-in
