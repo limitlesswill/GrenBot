@@ -12,7 +12,7 @@ client = discord.Client()
 
 # Prefix of the bot
 pfx = "."
-cmds = {0:"join",1:"leave",2:"web"}
+cmds = {"join","leave","web"}
 
 # A decorator function to start
 @client.event
@@ -37,9 +37,10 @@ async def on_message(message):
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
 
-  if msg == pfx+msg[len(pfx):] not in cmds:
+  if msg[len(pfx):] not in cmds:
     rpl = f"**I'm currently under-development**,{author}"
-    await message.reply(rpl+f"\n**{str(count += 1)}**")
+    count += 1
+    await message.reply(rpl+f"\nCount **{str(count)}**")
 
 # Actual start logging-in
 client.run(TOKEN)
