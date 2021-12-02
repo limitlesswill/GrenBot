@@ -1,6 +1,8 @@
 # importing OS to deal with future files at least ...
 import os
 
+from web import sweb
+
 # Importing discord library
 import discord
 
@@ -12,7 +14,7 @@ client = discord.Client()
 
 # Prefix of the bot
 pfx = "."
-cmds = {0:"join",1:"leave"}
+cmds = {0:"join",1:"leave",2:"web"}
 
 # A decorator function to start
 @client.event
@@ -69,6 +71,9 @@ async def on_message(message):
         rpl = f"I\'m currently under-development , {author} \n please try again later \n Your message content was \n ```{message.content}```\n"  
         await message.reply(rpl)
         await message.add_reaction(emoji[1])
+    elif msg == pfx+cmds[2]:
+        obj = sweb()
+        await message.reply(obj.get_data())
      
 
 # Actual start logging-in
