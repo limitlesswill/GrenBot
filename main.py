@@ -37,9 +37,9 @@ async def on_message(message):
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
 
-  if msg == (pfx+msg[len(pfx):] not in cmds):
-    rpl = f"**I'm currently under-development,{author}"
-    await message.reply(rpl+"\n**"+str(count += 1)+"**")
+  if msg == pfx+msg[len(pfx):] not in cmds:
+    rpl = f"**I'm currently under-development**,{author}"
+    await message.reply(rpl+f"\n**{str(count += 1)}**")
 
 # Actual start logging-in
 client.run(TOKEN)
