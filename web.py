@@ -1,6 +1,6 @@
 import socket
 
-class web:
+class sweb:
   def __init__(self,url="google.com.eg"):
     self.host = url
     self.port = 80
