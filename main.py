@@ -67,13 +67,14 @@ async def on_message(message):
               except:
                 await message.reply("exception")
 
+    elif msg == pfx+cmds[2]:
+        obj = sweb()
+        message.reply(obj.get_data())
+
     elif msg.startswith(pfx) and msg[1:] not in cmds :
         rpl = f"I\'m currently under-development , {author} \n please try again later \n Your message content was \n ```{message.content}```\n"  
         await message.reply(rpl)
         await message.add_reaction(emoji[1])
-    elif msg == pfx+cmds[2]:
-        obj = sweb()
-        await message.reply(obj.get_data())
      
 
 # Actual start logging-in
