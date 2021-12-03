@@ -11,13 +11,17 @@ class hweb:
       self.ip = socket.gethostbyname(self.host)
       self.s.connect((self.ip , self.port))
     except:
+      result = "connection exception"
+    finally:
       result = "connection error"
 
   def get_data(self):
     try:
       self.s.send(self.request)
     except:
-      result = "Request issue"
+      result = "Request exception"
+    finally:
+      result = "Request finally"
     reply = b""
     while True:
       tmp = self.s.recv(80**4)
