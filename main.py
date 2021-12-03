@@ -23,8 +23,9 @@ async def on_ready():
 # A decorator function to read message the send response
 @client.event
 async def on_message(message):
-  if author == client.user:
+  if message.author == client.user:
     return
+
   await message.reply(message.guild)
   dmsg = f"**Invite me to a server so we can play\nhttps://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672**"
   await message.reply(dmsg)
