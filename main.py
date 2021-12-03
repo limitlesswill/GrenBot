@@ -25,12 +25,10 @@ async def on_ready():
 async def on_message(message):
   if author == client.user:
     return
-
-  if not message.guild:
-    dmsg = f"**Invite me to a server so we can play\nhttps://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672**"
-    await message.reply(dmsg)
-    await message.reply(message.author.avatar_url)
-    return
+  await message.reply(message.guild)
+  dmsg = f"**Invite me to a server so we can play\nhttps://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672**"
+  await message.reply(dmsg)
+  await message.reply(message.author.avatar_url)
 
   msg = message.content.lower()
   cmd = msg.startswith(pfx) and ( len(msg[len(pfx):]) > 0 )
