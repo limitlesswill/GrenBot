@@ -59,7 +59,7 @@ async def on_message(message):
       txt = obj.get_data()
       await message.reply(txt)
     except Exception as ex:
-      await message.reply(f"exception: **{type(ex).__name__}**")
+      await message.reply(f"exception: **{type(ex).__name__}**\nError: **{obj.result}**")
     await message.reply("web command issued")
     
 
