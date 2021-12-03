@@ -20,8 +20,9 @@ class hweb:
       result = "Request issue"
     reply = b""
     while True:
-      reply += self.s.recv(80**4)
-      if(len(reply) <= 0):
+      tmp = self.s.recv(80**4)
+      reply += tmp
+      if(len(tmp) <= 0):
           break
     result = "data"
     self.s.close()
