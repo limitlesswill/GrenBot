@@ -33,7 +33,7 @@ async def on_message(message):
     return
 
   msg = message.content.lower()
-  cmd = msg.startswith(pfx)
+  cmd = msg.startswith(pfx) and ( len(msg[len(pfx):]) > 0 )
   author = message.author
   emoji = ["👀","👋","👉","👈","👍"]
 
