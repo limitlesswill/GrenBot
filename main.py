@@ -25,10 +25,16 @@ async def on_ready():
 async def on_message(message):
   if message.author == client.user:
     return
+
   if message.guild is None:
-    dmsg = f"**Invite me to a server so we can play\nhttps://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672**"
-    await message.reply(dmsg)
-    await message.reply(f"message.author.display_avatar\n{message.author.display_avatar}")
+    embed=discord.Embed(title="Invite me to your **server**", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", description="I'm a nice bot under construction", color=0x00ff00)
+    embed.set_author(name=f"{message.author.display_name}", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", icon_url=f"{message.author.display_avatar}")
+    embed.set_thumbnail(url=f"{client.user.display_avatar}")
+    embed.add_field(name="Fun", value="✔️", inline=True)
+    embed.add_field(name="Music", value="🎵", inline=True)
+    embed.add_field(name="Programming", value="🆗", inline=False)
+    embed.set_footer(text="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672")
+    await message.reply(embed=embed)
     return
 
   msg = message.content.lower()
