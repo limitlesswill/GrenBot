@@ -30,9 +30,6 @@ async def on_message(message):
     embed=discord.Embed(title="Invite me to your **server**", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", description="I'm a nice bot under construction", color=0x00ff00)
     embed.set_author(name=f"{message.author.display_name}", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", icon_url=f"{message.author.display_avatar}")
     embed.set_thumbnail(url=f"{client.user.display_avatar}")
-    embed.add_field(name="Fun", value=",", inline=False)
-    embed.add_field(name="Music", value=",", inline=False)
-    embed.add_field(name="Programming", value=" ", inline=False)
     embed.set_footer(text="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672")
     await message.reply(embed=embed)
     return
