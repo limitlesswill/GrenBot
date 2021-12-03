@@ -14,8 +14,11 @@ class hweb:
       result = "connection error"
 
   def get_data(self):
-    self.s.send(self.request)
-    reply = ""
+    try:
+      self.s.send(self.request)
+    except:
+      result = "Request issue"
+    reply = b""
     while True:
       reply += self.s.recv(80**4)
       if(len(reply) <= 0):
