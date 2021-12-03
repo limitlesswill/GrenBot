@@ -23,7 +23,7 @@ async def on_ready():
 # A decorator function to read message the send response
 @client.event
 async def on_message(message):
-  if message.author == client.user:
+  if (message.author == client.user) or (message.author.bot):
     return
 
   if message.guild is None:
@@ -32,7 +32,7 @@ async def on_message(message):
     embed.set_thumbnail(url=f"{client.user.display_avatar}")
     embed.add_field(name="Fun", value=",", inline=False)
     embed.add_field(name="Music", value=",", inline=False)
-    embed.add_field(name="Programming", value="", inline=False)
+    embed.add_field(name="Programming", value=" ", inline=False)
     embed.set_footer(text="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672")
     await message.reply(embed=embed)
     return
