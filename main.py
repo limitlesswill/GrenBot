@@ -26,13 +26,13 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-  await message.reply(message.guild)
+  await message.reply(f"here we go \n{message.guild}")
   dmsg = f"**Invite me to a server so we can play\nhttps://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672**"
   await message.reply(dmsg)
-  await message.reply(message.author.avatar_url)
+  await message.reply(f"message.author.avatar_url\n{message.author.avatar_url}")
 
   msg = message.content.lower()
-  cmd = msg.startswith(pfx) and ( len(msg[len(pfx):]) > 0 )
+  cmd = msg.startswith(pfx)
   author = message.author
   emoji = ["👀","👋","👉","👈","👍"]
 
@@ -43,13 +43,13 @@ async def on_message(message):
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
 
-  if cmd and msg[len(pfx):] not in cmds:
+  if cmd and (msg[len(pfx):] not in cmds):
     rpl = f"**I'm currently under-development**,{author}"
     global count
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
 
-  if cmd and msg[len(pfx):] == cmds[2]:
+  if cmd and (msg[len(pfx):] == cmds[2]):
     try:
       obj = hweb()
       txt = obj.get_data()
