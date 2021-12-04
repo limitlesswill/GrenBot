@@ -7,6 +7,7 @@ class hweb:
     self.port = 80
     self.request = b"GET / HTTP/1.0\r\n\r\n"
     try:
+      result = "stage constructor"
       self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       self.ip = socket.gethostbyname(self.host)
       self.s.connect((self.ip , self.port))
@@ -17,6 +18,7 @@ class hweb:
 
   def get_data(self):
     try:
+      result = "sending request stage"
       self.s.send(self.request)
     except:
       result = "Request exception"
