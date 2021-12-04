@@ -20,7 +20,7 @@ class hweb:
     if self.result == "instantiating object problem":
       raise Exception(self.result)
     try:
-      self.s.send(self.request)
+      self.s.send(str(self.request))
       self.result = "Request Try block"
     except:
       self.result = "Request exception"
