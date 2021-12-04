@@ -7,18 +7,18 @@ class hweb:
     self.request = b"GET / HTTP/1.0\r\n\r\n"
     self.result = "instantiating object problem"
     try:
-      self.result = "constructor stage"
       self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       self.ip = socket.gethostbyname(self.host)
       self.s.connect((self.ip , self.port))
+      self.result = "constructor stage"
     except:
       self.result = "connection exception"
 
   def get_data(self):
     self.result = "sending request stage"
     try:
-      self.result = "Request Try block"
       self.s.send(self.request)
+      self.result = "Request Try block"
     except:
       self.result = "Request exception"
 
