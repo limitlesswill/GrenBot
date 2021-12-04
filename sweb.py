@@ -24,6 +24,7 @@ class hweb:
       self.result = "Request Try block"
     except:
       self.result = "Request exception"
+      raise Exception(self.result)
 
     reply = b""
     try:
