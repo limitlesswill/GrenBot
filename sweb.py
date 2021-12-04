@@ -23,14 +23,14 @@ class hweb:
       self.result = "Request exception"
 
     reply = b""
-    while True:
-      try:
-        tmp = self.s.recv(80**4)
-        reply += tmp
-        if(len(tmp) <= 0):
-            break
+    try:
+      while True:
+          tmp = self.s.recv(80**4)
+          reply += tmp
+          if(len(tmp) <= 0):
+              break
       self.result = "data receiving block"
-      except Exception as e:
+    except Exception as e:
         self.result = f"data receiving exception {str(e)}"
     try:
       self.s.close()
