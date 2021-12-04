@@ -29,10 +29,12 @@ class hweb:
         reply += tmp
         if(len(tmp) <= 0):
             break
+        self.result = "data receiving block"
       except:
         self.result = "data receiving exception"
     try:
       self.s.close()
+      self.result = "closing connection block"
     except:
       self.result = "closing socket exception"
     return reply
