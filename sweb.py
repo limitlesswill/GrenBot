@@ -5,8 +5,9 @@ class hweb:
     self.F = b"F" #General Fail Mark
     self.host = url
     self.port = 80
-    self.request = b"GET / HTTP/1.0"
+    self.request = b"GET / HTTP/1.0\r\n"
     self.result = "instantiating object problem"
+    self.reply = b""
     try:
       self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       self.ip = socket.gethostbyname(self.host)
@@ -26,11 +27,10 @@ class hweb:
       self.result = "Request exception"
       raise Exception(self.result)
 
-    reply = b""
     try:
       while True:
         tmp = self.s.recv(80**4)
-        reply += tmp
+        self.reply += tmp
         if(len(tmp) <= 0):
           break
       self.result = "data receiving block"
@@ -43,4 +43,4 @@ class hweb:
     except:
       self.result = "closing socket exception"
       raise Exception(self.result)
-    return reply
+    return self.reply
