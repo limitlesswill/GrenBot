@@ -18,13 +18,13 @@ class hweb:
 
   def get_data(self):
     if self.result == "instantiating object problem":
-      return self.F
+      raise Exception(self.result)
     try:
       self.s.send(self.request)
       self.result = "Request Try block"
     except:
       self.result = "Request exception"
-      return self.F
+      raise Exception(self.result)
 
     reply = b""
     try:
@@ -36,11 +36,11 @@ class hweb:
       self.result = "data receiving block"
     except Exception as e:
       self.result = f"data receiving exception {str(e)}"
-      return self.F
+      raise Exception(self.result)
     try:
       self.s.close()
       self.result = "closing connection block"
     except:
       self.result = "closing socket exception"
-      return self.F
+      raise Exception(self.result)
     return reply
