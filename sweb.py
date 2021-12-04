@@ -21,8 +21,7 @@ class hweb:
       self.s.send(self.request)
     except:
       self.result = "Request exception"
-    finally:
-      self.result = "Request finally"
+
     reply = b""
     while True:
       tmp = self.s.recv(80**4)
