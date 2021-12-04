@@ -25,13 +25,13 @@ class hweb:
     reply = b""
     try:
       while True:
-          tmp = self.s.recv(80**4)
-          reply += tmp
-          if(len(tmp) <= 0):
-              break
+        tmp = self.s.recv(80**4)
+        reply += tmp
+        if(len(tmp) <= 0):
+          break
       self.result = "data receiving block"
     except Exception as e:
-        self.result = f"data receiving exception {str(e)}"
+      self.result = f"data receiving exception {str(e)}"
     try:
       self.s.close()
     #  self.result = "closing connection block"
