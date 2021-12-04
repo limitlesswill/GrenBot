@@ -56,11 +56,11 @@ async def on_message(message):
   if cmd and (msg[len(pfx):] == cmds[2]):
     try:
       obj = hweb()
-      await message.reply(f"initializing hweb object")
+      await message.reply(f"initializing hweb object\n1. **{obj.result}**")
       txt = obj.get_data()
       await message.reply(txt)
     except Exception as ex:
-      await message.reply(f"exception: **{type(ex).__name__}**\nError: **{obj.result}**")
+      await message.reply(f"exception: **{type(ex).__name__}**\n2. Error: **{obj.result}**")
     await message.reply("web command issued")
     
 
