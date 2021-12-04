@@ -14,6 +14,7 @@ class hweb:
       self.result = "constructor stage"
     except:
       self.result = "connection exception"
+      raise Exception(self.result)
 
   def get_data(self):
     if self.result == "instantiating object problem":
