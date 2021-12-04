@@ -16,7 +16,7 @@ class hweb:
       self.result = "connection error"
 
   def get_data(self):
-      self.result = "sending request stage"
+    self.result = "sending request stage"
     try:
       self.s.send(self.request)
     except:
