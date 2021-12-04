@@ -6,8 +6,8 @@ class hweb:
     self.host = url
     self.port = 80
     self.request = b"GET / HTTP/1.0\r\n\r\n"
+    result = "stage constructor"
     try:
-      result = "stage constructor"
       self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       self.ip = socket.gethostbyname(self.host)
       self.s.connect((self.ip , self.port))
