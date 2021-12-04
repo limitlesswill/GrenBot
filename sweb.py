@@ -30,11 +30,11 @@ class hweb:
         if(len(tmp) <= 0):
             break
         self.result = "data receiving block"
-      except:
-        self.result = "data receiving exception"
+      except Exception as e:
+        self.result = f"data receiving exception {str(e)}"
     try:
       self.s.close()
-      self.result = "closing connection block"
+      #self.result = "closing connection block"
     except:
       self.result = "closing socket exception"
     return reply
