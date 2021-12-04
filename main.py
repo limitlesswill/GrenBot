@@ -57,7 +57,7 @@ async def on_message(message):
     try:
       obj = hweb()
       await message.reply(f"initializing hweb object\n1. **{obj.result}**")
-      txt = obj.get_data()
+      await txt = obj.get_data()
       await message.reply(f"get_data(): **{txt}**")
     except Exception as ex:
       await message.reply(f"exception: **{type(ex).__name__}**\n{str(ex)}\n2. Last working stage: **{obj.result}**")
