@@ -55,8 +55,9 @@ async def on_message(message):
 
   if cmd and (msg[len(pfx):] == cmds[2]):
     try:
-      obj = hweb()
-      txt = obj.get_data()
+      await obj = hweb()
+      await message.send(f"initializing hweb object")
+      await txt = obj.get_data()
       await message.reply(txt)
     except Exception as ex:
       await message.reply(f"exception: **{type(ex).__name__}**\nError: **{hweb.result} : {obj.result}**")
