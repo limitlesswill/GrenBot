@@ -5,7 +5,6 @@ class hweb:
     self.host = url
     self.port = 80
     self.request = b"GET / HTTP/1.0\r\n\r\n"
-    self.result = "ok"
     self.result = "stage constructor"
     try:
       self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
