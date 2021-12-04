@@ -40,7 +40,7 @@ class hweb:
       raise Exception(self.result)
     try:
       self.s.close()
-      self.result = "closing connection block"
+      #self.result = "closing connection block"
     except:
       self.result = "closing socket exception"
       raise Exception(self.result)
