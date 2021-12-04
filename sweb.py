@@ -5,13 +5,12 @@ class hweb:
     self.F = b"F" #General Fail Mark
     self.host = url
     self.port = 80
-    self.request = b"GET / HTTP/1.1\r\n\r\n"
+    self.request = b"GET / HTTP/1.0\r\n"
     self.result = "instantiating object problem"
     try:
       self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       self.ip = socket.gethostbyname(self.host)
       self.s.connect((self.ip , self.port))
-      self.s.settimeout(240)
       self.result = "constructor stage"
     except:
       self.result = "connection exception"
