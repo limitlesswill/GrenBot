@@ -11,6 +11,7 @@ class hweb:
       self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       self.ip = socket.gethostbyname(self.host)
       self.s.connect((self.ip , self.port))
+      self.s.settimeout(240)
       self.result = "constructor stage"
     except:
       self.result = "connection exception"
