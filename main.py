@@ -58,7 +58,7 @@ async def on_message(message):
       obj = new hweb()
       await message.reply(f"initializing hweb object\n1. **{obj.result}**")
       txt = obj.get_data()
-      await message.reply(f"get_data(): **{str(txt)}**\nLast working stage: **{obj.result}**")
+      await message.reply(f"len(get_data()): **{len(txt)}**\nLast working stage: **{obj.result}**")
     except Exception as ex:
       await message.reply(f"exception: **{type(ex).__name__}**\n{str(ex)}\n2. Last working stage: **{obj.result}**")
     await message.reply("web command issued")
