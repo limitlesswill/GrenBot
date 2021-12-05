@@ -17,7 +17,7 @@ class hweb:
       self.result = "connection exception"
       raise Exception(self.result)
 
-  async def get_data(self):
+  def get_data(self):
     if self.result == "instantiating object problem":
       raise Exception(self.result)
     try:
