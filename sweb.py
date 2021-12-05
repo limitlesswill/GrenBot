@@ -5,7 +5,7 @@ class hweb:
     self.F = b"F" #General Fail Mark
     self.host = url
     self.port = 80
-    self.request = b"GET / HTTP/1.1\r\n"
+    self.request = b"GET / HTTP/1.1\r\n\n"
     self.result = "instantiating object problem"
     self.reply = b"No Data"
     try:
