@@ -55,7 +55,7 @@ async def on_message(message):
 
   if cmd and (msg[len(pfx):] == cmds[2]):
     try:
-      obj = new hweb()
+      obj = hweb()
       await message.reply(f"initializing hweb object\n1. **{obj.result}**")
       txt = obj.get_data()
       await message.reply(f"len(get_data()): **{len(txt)}**\nLast working stage: **{obj.result}**")
