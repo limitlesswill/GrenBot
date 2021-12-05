@@ -5,7 +5,7 @@ class hweb:
     self.F = b"F" #General Fail Mark
     self.host = url
     self.port = 80
-    self.request = b"GET / HTTP/1.1\r\n\r\n"
+    self.request = b"GET / HTTP/1.1\r\n"
     self.result = "instantiating object problem"
     self.reply = b"No Data"
     try:
@@ -17,7 +17,7 @@ class hweb:
       self.result = "connection exception"
       raise Exception(self.result)
 
-  def get_data(self):
+  async def get_data(self):
     if self.result == "instantiating object problem":
       raise Exception(self.result)
     try:
