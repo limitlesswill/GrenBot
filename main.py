@@ -57,14 +57,14 @@ async def on_message(message):
     try:
       obj = hweb()
       await message.reply(f"initializing hweb object\n1. **{obj.result}**")
-      txt = obj.get_data()
+      txt = obj.get_data().decode('UTF-8')
       MX = 1000
       await message.reply(f"len(get_data()): **{len(txt)}**\nLast working stage: **{obj.result}**")
       while len(txt) >= MX:
-        tmp = str(txt[:MX])
+        tmp = txt[:MX]
         await message.reply(f"{tmp}")
         txt = txt[MX:]
-      await message.reply(f"{str(txt)}")
+      await message.reply(f"{txt}")
     except Exception as ex:
       await message.reply(f"exception: **{type(ex).__name__}**\n{str(ex)}\n2. Last working stage: **{obj.result}**")
     await message.reply("web command issued")
