@@ -58,7 +58,7 @@ async def on_message(message):
       obj = hweb()
       await message.reply(f"initializing hweb object\n1. **{obj.result}**")
       txt = obj.get_data()
-      MX = 2000
+      MX = 1000
       await message.reply(f"len(get_data()): **{len(txt)}**\nLast working stage: **{obj.result}**")
       while len(txt) >= MX:
         tmp = txt[:MX]
