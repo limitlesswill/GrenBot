@@ -57,7 +57,7 @@ async def on_message(message):
     try:
       obj = hweb()
       await message.reply(f"initializing hweb object\n1. **{obj.result}**")
-      txt = obj.get_data()
+      txt = await asyncio.gather( obj.get_data() )
       MX = 1000
       await message.reply(f"len(get_data()): **{len(txt)}**\nLast working stage: **{obj.result}**")
       while len(txt) >= MX:
