@@ -1,5 +1,6 @@
 # importing OS to deal with future files at least ...
 import os
+from asyncio import gather
 from sweb import hweb
 # Importing discord library
 import discord
