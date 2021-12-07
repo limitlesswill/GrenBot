@@ -1,7 +1,8 @@
 # importing OS to deal with future files at least ...
 import os
-from asyncio import gather
+
 from sweb import hweb
+from asyncio import gather
 # Importing discord library
 import discord
 
@@ -58,7 +59,7 @@ async def on_message(message):
     try:
       obj = hweb()
       await message.reply(f"initializing hweb object\n1. **{obj.result}**")
-      txt = await asyncio.gather( obj.get_data() )
+      txt = await gather( obj.get_data() ) # from asyncio
       MX = 1000
       await message.reply(f"len(get_data()): **{len(txt)}**\nLast working stage: **{obj.result}**")
       while len(txt) >= MX:
