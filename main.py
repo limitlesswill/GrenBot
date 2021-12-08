@@ -2,7 +2,7 @@
 import os
 
 from sweb import hweb
-from asyncio import gather
+
 # Importing discord library
 import discord
 
