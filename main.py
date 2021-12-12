@@ -32,7 +32,6 @@ async def on_message(message):
     embed=discord.Embed(title="Invite me to your **server**", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", description="", color=0x00ff00)
     embed.set_author(name=f"{message.author}", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", icon_url=f"{message.author.display_avatar}")
     embed.set_thumbnail(url=client.user.display_avatar)
- #   embed.set_image(url=client.user.display_avatar)
     embed.set_footer(text=f"I'm a nice bot under construction")
     await message.reply(embed=embed)
     return
@@ -50,7 +49,9 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
 
   if cmd and (msg[len(pfx):] not in cmds):
-    rpl = f"**I'm currently under-development**,{author}"
+    txt = msg[len(pfx):]
+    ttslink = f"https://translate.google.com.vn/translate_tts?ie=UTF-8&q={txt.replace(" ","+")}&tl=en&client=tw-ob"
+    rpl = f"[txt](ttslink)\n**I'm currently under-development**,{author}"
     global count
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
