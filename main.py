@@ -49,9 +49,7 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
 
   if cmd and (msg[len(pfx):] not in cmds):
-    here = msg[len(pfx):]
-    li = f"https://translate.google.com.vn/translate_tts?ie=UTF-8&q={here.replace(" ","+")}&tl=en&client=tw-ob"
-    rpl = f"[here]({li})\n**I'm currently under-development**,{author}"
+    rpl = f"**I'm currently under-development**,{author}"
     global count
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
