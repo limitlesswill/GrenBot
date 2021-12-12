@@ -51,7 +51,7 @@ async def on_message(message):
   if cmd and (msg[len(pfx):] not in cmds):
     here = msg[len(pfx):]
     ttslink = f"https://translate.google.com.vn/translate_tts?ie=UTF-8&q={here.replace(" ","+")}&tl=en&client=tw-ob"
-    rpl = f"[txt](ttslink)\n**I'm currently under-development**,{author}"
+    rpl = f"[here](ttslink)\n**I'm currently under-development**,{author}"
     global count
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
