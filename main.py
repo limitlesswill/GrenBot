@@ -61,7 +61,7 @@ async def on_message(message):
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
 
-  if cmd and (msg[len(pfx):] == cmds[2]):
+  if cmd and (msg[len(pfx):msg.index(" ")] == cmds[2]):
     ## needs caution , carefully handles the text here
     try:
       url = msg[len(pfx):]
