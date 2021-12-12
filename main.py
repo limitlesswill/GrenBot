@@ -50,7 +50,7 @@ async def on_message(message):
 
   if cmd and (msg[len(pfx):] not in cmds):
     txt = msg[len(pfx):].replace(" ","+")
-    link = f"https://www.{txt}.com\n{txt}"
+    link = f"https://translate.google.com.vn/translate_tts?ie=UTF-8&q={txt}&tl=en&client=tw-ob"
     await message.reply(link)
     rpl = f"**I'm currently under-development**,{author}"
     global count
