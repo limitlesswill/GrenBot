@@ -49,7 +49,8 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
 
   if cmd and (msg[len(pfx):] not in cmds):
-    rpl = f"**I'm currently under-development**,{author}"
+    txt = msg[len(pfx):]
+    rpl = f"{txt}\n**I'm currently under-development**,{author}"
     global count
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
