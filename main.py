@@ -64,7 +64,7 @@ async def on_message(message):
   if cmd and (msg[len(pfx):msg.index(" ")] == cmds[2]):
     ## needs caution , carefully handles the text here
     try:
-      url = msg[len(pfx):]
+      url = msg[len(pfx)+len(cmds[2])+1:]
       obj = hweb(url)
       await message.reply(f"{url}\ninitializing hweb object\n1. **{obj.result}**")
       txt = obj.get_data()
