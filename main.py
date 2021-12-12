@@ -49,8 +49,8 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
 
   if cmd and (msg[len(pfx):] not in cmds):
-    txt = msg[len(pfx):]
-    link = f"{txt.replace(" ","+")}"
+    txt = msg[len(pfx):].replace(" ","+")
+    link = f"{txt}"
     await message.reply(link)
     rpl = f"**I'm currently under-development**,{author}"
     global count
