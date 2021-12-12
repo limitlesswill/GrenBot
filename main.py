@@ -51,7 +51,11 @@ async def on_message(message):
   if cmd and (msg[len(pfx):] not in cmds):
     txt = msg[len(pfx):].replace(" ","+")
     link = f"https://translate.google.com.vn/translate_tts?ie=UTF-8&q={txt}&tl=en&client=tw-ob"
-    await message.reply(link)
+    embed=discord.Embed(title=msg[len(pfx):], url=link, description="", color=0x00ff00)
+    embed.set_thumbnail(url=client.user.display_avatar)
+    embed.set_footer(text=f"{message.author},icon_url=f"{message.author.display_avatar}")
+    await message.reply(embed=embed)
+
     rpl = f"**I'm currently under-development**,{author}"
     global count
     count += 1
