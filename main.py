@@ -49,7 +49,7 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
 
   if cmd and (msg[len(pfx):msg.index(" ")] not in cmds):
-    txt = msg[len(pfx):].replace(" ","+")
+    txt = msg[msg.index(" "):].replace(" ","+")
     link = f"https://translate.google.com.vn/translate_tts?ie=UTF-8&q={txt}&tl=en&client=tw-ob"
     embed=discord.Embed(title=f"**{msg[len(pfx):].upper()}**", url=link, description="", color=0x00ff00)
     embed.set_thumbnail(url=client.user.display_avatar)
