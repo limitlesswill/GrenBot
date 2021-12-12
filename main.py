@@ -62,9 +62,11 @@ async def on_message(message):
     await message.reply(rpl+f"\ncount **{str(count)}**")
 
   if cmd and (msg[len(pfx):] == cmds[2]):
+    ## needs caution , carefully handles the text here
     try:
-      obj = hweb()
-      await message.reply(f"initializing hweb object\n1. **{obj.result}**")
+      url = msg[len(pfx):]
+      obj = hweb(url)
+      await message.reply(f"{url}\ninitializing hweb object\n1. **{obj.result}**")
       txt = obj.get_data()
       MX = 1000
       await message.reply(f"len(get_data()): **{len(txt)}**\nLast working stage: **{obj.result}**")
