@@ -53,7 +53,7 @@ async def on_message(message):
     link = f"https://translate.google.com.vn/translate_tts?ie=UTF-8&q={txt}&tl=en&client=tw-ob"
     embed=discord.Embed(title=msg[len(pfx):], url=link, description="", color=0x00ff00)
     embed.set_thumbnail(url=client.user.display_avatar)
-    embed.set_footer(text=f"{message.author},icon_url=f"{message.author.display_avatar}")
+    embed.set_footer(text=f"{message.author}",icon_url=f"{message.author.display_avatar}")
     await message.reply(embed=embed)
 
     rpl = f"**I'm currently under-development**,{author}"
