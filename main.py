@@ -48,8 +48,8 @@ async def on_message(message):
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
 
-  if cmd and (msg[len(pfx):msg.index(" ")] not in cmds):
-    txt = msg[msg.index(" "):].replace(" ","+")
+  if cmd and (msg.split()[0][len(pfx):] not in cmds):
+    txt = msg[len(pfx):].replace(" ","+")
     link = f"https://translate.google.com.vn/translate_tts?ie=UTF-8&q={txt}&tl=en&client=tw-ob"
     embed=discord.Embed(title=f"**{msg[len(pfx):].upper()}**", url=link, description="", color=0x00ff00)
     embed.set_thumbnail(url=client.user.display_avatar)
@@ -61,7 +61,7 @@ async def on_message(message):
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
 
-  if cmd and (msg[len(pfx):msg.index(" ")] == cmds[2]):
+  if cmd and (msg.split()[0][len(pfx):] == cmds[2]):
     ## needs caution , carefully handles the text here
     try:
       url = msg[len(pfx)+len(cmds[2])+1:]
