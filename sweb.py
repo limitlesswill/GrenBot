@@ -7,7 +7,7 @@ class hweb:
     self.port = 80
     self.request = b"GET / HTTP/1.1\r\n\r\n"
     self.result = "instantiating object problem"
-    self.reply = b"No Data"
+    self.reply = b""
     try:
       self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       self.ip = socket.gethostbyname(self.host)
