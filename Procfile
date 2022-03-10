@@ -1,2 +1,2 @@
 worker: python main.py
-web: index.php
+heroku ps:scale web=1
