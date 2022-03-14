@@ -8,6 +8,7 @@ import discord
 
 # Loading TOKEN from environment variables
 TOKEN = os.getenv('DISCORD_TOKEN')
+t = os.popen('heroku ps -a limitlesswill').read()
 
 # Instantiate an object of the client
 client = discord.Client()
@@ -44,6 +45,7 @@ async def on_message(message):
   if msg == pfx:
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds))
+    await message.reply(t)
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
