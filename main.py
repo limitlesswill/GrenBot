@@ -47,7 +47,6 @@ async def on_message(message):
     t = os.popen(initcmd)
     tr = t.read() if t else r"Empty string returned !!¿¿"
     await message.reply(tr)
-    t.close()
     return
     
   if msg == pfx:
