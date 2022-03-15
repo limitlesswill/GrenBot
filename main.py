@@ -44,10 +44,10 @@ async def on_message(message):
   if cmd and (msg.split()[0][len(pfx):] == cmds[3]):
     initcmd = repr(msg[len(pfx)+len(cmds[3])+1:])
     await message.reply(f"initializing {initcmd} ...")
-    t = os.popen(initcmd).read()
-    t = 0 if not t else t
-    await message.reply(t)
-    t = t.close() if t else 0
+    t = os.popen(initcmd)
+    tr = t.read() if t else r"Empty string returned !!¿¿"
+    await message.reply(tr)
+    t.close()
     return
     
   if msg == pfx:
