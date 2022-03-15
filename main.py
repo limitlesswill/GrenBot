@@ -42,7 +42,7 @@ async def on_message(message):
   emoji = ["👀","👋","👉","👈","👍"]
 
   if msg == pfx:
-    t = os.popen('heroku ps -a limitlesswill').read()
+    t = os.popen(r'lsb_release -a').read()
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds))
     t = 0 if not t else 1
