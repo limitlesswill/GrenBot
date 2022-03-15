@@ -15,7 +15,7 @@ client = discord.Client()
 # Prefix of the bot
 count = 0
 pfx = "."
-cmds = ["join","leave","web"]
+cmds = ["join","leave","web","init"]
 
 # A decorator function to start
 @client.event
@@ -40,14 +40,19 @@ async def on_message(message):
   cmd = msg.startswith(pfx)
   author = message.author
   emoji = ["👀","👋","👉","👈","👍"]
-
-  if msg == pfx:
-    t = os.popen(r'ps -a limitlesswill').read()
-    gds = [x.name for x in client.guilds]
-    await message.reply( "\n".join(gds))
+  
+  if cmd and (msg.split()[0][len(pfx):] == cmd[3]):
+    initcmd = repr(msg[len(pfx)+len(cmds[3])+1:])
+    await message.reply(f"initializing {initcmd} ...")
+    t = os.popen(initcmd).read()
     t = 0 if not t else t
     await message.reply(t)
-    t.close()
+    t = t.close() if t else 0
+    return
+    
+  if msg == pfx:
+    gds = [x.name for x in client.guilds]
+    await message.reply( "\n".join(gds))
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
@@ -65,6 +70,7 @@ async def on_message(message):
     global count
     count += 1
     await message.reply(rpl+f"\ncount **{str(count)}**")
+    return
 
   if cmd and (msg.split()[0][len(pfx):] == cmds[2]):
     ## needs caution , carefully handles the text here
