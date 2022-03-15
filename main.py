@@ -41,7 +41,7 @@ async def on_message(message):
   author = message.author
   emoji = ["👀","👋","👉","👈","👍"]
   
-  if cmd and (msg.split()[0][len(pfx):] == cmd[3]):
+  if cmd and (msg.split()[0][len(pfx):] == cmds[3]):
     initcmd = repr(msg[len(pfx)+len(cmds[3])+1:])
     await message.reply(f"initializing {initcmd} ...")
     t = os.popen(initcmd).read()
