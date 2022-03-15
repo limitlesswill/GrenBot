@@ -45,7 +45,7 @@ async def on_message(message):
     t = os.popen('heroku ps -a limitlesswill').read()
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds))
-    t = t if t else "Empty"
+    t = 0 if not t else 1
     await message.reply(t)
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
