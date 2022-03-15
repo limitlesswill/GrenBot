@@ -43,6 +43,7 @@ async def on_message(message):
   emoji = ["👀","👋","👉","👈","👍"]
 
   if msg == pfx:
+    global t
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds))
     await message.reply(t)
