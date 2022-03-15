@@ -46,7 +46,8 @@ async def on_message(message):
     await message.reply(f"initializing {initcmd} ...\nLength: {len(initcmd)}")
     t = os.popen(initcmd)
     tr = repr(t.read())
-    await message.reply(f"length of the pipeline: {len(tr)}\n{tr}")
+    await message.reply(f"length of the pipeline: {len(tr)}")
+    await message.reply(f"{tr}")
     t.close()
     return
     
