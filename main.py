@@ -45,7 +45,7 @@ async def on_message(message):
     t = os.popen(r'lsb_release -a').read()
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds))
-    t = 0 if not t else 1
+    t = 0 if not t else t
     await message.reply(t)
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
