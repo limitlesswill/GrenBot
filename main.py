@@ -40,14 +40,17 @@ async def on_message(message):
   cmd = msg.startswith(pfx)
   author = message.author
   emoji = ["👀","👋","👉","👈","👍"]
-  
+
+  ### redirect system output through the bot
+
   if cmd and (msg.split()[0][len(pfx):] == cmds[3]):
     initcmd = msg[len(pfx)+len(cmds[3])+1:]
     await message.reply(f"initializing {initcmd} ...\nLength: {len(initcmd)}")
-    t = os.popen(initcmd,stdout=PIPE, stderr=PIPE)
-    tr = repr(t.readlines())
+    one = ""
+    t = os.popen(initcmd,stdout=one)
+    tr = repr(t.read())
     await message.reply(f"length of the pipeline: {len(tr)}")
-    await message.reply(f"{tr}")
+    await message.reply(f"{tr} one:{one}")
     t.close()
     return
     
