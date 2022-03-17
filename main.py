@@ -44,7 +44,7 @@ async def on_message(message):
   if cmd and (msg.split()[0][len(pfx):] == cmds[3]):
     initcmd = msg[len(pfx)+len(cmds[3])+1:]
     await message.reply(f"initializing {initcmd} ...\nLength: {len(initcmd)}")
-    t = os.popen(initcmd)
+    t = os.popen(initcmd,stdout=PIPE, stderr=PIPE)
     tr = repr(t.readlines())
     await message.reply(f"length of the pipeline: {len(tr)}")
     await message.reply(f"{tr}")
