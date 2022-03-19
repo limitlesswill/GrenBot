@@ -46,12 +46,10 @@ async def on_message(message):
   if cmd and (msg.split()[0][len(pfx):] == cmds[3]):
     initcmd = msg[len(pfx)+len(cmds[3])+1:]
     await message.reply(f"initializing {initcmd} ...\nLength: {len(initcmd)}")
-    one = ""
-    t = os.popen(initcmd,stdout=one)
-    tr = repr(t.read())
-    await message.reply(f"length of the pipeline: {len(tr)}")
-    await message.reply(f"{tr} one:{one}")
-    t.close()
+    t = subprocess.Popen(initcmd, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    (stdout , stderr) = t.communicate()
+    await message.reply(f"length of the pipeline: {len(stdout)} + {len(stderr)}")
+    await message.reply(f"stdout:{stdout} stderr:{stderr}")
     return
     
   if msg == pfx:
