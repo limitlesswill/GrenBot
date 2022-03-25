@@ -11,9 +11,13 @@ echo "<h1>HELLO THERE</h1><br/>"
 foreach($_SERVER as $key => $val) 
 echo $key."[".$val."]<br/>";
 
-print_r($_POST);
-echo "<br/>";
-print_r($_GET);
-echo "<br/>";
-print_r($_FILES);
+foreach($_POST as $key => $val) 
+echo $key."(".$val.")<br/>";
+
+foreach($_GET as $key => $val) 
+echo $key."{".$val."}<br/>";
+
+foreach($_FILES as $key => $val) 
+echo $key."[".$val."]<br/>";
+
 ?>
