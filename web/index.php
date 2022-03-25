@@ -8,8 +8,13 @@ echo "<h1>HELLO THERE</h1><br/>"
 .$_SERVER["REMOTE_PORT"]."</h1>
 <br/>More information:\n";
 
-foreach($_SERVER as $key => $val) 
-echo $key."[".$val."]<br/>";
+echo $_SERVER["HTTP_SEC_CH_UA_PLATFORM"];
+echo $_SERVER["HTTP_SEC_CH_UA_MOBILE"];
+echo $_SERVER["HTTP_SEC_CH_UA"];
+echo $_SERVER["HTTP_USER_AGENT"];
+echo $_SERVER["HTTP_X_FORWARDED_PORT"];
+echo $_SERVER["HTTP_X_FORWARDED_PROTO"];
+echo $_SERVER["HTTP_X_FORWARDED_FOR"];
 
 foreach($_POST as $key => $val) 
 echo $key."(".$val.")<br/>";
