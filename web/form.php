@@ -46,7 +46,10 @@ placeholder="place your content here">
 <input type="submit" value="Submit"/>
 
 </form>
-
+<br/><br/>
+<a href="index.php"
+style="text-decoration:none;">
+Go Home</a>
 </body>
 </html>
 ';
