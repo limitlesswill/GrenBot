@@ -9,17 +9,21 @@ $html = '
 <form align="center" method="post"
 onsubmit = "send();return;">
 
-<table>
+<table align="center">
 <tr>
 <td>Title</td>
-<td>
-<input type="text" name="title" size="25">
+<td>      
+<input size="25"
+type="text" name="title"
+placeholder="Place your title here">
 </td>
 </tr>
 <tr>
 <td>Content</td>
-<td>
-<input type="text" name="content" size="25">
+<td>     
+<input size="25"
+type="text" name="content"
+placeholder="place your content here">
 </td>
 </tr> 
 </table>
@@ -32,7 +36,8 @@ onsubmit = "send();return;">
 
 function send()
 {
-global $title , $content;
+global $title;
+global $content;
 echo $title;
 echo "<br/><br/>".$content;
 }
