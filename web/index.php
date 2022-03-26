@@ -12,7 +12,7 @@ echo $_SERVER["HTTP_SEC_CH_UA_PLATFORM"]
 ."\n".$_SERVER["HTTP_SEC_CH_UA_MOBILE"]
 ."\n".$_SERVER["HTTP_SEC_CH_UA"]
 ."\n".$_SERVER["HTTP_USER_AGENT"]
-."\n".$_SERVER["HTTP_X_FORWARDED_PROTO"]
+."<br/>".$_SERVER["HTTP_X_FORWARDED_PROTO"]
 ."\n".$_SERVER["HTTP_X_FORWARDED_FOR"]
 .":".$_SERVER["HTTP_X_FORWARDED_PORT"];
 
@@ -25,6 +25,12 @@ echo $key."{".$val."}<br/>";
 foreach($_FILES as $key => $val) 
 echo $key."[".$val."]<br/>";
 
-echo '<a href="form.php">Go to The form</a>';
+echo '<title>Home Sweet Home</title>
+<body>
+<br/>
+<a href="form.php"
+style="text-decoration:none;">
+Go to The form</a>
+</body>';
 
 ?>
