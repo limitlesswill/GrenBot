@@ -4,9 +4,9 @@ $content = "";
 
 function send()
 {
-echo '<script text/javascript>
-alert('.$_POST["$title"].')
-</script>';
+echo "<script text/javascript>
+alert('$_POST["$title"]')
+</script>";
 }
 
 $html = '
@@ -22,7 +22,7 @@ $html = '
 
 <form
 align="center" method="POST"
-onsubmit = "return false;">
+onsubmit = "send()">
 
 <table align="center">
 <tr>
@@ -43,7 +43,7 @@ placeholder="place your content here">
 </tr> 
 </table>
 <input type="submit" value="Submit" 
-onclick="send();"/>
+onclick="send()"/>
 
 </form>
 <br/><br/>
