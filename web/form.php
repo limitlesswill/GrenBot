@@ -22,7 +22,7 @@ $html = '
 <body align ="center" style=
 "color:black;background-color:white;">
 
-<form align="center" method="post"
+<form align="center" method="POST"
 onsubmit = "send();return;">
 
 <table align="center">
