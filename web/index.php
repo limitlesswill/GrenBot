@@ -25,7 +25,6 @@ echo $key."{".$val."}<br/>";
 foreach($_FILES as $key => $val) 
 echo $key."[".$val."]<br/>";
 
-<!DOCTYPE HTML>
 <html>
 <head><title>Home Sweet Home</title></head>
 <body>
