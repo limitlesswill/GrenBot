@@ -6,7 +6,7 @@ function send()
 {
 echo "
 <script text/javascript>
-alert(".$_POST["$title"].");
+alert('1235788');
 </script>
 ";
 }
