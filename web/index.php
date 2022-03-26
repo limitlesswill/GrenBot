@@ -9,28 +9,41 @@ echo "<h1>HELLO THERE</h1><br/>"
 <br/>More information:\n";
 
 echo $_SERVER["HTTP_SEC_CH_UA_PLATFORM"]
-."\n".$_SERVER["HTTP_SEC_CH_UA_MOBILE"]
-."\n".$_SERVER["HTTP_SEC_CH_UA"]
-."\n".$_SERVER["HTTP_USER_AGENT"]
+."<br/>".$_SERVER["HTTP_SEC_CH_UA_MOBILE"]
+."<br/>".$_SERVER["HTTP_SEC_CH_UA"]
+."<br/>".$_SERVER["HTTP_USER_AGENT"]
 ."<br/>".$_SERVER["HTTP_X_FORWARDED_PROTO"]
-."\n".$_SERVER["HTTP_X_FORWARDED_FOR"]
+."<br/>".$_SERVER["HTTP_X_FORWARDED_FOR"]
 .":".$_SERVER["HTTP_X_FORWARDED_PORT"];
 
+$post = "";
 foreach($_POST as $key => $val) 
-echo $key."(".$val.")<br/>";
+post.$key."(".$val.")<br/>";
+echo $post."<br/>";
 
+$get = "";
 foreach($_GET as $key => $val) 
-echo $key."{".$val."}<br/>";
+get.$key."{".$val."}<br/>";
+echo $get."<br/>";
 
+$files = "";
 foreach($_FILES as $key => $val) 
-echo $key."[".$val."]<br/>";
+files.$key."[".$val."]<br/>";
+echo $files."<br/>";
 
-echo '<title>Home Sweet Home</title>
+$html = '
+<!DOCTYPE html>
+<head>
+<title>Home Sweet Home</title>
+</head>
 <body>
-<br/>
 <a href="form.php"
 style="text-decoration:none;">
 Go to The form</a>
-</body>';
+</body>
+</html>
+';
+
+echo ."<br/><br/><br/>".$html;
 
 ?>
