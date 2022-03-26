@@ -4,11 +4,8 @@ $content = "";
 
 function send()
 {
-echo "
-<script text/javascript>
-alert('1235788');
-</script>
-";
+$message = "LOOOOOL";
+echo "<script>alert('$message');</script>";
 }
 
 $html = '
