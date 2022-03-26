@@ -4,9 +4,9 @@ $content = "";
 
 function send()
 {
-<script text/javascript>
-alert("got it.")
-</script>
+echo '<script text/javascript>
+alert('.$_POST["$title"].')
+</script>';
 }
 
 $html = '
