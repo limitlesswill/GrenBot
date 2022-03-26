@@ -15,11 +15,13 @@ return false;
 
 $html = '
 <!DOCTYPE HTML>
+<html lang="en">
 <head>
-<title>Form Sweet Form></title>
+<title>Form Sweet Form</title>
 </head>
 
-<body align ="center" style=
+<body align ="center" width="100%" 
+height="100%" style=
 "color:black;background-color:white;">
 
 <form align="center" method="POST"
@@ -43,7 +45,8 @@ placeholder="place your content here">
 </td>
 </tr> 
 </table>
-<input type="submit" value="Submit"/>
+<input type="submit" value="Submit" 
+onclick="send();"/>
 
 </form>
 <br/><br/>
