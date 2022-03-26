@@ -25,11 +25,9 @@ echo $key."{".$val."}<br/>";
 foreach($_FILES as $key => $val) 
 echo $key."[".$val."]<br/>";
 
-<html>
-<head><title>Home Sweet Home</title></head>
-<body>
+<title>Home Sweet Home</title>
+
 <a href="form.php">Go to The form</a>
-</body>
-</html>
+
 
 ?>
