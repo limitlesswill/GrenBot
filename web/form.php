@@ -8,9 +8,13 @@ global $title;
 global $content;
 echo $title;
 echo "<br/><br/>".$content;
+return false;
 }
 
 $html = '
+<!DOCTYPE HTML>
+<head><title>Form Sweet Form></head>
+
 <body align ="center" style=
 "color:black;background-color:white;">
 
@@ -40,6 +44,7 @@ placeholder="place your content here">
 </form>
 
 </body>
+</html>
 ';
 
 
