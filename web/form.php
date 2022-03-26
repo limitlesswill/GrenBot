@@ -2,6 +2,14 @@
 $title = "";
 $content = "";
 
+function send()
+{
+global $title;
+global $content;
+echo $title;
+echo "<br/><br/>".$content;
+}
+
 $html = '
 <body align ="center" style=
 "color:black;background-color:white;">
@@ -34,13 +42,6 @@ placeholder="place your content here">
 </body>
 ';
 
-function send()
-{
-global $title;
-global $content;
-echo $title;
-echo "<br/><br/>".$content;
-}
 
 echo $html;
 
