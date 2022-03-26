@@ -26,7 +26,7 @@ $html = '
 
 <form
 align="center" method="POST"
-onsubmit = "return;">
+onsubmit = "return false;">
 
 <table align="center">
 <tr>
