@@ -15,7 +15,9 @@ return false;
 
 $html = '
 <!DOCTYPE HTML>
-<head><title>Form Sweet Form></head>
+<head>
+<title>Form Sweet Form></title>
+</head>
 
 <body align ="center" style=
 "color:black;background-color:white;">
