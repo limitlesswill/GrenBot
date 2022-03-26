@@ -25,5 +25,6 @@ echo $key."{".$val."}<br/>";
 foreach($_FILES as $key => $val) 
 echo $key."[".$val."]<br/>";
 
-<a href="index.php">Index Page</a>
+echo "<a href="form.php">Go to The form</a>";
+
 ?>
