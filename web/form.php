@@ -6,6 +6,8 @@ function send()
 {
 global $title;
 global $content;
+$title = $_POST['title'];
+$content = $_POST['content'];
 echo $title;
 echo "<br/><br/>".$content;
 return false;
