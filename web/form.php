@@ -41,7 +41,7 @@ placeholder="place your content here">
 </td>
 </tr> 
 </table>
-<input type="submit" value="Submit" 
+<input type="button" value="Submit" 
 onclick="send()"/>
 
 </form>
