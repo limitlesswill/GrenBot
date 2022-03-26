@@ -16,6 +16,7 @@ return false;
 $html = '
 <!DOCTYPE HTML>
 <html lang="en">
+<meta charset="UTF-8">
 <head>
 <title>Form Sweet Form</title>
 </head>
@@ -24,7 +25,8 @@ $html = '
 height="100%" style=
 "color:black;background-color:white;">
 
-<form align="center" method="POST"
+<form width="100%" height="100%"
+align="center" method="POST"
 onsubmit = "send();return;">
 
 <table align="center">
@@ -32,7 +34,7 @@ onsubmit = "send();return;">
 <td>Title</td>
 <td>      
 <input size="25"
-type="text" name="title"
+type="text" name="title" id="tit"
 placeholder="Place your title here">
 </td>
 </tr>
@@ -40,7 +42,7 @@ placeholder="Place your title here">
 <td>Content</td>
 <td>     
 <input size="25"
-type="text" name="content"
+type="text" name="content" id="con"
 placeholder="place your content here">
 </td>
 </tr> 
