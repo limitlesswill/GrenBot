@@ -21,13 +21,12 @@ $html = '
 <title>Form Sweet Form</title>
 </head>
 
-<body align ="center" width="100%" 
-height="100%" style=
+<body align ="center" style=
 "color:black;background-color:white;">
 
-<form width="100%" height="100%"
+<form
 align="center" method="POST"
-onsubmit = "send();return;">
+onsubmit = "return;">
 
 <table align="center">
 <tr>
