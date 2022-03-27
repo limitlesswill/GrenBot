@@ -19,7 +19,7 @@ $html = '
 <body align ="center" style=
 "color:black;background-color:white;">
 
-<form
+<form autocomplete="off"
 align="center" method="POST"
 action="form.php" onsubmit = "sen()">
 
