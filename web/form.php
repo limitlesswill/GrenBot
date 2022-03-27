@@ -45,14 +45,8 @@ Go Home</a>
 </html>
 
 <?php
-
-$title = "";
-$content = "";
-
-function sen()
+if( isset($_POST['title']) )
 {
-$message = "LOOOOOL";
-echo "<h1>onetwothrejfjfjfjdndjwjdnfn</h1>";
+     echo $_POST['title'];
 }
-
 ?>
