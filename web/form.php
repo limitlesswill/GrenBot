@@ -52,7 +52,7 @@ $content = "";
 function sen()
 {
 $message = "LOOOOOL";
-echo "onetwothrejfjfjfjdndjwjdnfn";
+echo "<h1>onetwothrejfjfjfjdndjwjdnfn</h1>";
 }
 
 ?>
