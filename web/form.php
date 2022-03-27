@@ -26,7 +26,7 @@ placeholder="Place your title here">
 <tr>
 <td>Content</td>
 <td>     
-<input size="30" rows="5"
+<input cols="30" rows="5"
 type="textarea" name="content"
 placeholder="place your content here">
 </td>
