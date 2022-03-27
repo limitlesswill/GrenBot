@@ -2,7 +2,7 @@
 $title = "";
 $content = "";
 
-function send()
+function sen()
 {
 $message = "LOOOOOL";
 echo "alert(\"Alert on this page thanks\");";
@@ -21,7 +21,7 @@ $html = '
 
 <form
 align="center" method="POST"
-onsubmit = "sen()">
+action="form.php" onsubmit = "sen()">
 
 <table align="center">
 <tr>
