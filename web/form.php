@@ -1,3 +1,4 @@
+/*
 <?php
 $title = "";
 $content = "";
@@ -56,6 +57,7 @@ Go Home</a>
 
 echo $html;
 ?>
+*/
 
 <!DOCTYPE html>
 <html>
