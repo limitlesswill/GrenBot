@@ -53,7 +53,7 @@ function sen()
 {
 $message = "LOOOOOL";
 echo "<script type=\"text/javascript\">
-alert(\"Weee got it.\");";
+alert(\"Weee got it.\");</script>";
 }
 
 ?>
