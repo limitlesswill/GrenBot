@@ -1,5 +1,5 @@
-\*
 <?php
+\*
 $title = "";
 $content = "";
 
@@ -56,13 +56,15 @@ Go Home</a>
 
 
 echo $html;
-
-?>
 */
+?>
 
 <!DOCTYPE html>
 <html>
-<head><title>hhhhhh</title></head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hhhhhh</title>
+</head>
 <body>
 <pre>
 This is a test 
