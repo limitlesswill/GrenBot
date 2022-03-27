@@ -5,7 +5,7 @@ $content = "";
 function sen()
 {
 $message = "LOOOOOL";
-echo "alert(\"Alert on this page thanks\");";
+echo "uuuuuuuuuuuuuuu";
 }
 
 $html = '
@@ -21,7 +21,7 @@ $html = '
 
 <form autocomplete="off"
 align="center" method="POST"
-action="form.php" onsubmit = "<?php sen();?>">
+action="form.php" onsubmit = "sen()">
 
 <table align="center">
 <tr>
@@ -42,7 +42,7 @@ placeholder="place your content here">
 </tr> 
 </table>
 <input type="button" value="Submit" 
-onclick="<?php sen();?>"/>
+onclick="sen()"/>
 
 </form>
 <br/><br/>
