@@ -70,7 +70,7 @@ echo $html;
 This is a test 
 <script type="text/javascript">
 alert("hello there");
-<script>
+</script>
 </pre>
 </body>
 </html>
