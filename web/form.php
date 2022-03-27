@@ -21,7 +21,7 @@ $html = '
 
 <form
 align="center" method="POST"
-onsubmit = "send()">
+onsubmit = "sen()">
 
 <table align="center">
 <tr>
@@ -42,7 +42,7 @@ placeholder="place your content here">
 </tr> 
 </table>
 <input type="button" value="Submit" 
-onclick="send()"/>
+onclick="sen()"/>
 
 </form>
 <br/><br/>
