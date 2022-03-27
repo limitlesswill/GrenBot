@@ -12,26 +12,16 @@ initial-scale=1.0">
 "color:black;background-color:white;">
 
 <form method="get" autocomplete="off"
-align="center" action="/index.php">
+align="center" action="/form.php">
 
-<table align="center">
-<tr>
-<td>Title</td>
-<td>      
-<input size="30"
+<input size="30" 
 type="text" name="title"
-placeholder="Place your title here">
-</td>
-</tr>
-<tr>
-<td>Content</td>
-<td>     
-<input rows="5" cols="40"
+placeholder="Place your title here"/>
+
+<input rows="5" 
 type="textarea" name="content"
-placeholder="place your content here">
-</td>
-</tr> 
-</table>
+placeholder="place your content here"/>
+
 
 </form>
 
