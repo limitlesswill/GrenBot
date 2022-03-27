@@ -52,8 +52,7 @@ $content = "";
 function sen()
 {
 $message = "LOOOOOL";
-echo "<script type=\"text/javascript\">
-alert(\"Weee got it.\");</script>";
+echo "onetwothrejfjfjfjdndjwjdnfn";
 }
 
 ?>
