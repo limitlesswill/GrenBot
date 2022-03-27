@@ -21,7 +21,7 @@ $html = '
 
 <form autocomplete="off"
 align="center" method="POST"
-action="form.php" onsubmit = "sen()">
+action="form.php" onsubmit = "<?php sen();?>">
 
 <table align="center">
 <tr>
@@ -42,7 +42,7 @@ placeholder="place your content here">
 </tr> 
 </table>
 <input type="button" value="Submit" 
-onclick="sen()"/>
+onclick="<?php sen();?>"/>
 
 </form>
 <br/><br/>
