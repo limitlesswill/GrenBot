@@ -12,7 +12,7 @@ initial-scale=1.0">
 "color:black;background-color:white;">
 
 <form method="get" autocomplete="off"
-align="center" onsubmit="">
+align="center" action="/index.php">
 
 <table align="center">
 <tr>
@@ -26,7 +26,7 @@ placeholder="Place your title here">
 <tr>
 <td>Content</td>
 <td>     
-<input cols="30" rows="5"
+<input rows="5" cols="40"
 type="textarea" name="content"
 placeholder="place your content here">
 </td>
