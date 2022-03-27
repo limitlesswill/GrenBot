@@ -12,8 +12,7 @@ initial-scale=1.0">
 "color:black;background-color:white;">
 
 <form autocomplete="off"
-align="center" method="POST"
-action="form.php" onsubmit = "sen()">
+align="center" method="POST">
 
 <table align="center">
 <tr>
@@ -33,8 +32,6 @@ placeholder="place your content here">
 </td>
 </tr> 
 </table>
-<input type="button" value="Submit" 
-onclick="sen()"/>
 
 </form>
 <br/><br/>
