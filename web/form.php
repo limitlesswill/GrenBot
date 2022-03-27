@@ -5,7 +5,7 @@ $content = "";
 function send()
 {
 $message = "LOOOOOL";
-echo "<script>alert('$message')</script>";
+echo "alert(\"Alert on this page thanks\");";
 }
 
 $html = '
