@@ -1,16 +1,3 @@
-<?php
-
-$title = "";
-$content = "";
-
-function sen()
-{
-$message = "LOOOOOL";
-echo "<script type=\"text/javascript\">
-alert(\"Weee got it.\");";
-}
-
-$html = '
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -56,9 +43,17 @@ style="text-decoration:none;">
 Go Home</a>
 </body>
 </html>
-';
 
+<?php
 
-echo $html;
+$title = "";
+$content = "";
+
+function sen()
+{
+$message = "LOOOOOL";
+echo "<script type=\"text/javascript\">
+alert(\"Weee got it.\");";
+}
 
 ?>
