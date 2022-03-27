@@ -1,19 +1,23 @@
 <?php
-/*
+
 $title = "";
 $content = "";
 
 function sen()
 {
 $message = "LOOOOOL";
-echo "uuuuuuuuuuuuuuu";
+echo "<script type=\"text/javascript\">
+alert(\"Weee got it.\");";
 }
 
 $html = '
 <!DOCTYPE HTML>
 <html lang="en">
-<meta charset="UTF-8">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" 
+content="width=device-width,
+initial-scale=1.0">
 <title>Form Sweet Form</title>
 </head>
 
@@ -56,21 +60,5 @@ Go Home</a>
 
 
 echo $html;
-*/
-?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>hhhhhh</title>
-</head>
-<body>
-<pre>
-This is a test 
-<script type="text/javascript">
-alert("hello there");
-</script>
-</pre>
-</body>
-</html>
+?>
