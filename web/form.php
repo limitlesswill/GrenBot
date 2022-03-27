@@ -1,3 +1,4 @@
+\*
 <?php
 $title = "";
 $content = "";
@@ -57,3 +58,17 @@ Go Home</a>
 echo $html;
 
 ?>
+*/
+
+<!DOCTYPE html>
+<html>
+<head><title>hhhhhh</title></head>
+<body>
+<pre>
+This is a test 
+<script type="text/javascript">
+alert("hello there");
+<script>
+<pre>
+</body>
+</html>
