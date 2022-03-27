@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -25,7 +26,7 @@ placeholder="Place your title here">
 <tr>
 <td>Content</td>
 <td>     
-<input size="45"
+<input size="30" height="25"
 type="textarea" name="content"
 placeholder="place your content here">
 </td>
@@ -45,6 +46,7 @@ Go Home</a>
 <?php
 if( isset($_GET['title']) )
 {
-     echo "<br/><br/>".$_GET['title'];
+     echo "<br/><br/>".$_GET['title']
+."<br/><br/><br/>".$_GET['content'];
 }
 ?>
