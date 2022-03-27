@@ -12,7 +12,7 @@ initial-scale=1.0">
 "color:black;background-color:white;">
 
 <form method="get" autocomplete="off"
-align="center">
+align="center" onsubmit="">
 
 <table align="center">
 <tr>
