@@ -1,3 +1,6 @@
+<?php
+
+$html = '
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -39,8 +42,10 @@ style="text-decoration:none;">
 Go Home</a>
 </body>
 </html>
+';
 
-<?php
+echo $html;
+
 if( isset($_GET['title']) )
 {
      echo "<br/><br/>".$_GET['title']
