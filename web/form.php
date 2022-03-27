@@ -12,14 +12,14 @@ initial-scale=1.0">
 "color:black;background-color:white;">
 
 <form autocomplete="off"
-align="center" method="POST">
+align="center" method="GET">
 
 <table align="center">
 <tr>
 <td>Title</td>
 <td>      
 <input size="25"
-type="text" name="title" id="tit"
+type="text" name="title"
 placeholder="Place your title here">
 </td>
 </tr>
@@ -27,14 +27,16 @@ placeholder="Place your title here">
 <td>Content</td>
 <td>     
 <input size="25"
-type="text" name="content" id="con"
+type="text" name="content"
 placeholder="place your content here">
 </td>
 </tr> 
 </table>
 
 </form>
+
 <br/><br/>
+
 <a href="index.php"
 style="text-decoration:none;">
 Go Home</a>
@@ -42,8 +44,8 @@ Go Home</a>
 </html>
 
 <?php
-if( isset($_POST['title']) )
+if( isset($_GET['title']) )
 {
-     echo $_POST['title'];
+     echo $_GET['title'];
 }
 ?>
