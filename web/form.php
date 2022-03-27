@@ -69,6 +69,6 @@ This is a test
 <script type="text/javascript">
 alert("hello there");
 <script>
-<pre>
+</pre>
 </body>
 </html>
