@@ -49,9 +49,11 @@ $url = $_SERVER['DISCORD_WEBHOOK'];
 $headers = [ 'Content-Type: application/json; charset=utf-8' ];
 $POST = 
 [ 
-'username' => $_POST['title'], 
+'username' => 'Guest', 
 'content' => 
-"<@333529891163340801>\r\n".$_POST['content'] 
+"<@333529891163340801>\r\n"
+"             **".$_POST['title']."**\r\n"
+.$_POST['content'] 
 ];
 
 $ch = curl_init();
