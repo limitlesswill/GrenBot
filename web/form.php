@@ -12,28 +12,26 @@ initial-scale=1.0">
 <body align ="center" style=
 "color:black;background-color:white;">
 
-<form method="get" autocomplete="off"
-align="center" action="/form.php">
+<form method="get" autocomplete="off" 
+align="center">
 
 <table align="center">
 <tr>
 <td>Title</td>
 <td> 
-<input size="30" 
-type="text" name="title"
-placeholder="Place your title here">
+<input type="text" name="title" 
+placeholder="Place your title here"/>
 </td>
 </tr>
 <tr>
 <td>Content</td>
 <td>     
-<input rows="5" 
-type="text" name="content"
-placeholder="place your content here">
+<input type="text" name="content" 
+placeholder="place your content here"/>
 </td>
 </tr> 
 </table>
-
+<input type="submit" value="Submit"/>
 </form>
 
 <br/><br/>
