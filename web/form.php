@@ -49,8 +49,7 @@ if( isset($_POST['title']) )
 $url = $_SERVER['DISCORD_WEBHOOK'];
 $headers = 
 [
-'Content-Type: application/json; 
-charset=utf-8' 
+'Content-Type: application/json; charset=utf-8' 
 ];
 
 $POST = 
