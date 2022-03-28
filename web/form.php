@@ -43,16 +43,22 @@ Go Home</a>
 </html>
 
 <?php
+
 if( isset($_POST['title']) )
 {
 $url = $_SERVER['DISCORD_WEBHOOK'];
-$headers = [ 'Content-Type: application/json; charset=utf-8' ];
+$headers = 
+[
+'Content-Type: application/json; 
+charset=utf-8' 
+];
+
 $POST = 
 [ 
 'username' => 'Guest', 
 'content' => 
 "<@333529891163340801>\r\n"
-"             **".$_POST['title']."**\r\n"
+."             **".$_POST['title']."**\r\n"
 .$_POST['content'] 
 ];
 
@@ -61,6 +67,7 @@ curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($POST));
-$response  = curl_exec($ch);
+curl_exec($ch);
+
 }
 ?>
