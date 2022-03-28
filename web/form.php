@@ -47,7 +47,12 @@ if( isset($_POST['title']) )
 {
 $url = $_SERVER['DISCORD_WEBHOOK'];
 $headers = [ 'Content-Type: application/json; charset=utf-8' ];
-$POST = [ 'username' => $_POST['title'], 'content' => $_POST['content'] ];
+$POST = 
+[ 
+'username' => $_POST['title'], 
+'content' => 
+"<@333529891163340801>\r\n".$_POST['content'] 
+];
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
