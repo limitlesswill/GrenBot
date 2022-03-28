@@ -24,13 +24,14 @@ placeholder="Place your title here"/>
 <tr>
 <td>Content</td>
 <td>
-<input rows="5" required
-type="textarea" name="content" 
+<textarea rows="5" required
+ name="content" 
 placeholder="place your content here"/>
 </td>
 </tr> 
 </table>
-<input type="submit" value="Submit" hidden/>
+<input type="submit" value="Submit" 
+hidden/>
 </form>
 
 <br/><br/>
@@ -41,10 +42,9 @@ Go Home</a>
 </html>
 
 <?php
-
 if( isset($_POST['title']) )
 {
-     echo "<br/><br/><h3>".$_POST['title']
+echo "<br/><br/><h3>".$_POST['title']
 ."</h3><br/>".$_POST['content'];
 }
 ?>
