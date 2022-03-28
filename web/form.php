@@ -9,11 +9,11 @@ initial-scale=1.0">
 <body align ="center" style=
 "color:black;background-color:white;">
 
-<form method="get" autocomplete="off" 
+<form method="post" autocomplete="off" 
 align="center">
 
 <table align="center">
-<tr>
+<tr>  
 <td>Title</td>
 <td> 
 <input size="30" required
@@ -42,9 +42,9 @@ Go Home</a>
 
 <?php
 
-if( isset($_GET['title']) )
+if( isset($_POST['title']) )
 {
-     echo "<br/><br/><h1>".$_GET['title']
-."</h1><br/><br/>".$_GET['content'];
+     echo "<br/><br/><h1>".$_POST['title']
+."</h1><br/>".$_POST['content'];
 }
 ?>
