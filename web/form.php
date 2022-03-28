@@ -23,8 +23,8 @@ placeholder="Place your title here"/>
 </tr>
 <tr>
 <td>Content</td>
-<td>
-<textarea rows="3" cols="32"
+<td> 
+<textarea rows="3" cols="31"
 required name="content" 
 placeholder="place your content here">
 </textarea>
@@ -45,8 +45,15 @@ Go Home</a>
 <?php
 if( isset($_POST['title']) )
 {
-echo "<br/><br/><h3>".$_POST['title']
-."</h3><br/><pre>".$_POST['content']."<br/>"
-.$_SERVER['DISCORD_WEBHOOK']."</pre>";
+$url = $_SERVER['DISCORD_WEBHOOK'];
+$headers = [ 'Content-Type: application/json; charset=utf-8' ];
+$POST = [ 'username' => $_POST['title'], 'content' => $_POST['content'] ];
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($POST));
+$response  = curl_exec($ch);
 }
 ?>
