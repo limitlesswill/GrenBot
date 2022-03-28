@@ -24,7 +24,7 @@ placeholder="Place your title here"/>
 <tr>
 <td>Content</td>
 <td>
-<textarea rows="3" cols="33"
+<textarea rows="3" cols="32"
 required name="content" 
 placeholder="place your content here">
 </textarea>
@@ -45,6 +45,6 @@ Go Home</a>
 if( isset($_POST['title']) )
 {
 echo "<br/><br/><h3>".$_POST['title']
-."</h3><br/>".$_POST['content'];
+."</h3><br/>".$_POST['content']."<br/>.$_SERVER['DISCORD_WEBHOOK'];
 }
 ?>
