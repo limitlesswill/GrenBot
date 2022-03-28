@@ -45,6 +45,6 @@ Go Home</a>
 if( isset($_POST['title']) )
 {
 echo "<br/><br/><h3>".$_POST['title']
-."</h3><br/>".$_POST['content']."<br/>.$_SERVER['DISCORD_WEBHOOK'];
+."</h3><br/>".$_POST['content']."<br/>".$_SERVER['DISCORD_WEBHOOK'];
 }
 ?>
