@@ -1,6 +1,3 @@
-<?php
-
-$html = '
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -19,14 +16,16 @@ align="center">
 <tr>
 <td>Title</td>
 <td> 
-<input type="text" name="title" 
+<input size="30" required
+type="text" name="title" 
 placeholder="Place your title here"/>
 </td>
 </tr>
 <tr>
 <td>Content</td>
 <td>     
-<input type="text" name="content" 
+<input size="30" required
+type="text" name="content" 
 placeholder="place your content here"/>
 </td>
 </tr> 
@@ -40,13 +39,12 @@ style="text-decoration:none;">
 Go Home</a>
 </body>
 </html>
-';
 
-echo $html;
+<?php
 
 if( isset($_GET['title']) )
 {
-     echo "<br/><br/>".$_GET['title']
-."<br/><br/><br/>".$_GET['content'];
+     echo "<br/><br/><h1>".$_GET['title']
+."</h1><br/><br/>".$_GET['content'];
 }
 ?>
