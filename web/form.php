@@ -24,15 +24,14 @@ placeholder="Place your title here"/>
 <tr>
 <td>Content</td>
 <td>
-<textarea rows="5" cols="30"
+<textarea rows="5" cols="36"
 required name="content" 
 placeholder="place your content here">
 </textarea>
 </td>
 </tr> 
 </table>
-<input type="submit" value="Submit" 
-hidden/>
+<input type="submit" value="Submit"/>
 </form>
 
 <br/><br/>
