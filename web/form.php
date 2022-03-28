@@ -15,7 +15,7 @@ align="center">
 <table align="center">
 <tr>  
 <td>Title</td>
-<td> 
+<td>
 <input size="30" required
 type="text" name="title" 
 placeholder="Place your title here"/>
@@ -23,14 +23,14 @@ placeholder="Place your title here"/>
 </tr>
 <tr>
 <td>Content</td>
-<td>     
-<input size="30" required
-type="text" name="content" 
+<td>
+<input rows="5" required
+type="textarea" name="content" 
 placeholder="place your content here"/>
 </td>
 </tr> 
 </table>
-<input type="submit" value="Submit"/>
+<input type="submit" value="Submit" hidden/>
 </form>
 
 <br/><br/>
@@ -44,7 +44,7 @@ Go Home</a>
 
 if( isset($_POST['title']) )
 {
-     echo "<br/><br/><h1>".$_POST['title']
-."</h1><br/>".$_POST['content'];
+     echo "<br/><br/><h3>".$_POST['title']
+."</h3><br/>".$_POST['content'];
 }
 ?>
