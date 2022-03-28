@@ -56,7 +56,7 @@ $POST =
 [ 
 'username' => 'Guest', 
 'content' => 
-"<@333529891163340801>\r\n
+"<@333529891163340801>
              **".$_POST['title']."**\r\n"
 .$_POST['content'] 
 ];
