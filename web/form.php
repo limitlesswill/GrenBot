@@ -57,16 +57,18 @@ $POST =
 [ 
 'username' => 'Guest', 
 'content' => 
-"<@333529891163340801>\r\n"
-."             **".$_POST['title']."**\r\n"
+"<@333529891163340801>\r\n
+             **".$_POST['title']."**\r\n"
 .$_POST['content'] 
 ];
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($POST));
+curl_setopt($ch, CURLOPT_HTTPHEADER, 
+$headers);
+curl_setopt($ch, CURLOPT_POSTFIELDS, 
+json_encode($POST));
 curl_exec($ch);
 
 }
