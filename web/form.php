@@ -17,7 +17,7 @@ align="center">
 <td>Title</td>
 <td>
 <input size="30" required
-type="text" name="title" 
+type="text" name="title" maxlength="99" 
 placeholder="Place your title here"/>
 </td>
 </tr>
@@ -25,7 +25,7 @@ placeholder="Place your title here"/>
 <td>Content</td>
 <td> 
 <textarea rows="3" cols="31"
-required name="content" 
+required name="content" maxlength ="1900" 
 placeholder="place your content here">
 </textarea>
 </td>
