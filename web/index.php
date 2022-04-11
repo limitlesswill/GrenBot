@@ -6,15 +6,17 @@ echo "<h1>HELLO THERE</h1><br/>"
 <h1>You're viewing this page throught "
 .$_SERVER["REMOTE_ADDR"].":"
 .$_SERVER["REMOTE_PORT"]."</h1>
-<br/>More information:\n";
+<br/>More information:<br/>";
 
-echo $_SERVER["HTTP_SEC_CH_UA_PLATFORM"]
-."<br/>".$_SERVER["HTTP_SEC_CH_UA_MOBILE"]
-."<br/>".$_SERVER["HTTP_SEC_CH_UA"]
-."<br/>".$_SERVER["HTTP_USER_AGENT"]
-."<br/>".$_SERVER["HTTP_X_FORWARDED_PROTO"]
-."<br/>".$_SERVER["HTTP_X_FORWARDED_FOR"]
+echo "1- ".$_SERVER["HTTP_SEC_CH_UA_PLATFORM"]
+."<br/>2- ".$_SERVER["HTTP_SEC_CH_UA_MOBILE"]
+."<br/>3- ".$_SERVER["HTTP_SEC_CH_UA"]
+."<br/>4- ".$_SERVER["HTTP_USER_AGENT"]
+."<br/>5- ".$_SERVER["HTTP_X_FORWARDED_PROTO"]
+."//".$_SERVER["HTTP_X_FORWARDED_FOR"]
 .":".$_SERVER["HTTP_X_FORWARDED_PORT"];
+
+echo "<br/> transmitted connections<br/>";
 
 $post = "";
 foreach($_POST as $key => $val) 
