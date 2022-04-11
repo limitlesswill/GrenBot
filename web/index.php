@@ -17,17 +17,17 @@ echo "<br/>transmitted connections<br/>";
 
 $post = "";
 foreach($_POST as $key => $val) 
-post.$key."(".$val.")<br/>";
+$post.$key."(".$val.")<br/>";
 echo $post."<br/>";
 
 $get = "";
 foreach($_GET as $key => $val) 
-get.$key."{".$val."}<br/>";
+$get.$key."{".$val."}<br/>";
 echo $get."<br/>";
 
 $files = "";
 foreach($_FILES as $key => $val) 
-files.$key."[".$val."]<br/>";
+$files.$key."[".$val."]<br/>";
 echo $files."<br/>";
 
 $html = '
