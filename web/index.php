@@ -8,15 +8,12 @@ echo "<h1>HELLO THERE</h1><br/>"
 .$_SERVER["REMOTE_PORT"]."</h1>
 <br/>More information:<br/>";
 
-echo "1- ".$_SERVER["HTTP_SEC_CH_UA_PLATFORM"]
-."<br/>2- ".$_SERVER["HTTP_SEC_CH_UA_MOBILE"]
-."<br/>3- ".$_SERVER["HTTP_SEC_CH_UA"]
-."<br/>4- ".$_SERVER["HTTP_USER_AGENT"]
-."<br/>5- ".$_SERVER["HTTP_X_FORWARDED_PROTO"]
+echo $_SERVER["HTTP_USER_AGENT"]."<br/>"
+.$_SERVER["HTTP_X_FORWARDED_PROTO"]
 ."//".$_SERVER["HTTP_X_FORWARDED_FOR"]
 .":".$_SERVER["HTTP_X_FORWARDED_PORT"];
 
-echo "<br/> transmitted connections<br/>";
+echo "<br/>transmitted connections<br/>";
 
 $post = "";
 foreach($_POST as $key => $val) 
@@ -36,7 +33,9 @@ echo $files."<br/>";
 $html = '
 <!DOCTYPE html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content=
+"width=device-width, initial-scale=1.0">
 <title>Home Sweet Home</title>
 </head>
 <body>
