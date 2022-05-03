@@ -1,9 +1,3 @@
-# importing OS to deal with future files at least ...
-import os
-import subprocess
-
-from sweb import hweb
-
 # Importing discord library
 import discord
 
@@ -65,24 +59,6 @@ async def on_message(message):
     await message.reply(rpl+f"\ncount **{str(count)}**")
     return
 
-  if cmd and (msg.split()[0][len(pfx):] == cmds[2]):
-    ## needs caution , carefully handles the text here
-    try:
-      url = msg[len(pfx)+len(cmds[2])+1:]
-      obj = hweb(url)
-      await message.reply(f"{url}\ninitializing hweb object\n1. **{obj.result}**")
-      txt = obj.get_data()
-      MX = 1000
-      await message.reply(f"len(get_data()): **{len(txt)}**\nLast working stage: **{obj.result}**")
-      while len(txt) >= MX:
-        tmp = txt[:MX]
-        await message.reply(f"``` {tmp} ```")
-        txt = txt[MX:]
-      await message.reply(f"``` {txt} ```")
-    except Exception as ex:
-      await message.reply(f"exception: **{type(ex).__name__}**\n{str(ex)}\n2. Last working stage: **{obj.result}**")
-    await message.reply("web command issued")
-    
 
 # Actual start logging-in
 client.run(TOKEN)
