@@ -41,17 +41,6 @@ async def on_message(message):
   cmd = msg.startswith(pfx)
   author = message.author
   emoji = ["👀","👋","👉","👈","👍"]
-
-  ### redirect system output through the bot
-
-  if cmd and (msg.split()[0][len(pfx):] == cmds[3]):
-    initcmd = msg[len(pfx)+len(cmds[3])+1:]
-    await message.reply(f"initializing {initcmd} ...\nLength: {len(initcmd)}")
-    t = subprocess.Popen(initcmd, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    (stdout , stderr) = t.communicate()
-    await message.reply(f"length of the pipeline: {len(stdout)} + {len(stderr)}")
-    await message.reply(f"stdout:{stdout} stderr:{stderr}")
-    return
     
   if msg == pfx:
     gds = [x.name for x in client.guilds]
@@ -59,6 +48,7 @@ async def on_message(message):
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
+    await message.reply(author)
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
