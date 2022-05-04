@@ -6,7 +6,7 @@ import discord
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 # Instantiate an object of the client
-client = discord.Client()
+client = discord.Client(intents=discord.Intents.default())
 
 # Prefix of the bot
 count = 0
