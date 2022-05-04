@@ -41,6 +41,7 @@ async def on_message(message):
     await message.reply(embed=embed)
     return
 
+  global settings
   msg = message.content.lower()
   cmd = msg.startswith(pfx)
   author = message.author
