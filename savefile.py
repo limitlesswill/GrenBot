@@ -28,5 +28,3 @@ def peek():
  file.close()
  return txt
 
-if __name__ == "savefile":
- print("Done")
