@@ -1,3 +1,4 @@
+import os
 # Importing discord library
 import discord
 
