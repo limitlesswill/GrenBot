@@ -21,5 +21,12 @@ def load():
  stg = newdic
  file.close()
 
+def peek():
+ global file_name
+ file = open(file_name,"r")
+ txt = file.readlines()
+ file.close()
+ return txt
+
 if __name__ == "savefile":
  print("Done")
