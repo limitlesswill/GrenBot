@@ -42,16 +42,16 @@ async def on_message(message):
   author = message.author
   emoji = ["👀","👋","👉","👈","👍","💚"]
     
-  if msg == pfx :
+  if msg == pfx and (str(author) == "User#3231"):
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds))
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
-    await message.channel.send(str(author))
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
+    await message.add_reaction(emoji[5])
     txt = msg[len(pfx):].lstrip().replace(" ","+")
     link = f"https://translate.google.com.vn/translate_tts?ie=UTF-8&q={txt}&tl=en&client=tw-ob"
     embed=discord.Embed(title=f"**{msg[len(pfx):].lstrip().upper()}**", url=link, description="", color=0x00ff00)
@@ -69,6 +69,7 @@ async def on_message(message):
     await message.add_reaction(emoji[4])
     await message.add_reaction(emoji[5])
     await message.channel.send("gren")
+    return
 
 # Actual start logging-in
 client.run(TOKEN)
