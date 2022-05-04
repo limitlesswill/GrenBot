@@ -14,9 +14,13 @@ intent.presences = False
 # Instantiate an object of the client
 client = discord.Client(intents=intent)
 
+# Actual start logging-in
+client.run(TOKEN)
+
 # Prefix of the bot
 pfx = "."
 cmds = ["join","leave","web","init"]
+settings = {"deltime":30}
 
 # A decorator function to start
 @client.event
@@ -44,7 +48,7 @@ async def on_message(message):
     
   if msg == pfx and (str(author) == "User#3231"):
     gds = [x.name for x in client.guilds]
-    await message.reply( "\n".join(gds),delete_after=180)
+    await message.reply( "\n".join(gds),delete_after=settings["deltime"])
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
@@ -71,5 +75,3 @@ async def on_message(message):
     await message.channel.send("gren")
     return
 
-# Actual start logging-in
-client.run(TOKEN)
