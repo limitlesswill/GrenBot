@@ -57,7 +57,7 @@ async def on_message(message):
     embed.set_thumbnail(url=client.user.display_avatar)
     embed.set_footer(text=f"{message.author}",icon_url=f"{message.author.display_avatar}")
     await message.reply(embed=embed)
-    await message.reply(url="https://media.discordapp.net/attachments/970599884157751306/971337061976125520/FB_IMG_1648960892703.jpg")
+    await message.reply("https://media.discordapp.net/attachments/970599884157751306/971337061976125520/FB_IMG_1648960892703.jpg")
     return
 
   if "gren " in msg:
@@ -67,7 +67,7 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
     await message.add_reaction(emoji[4])
     await message.add_reaction(emoji[5])
-    await message.send("gren")
+    await message.channel.send("gren")
 
 # Actual start logging-in
 client.run(TOKEN)
