@@ -42,12 +42,13 @@ async def on_message(message):
   author = message.author
   emoji = ["👀","👋","👉","👈","👍","💚"]
     
-  if msg == pfx and (message.author.name == "User#3231"):
+  if msg == pfx :
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds))
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
+    await message.channel.send(str(author))
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
