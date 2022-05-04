@@ -15,7 +15,6 @@ intent.presences = False
 client = discord.Client(intents=intent)
 
 # Prefix of the bot
-count = 0
 pfx = "."
 cmds = ["join","leave","web","init"]
 
@@ -43,7 +42,7 @@ async def on_message(message):
   author = message.author
   emoji = ["👀","👋","👉","👈","👍","💚"]
     
-  if msg == pfx and author == "User#3231":
+  if msg == pfx and (author == "User#3231"):
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds))
     await message.add_reaction(emoji[1])
@@ -58,11 +57,7 @@ async def on_message(message):
     embed.set_thumbnail(url=client.user.display_avatar)
     embed.set_footer(text=f"{message.author}",icon_url=f"{message.author.display_avatar}")
     await message.reply(embed=embed)
-
-    rpl = f"**I'm currently under-development**,{author}"
-    global count
-    count += 1
-    await message.reply(rpl+f"\ncount **{str(count)}**")
+    await message.reply(url="https://media.discordapp.net/attachments/970599884157751306/971337061976125520/FB_IMG_1648960892703.jpg")
     return
 
   if "gren " in msg:
