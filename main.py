@@ -5,11 +5,14 @@ import discord
 # Loading TOKEN from environment variables
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-intents = discord.Intents.default()
-intents.message_content = True
+intent = discord.Intents(messages=True, guilds=True)
+intent.reactions = True
+intent.message_content = True
+intent.typing = False
+intent.presences = False
 
 # Instantiate an object of the client
-client = discord.Client(intents=intents)
+client = discord.Client(intents=intent)
 
 # Prefix of the bot
 count = 0
