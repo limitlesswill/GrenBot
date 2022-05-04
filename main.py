@@ -42,7 +42,7 @@ async def on_message(message):
   author = message.author
   emoji = ["👀","👋","👉","👈","👍","💚"]
     
-  if msg == pfx and (author == "User#3231"):
+  if msg == pfx and (author.name == "User#3231"):
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds))
     await message.add_reaction(emoji[1])
