@@ -26,5 +26,5 @@ def peek():
  file = open(file_name,"r")
  txt = file.readlines()
  file.close()
- return txt
+ return str(txt)
 
