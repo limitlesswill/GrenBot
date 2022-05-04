@@ -41,15 +41,14 @@ async def on_message(message):
   msg = message.content.lower()
   cmd = msg.startswith(pfx)
   author = message.author
-  emoji = ["👀","👋","👉","👈","👍"]
+  emoji = ["👀","👋","👉","👈","👍","💚"]
     
-  if msg == pfx:
+  if msg == pfx and author == "User#3231":
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds))
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
-    await message.reply(author)
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
@@ -66,6 +65,14 @@ async def on_message(message):
     await message.reply(rpl+f"\ncount **{str(count)}**")
     return
 
+  if "gren " in msg:
+    await message.add_reaction(emoji[0])
+    await message.add_reaction(emoji[1])
+    await message.add_reaction(emoji[2])
+    await message.add_reaction(emoji[3])
+    await message.add_reaction(emoji[4])
+    await message.add_reaction(emoji[5])
+    await message.send("gren")
 
 # Actual start logging-in
 client.run(TOKEN)
