@@ -59,7 +59,7 @@ async def on_message(message):
     embed=discord.Embed(title=f"**{msg[len(pfx):].lstrip().upper()}**", url=link, description="", color=0x00ff00)
     embed.set_thumbnail(url=client.user.display_avatar)
     embed.set_footer(text=f"{message.author}",icon_url=f"{message.author.display_avatar}")
-    await message.reply(embed=embed,delete_after=sf.settings["deltime"])
+    await message.channel.send(embed=embed,delete_after=sf.settings["deltime"])
     await message.reply("https://media.discordapp.net/attachments/970599884157751306/971337061976125520/FB_IMG_1648960892703.jpg",delete_after=sf.settings["deltime"])
     return
 
