@@ -25,7 +25,7 @@ def testin(text):
  global file_name
  file = open(file_name,"w")
  return file.write(f"{text}\n")
-def testout()
+def testout():
  global file_name
  file = open(file_name,"r")
  text = file.readlines()
