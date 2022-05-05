@@ -48,6 +48,7 @@ async def on_message(message):
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
+    await message.channel.send(sf.peek())
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
@@ -59,7 +60,6 @@ async def on_message(message):
     embed.set_footer(text=f"{message.author}",icon_url=f"{message.author.display_avatar}")
     await message.reply(embed=embed)
     await message.reply("https://media.discordapp.net/attachments/970599884157751306/971337061976125520/FB_IMG_1648960892703.jpg")
-    await message.channel.send(sf.testout())
     return
 
   if "gren " in msg:
@@ -69,7 +69,6 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
     await message.add_reaction(emoji[4])
     await message.add_reaction(emoji[5])
-    sf.testin(msg)
     await message.channel.send("gren")
     return
 
