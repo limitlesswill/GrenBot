@@ -16,7 +16,7 @@ client = discord.Client(intents=intent)
 
 # Prefix of the bot
 pfx = "."
-cmds = ["save","load","peek"]
+cmds = ["save","load","peek","send"]
 
 # A decorator function to start
 @client.event
@@ -86,6 +86,10 @@ async def on_message(message):
     await message.channel.send("gren gren gren gren gren",delete_after=sf.settings["deltime"])
     return
 
+  if cmd and (msg.split()[0] == pfx+cmds[3]):
+    chan = msg.split()[1]
+    await message.reply(chan,delete_after=sf.settings["deltime"])
+    return
 
 # Actual start logging-in
 client.run(TOKEN)
