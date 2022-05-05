@@ -48,9 +48,9 @@ async def on_message(message):
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
-    sf.save()
+    result = os.path.isfile(sf.file_name)
     txt = sf.peek()
-    await message.channel.send(txt,delete_after=sf.settings["deltime"])
+    await message.channel.send(f"{str(result)}\n{txt)",delete_after=sf.settings["deltime"])
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
