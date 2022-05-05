@@ -88,7 +88,8 @@ async def on_message(message):
 
   if cmd and (msg.split()[0] == pfx+cmds[3]):
     chan = msg.split()[1]
-    await message.reply(chan,delete_after=sf.settings["deltime"])
+    channel = discord.utils.get(ctx.guild.channels, name=chan)
+    await message.reply(channel,delete_after=sf.settings["deltime"])
     return
 
 # Actual start logging-in
