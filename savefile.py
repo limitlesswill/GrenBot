@@ -24,7 +24,9 @@ def load():
 def peek():
  global file_name
  file = open(file_name,"r")
- txt = file.readlines()
+ txt = ""
+ for line in file:
+  txt += line
  file.close()
- return str(txt)
+ return txt
 
