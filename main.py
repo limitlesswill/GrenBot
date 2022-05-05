@@ -14,9 +14,6 @@ intent.presences = False
 # Instantiate an object of the client
 client = discord.Client(intents=intent)
 
-# Actual start logging-in
-client.run(TOKEN)
-
 # Prefix of the bot
 pfx = "."
 cmds = ["save","load","peek"]
@@ -76,4 +73,5 @@ async def on_message(message):
     await message.channel.send("gren",delete_after=sf.settings["deltime"])
     return
 
-
+# Actual start logging-in
+client.run(TOKEN)
