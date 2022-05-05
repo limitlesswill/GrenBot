@@ -19,7 +19,7 @@ client.run(TOKEN)
 
 # Prefix of the bot
 pfx = "."
-cmds = ["join","leave","web","init"]
+cmds = ["save","load","peek"]
 
 # A decorator function to start
 @client.event
