@@ -48,7 +48,9 @@ async def on_message(message):
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
-    await message.channel.send(sf.peek())
+    sf.save()
+    txt = sf.peek()
+    await message.channel.send(txt)
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
