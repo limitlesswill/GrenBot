@@ -21,12 +21,13 @@ def load():
  stg = newdic
  file.close()
 
-def peek():
+def testin(text):
+ global file_name
+ file = open(file_name,"w")
+ return file.write(f"{text}\n")
+def testout()
  global file_name
  file = open(file_name,"r")
- txt = ""
- for line in file:
-  txt += line
- file.close()
- return txt
+ text = file.readlines()
+ return str(text)
 
