@@ -50,7 +50,7 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
     sf.save()
     txt = sf.peek()
-    await message.channel.send(txt)
+    await message.channel.send(txt,delete_after=sf.settings["deltime"])
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
