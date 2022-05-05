@@ -58,7 +58,7 @@ async def on_message(message):
     sf.load()
     await message.reply("**Loaded**",delete_after=sf.settings["deltime"])
     return
-  if (msg == (pfx+cmds[2])) and debug
+  if (msg == (pfx+cmds[2])) and debug:
     await message.channel.send(f"file name: {sf.file_name}",delete_after=sf.settings["deltime"])
     await message.channel.send(f"Does it exist: {os.path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
     await message.reply(f"**Data**: {sf.peek()}",delete_after=sf.settings["deltime"])
