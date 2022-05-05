@@ -1,16 +1,22 @@
-# Importing discord library
+import os
+import savefile as sf
 import discord
 
 # Loading TOKEN from environment variables
 TOKEN = os.getenv('DISCORD_TOKEN')
 
+intent = discord.Intents(messages=True, guilds=True)
+intent.reactions = True
+intent.message_content = True
+intent.typing = False
+intent.presences = False
+
 # Instantiate an object of the client
-client = discord.Client()
+client = discord.Client(intents=intent)
 
 # Prefix of the bot
-count = 0
 pfx = "."
-cmds = ["join","leave","web","init"]
+cmds = ["save","load","peek"]
 
 # A decorator function to start
 @client.event
@@ -34,31 +40,38 @@ async def on_message(message):
   msg = message.content.lower()
   cmd = msg.startswith(pfx)
   author = message.author
-  emoji = ["👀","👋","👉","👈","👍"]
+  emoji = ["👀","👋","👉","👈","👍","💚"]
     
-  if msg == pfx:
+  if msg == pfx and (str(author) == "User#3231"):
     gds = [x.name for x in client.guilds]
-    await message.reply( "\n".join(gds))
+    await message.reply( "\n".join(gds),delete_after=sf.settings["deltime"])
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
-    await message.reply(author)
+    await message.channel.send(f"{sf.file_name}",delete_after=sf.settings["deltime"])
+    await message.channel.send(f"{os.path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
+    await message.add_reaction(emoji[5])
     txt = msg[len(pfx):].lstrip().replace(" ","+")
     link = f"https://translate.google.com.vn/translate_tts?ie=UTF-8&q={txt}&tl=en&client=tw-ob"
     embed=discord.Embed(title=f"**{msg[len(pfx):].lstrip().upper()}**", url=link, description="", color=0x00ff00)
     embed.set_thumbnail(url=client.user.display_avatar)
     embed.set_footer(text=f"{message.author}",icon_url=f"{message.author.display_avatar}")
-    await message.reply(embed=embed)
-
-    rpl = f"**I'm currently under-development**,{author}"
-    global count
-    count += 1
-    await message.reply(rpl+f"\ncount **{str(count)}**")
+    await message.channel.send(embed=embed,delete_after=sf.settings["deltime"])
+    await message.reply("https://media.discordapp.net/attachments/970599884157751306/971337061976125520/FB_IMG_1648960892703.jpg",delete_after=sf.settings["deltime"])
     return
 
+  if "gren " in msg:
+    await message.add_reaction(emoji[0])
+    await message.add_reaction(emoji[1])
+    await message.add_reaction(emoji[2])
+    await message.add_reaction(emoji[3])
+    await message.add_reaction(emoji[4])
+    await message.add_reaction(emoji[5])
+    await message.channel.send("gren gren gren gren gren",delete_after=sf.settings["deltime"])
+    return
 
 # Actual start logging-in
 client.run(TOKEN)
