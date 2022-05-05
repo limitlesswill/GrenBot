@@ -1,5 +1,5 @@
 file_name = "settings.ini"
-settings = {"deltime":30,"intval":6}
+settings = {"deltime":20,"intval":6}
 
 def save():
  global file_name
