@@ -40,16 +40,29 @@ async def on_message(message):
   msg = message.content.lower()
   cmd = msg.startswith(pfx)
   author = message.author
+  debug = (str(author) == "User#3231")
   emoji = ["👀","👋","👉","👈","👍","💚"]
     
-  if msg == pfx and (str(author) == "User#3231"):
+  if (msg == pfx) and debug:
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds),delete_after=sf.settings["deltime"])
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
-    await message.channel.send(f"{sf.file_name}",delete_after=sf.settings["deltime"])
-    await message.channel.send(f"{os.path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
+    return
+  if (msg == (pfx+cmds[0])) and debug:
+    sf.save()
+    await message.reply("**Saved**",delete_after=sf.settings["deltime"])
+    return
+  if (msg == (pfx+cmds[1])) and debug:
+    sf.load()
+    await message.reply("**Loaded**",delete_after=sf.settings["deltime"])
+    return
+  if (msg == (pfx+cmds[2])) and debug
+    await message.channel.send(f"file name: {sf.file_name}",delete_after=sf.settings["deltime"])
+    await message.channel.send(f"Does it exist: {os.path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
+    await message.reply(f"**Data**: {sf.peek()}",delete_after=sf.settings["deltime"])
+    await message.reply("**Peek**",delete_after=sf.settings["deltime"])
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
@@ -72,6 +85,7 @@ async def on_message(message):
     await message.add_reaction(emoji[5])
     await message.channel.send("gren gren gren gren gren",delete_after=sf.settings["deltime"])
     return
+
 
 # Actual start logging-in
 client.run(TOKEN)
