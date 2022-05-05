@@ -70,7 +70,7 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
     await message.add_reaction(emoji[4])
     await message.add_reaction(emoji[5])
-    await message.channel.send("gren",delete_after=sf.settings["deltime"])
+    await message.channel.send("gren gren gren gren gren",delete_after=sf.settings["deltime"])
     return
 
 # Actual start logging-in
