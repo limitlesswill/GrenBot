@@ -89,7 +89,7 @@ async def on_message(message):
     # channel format would be like <#1234>
     ch = msg.split()[1]
     lench = len(ch)
-    chid = ch[1:lench-1]
+    chid = ch[2:lench-1]
     fr = len(pfx)+len(cmds[3])+lench+1
     mes = msg[fr:]
     await message.reply(f"send {mes}\nto {ch}\n**id**:{chid}",delete_after=sf.settings["deltime"])
