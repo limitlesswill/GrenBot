@@ -89,7 +89,7 @@ async def on_message(message):
     ch = msg.split()[1]
     await message.channel.send(f"{ch}\n{msg[len(pfx)+len(ch):]}",delete_after=sf.settings["deltime"])
     channel = client.get_channel(int(chan))
-    channel.send(msg[len(pfx)+len(ch):],delete_after=sf.settings["deltime"])
+    await channel.send(msg[len(pfx)+len(ch):],delete_after=sf.settings["deltime"])
     return
 
 # Actual start logging-in
