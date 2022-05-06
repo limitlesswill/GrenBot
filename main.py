@@ -93,8 +93,12 @@ async def on_message(message):
     fr = len(pfx)+len(cmds[3])+lench+1
     mes = msg[fr:]
     await message.reply(f"send {mes}\nto {ch}\n**id**:{chid}",delete_after=sf.settings["deltime"])
-    chan = client.get_channel(chid)
-    chan.send(mes,delete_after=sf.settings["deltime"])
+    try:
+      chan = client.get_channel(int(chid))
+      await chan.send(mes,delete_after=sf.settings["deltime"])
+    except ValueError:
+      await message.reply("You Cannot send a message to this channel",delete_after=sf.settings["deltime"]+20)
+      message.delete()
     return
 
 # Actual start logging-in
