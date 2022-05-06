@@ -95,7 +95,7 @@ async def on_message(message):
     await message.channel.send(f"<@{author.id}> send \n{mes}\nto **Name**: {ch}\n**id**:{chid}",delete_after=sf.settings["deltime"])
     try:
       chan = client.get_channel(int(chid))
-      await chan.send(mes,delete_after=sf.settings["deltime"])
+      await chan.send(mes)
     except ValueError:
       message.delete()
       await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
