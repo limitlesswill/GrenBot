@@ -75,7 +75,7 @@ async def on_message(message):
     await message.channel.send(embed=embed,delete_after=sf.settings["deltime"])
     return
 
-  if "gren " in msg:
+  if not cmd and ("gren " in msg):
     await message.add_reaction(emoji[0])
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
@@ -87,11 +87,11 @@ async def on_message(message):
 
   if cmd and (msg.split()[0] == pfx+cmds[3]):
     # channel format would be like <#1234>
-    ch = msg.split()[1]
+    ch = message.split()[1]
     lench = len(ch)
     chid = ch[2:lench-1]
     fr = len(pfx)+len(cmds[3])+lench+1
-    mes = msg[fr:]
+    mes = message[fr:]
     await message.channel.send(f"<@{author.id}> send \n{mes}\nto **Name**: {ch}\n**id**:{chid}",delete_after=sf.settings["deltime"])
     try:
       chan = client.get_channel(int(chid))
