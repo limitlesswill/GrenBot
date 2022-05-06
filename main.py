@@ -98,7 +98,7 @@ async def on_message(message):
       await chan.send(mes,delete_after=sf.settings["deltime"])
     except ValueError:
       message.delete()
-      await message.reply(f"**You cannot send a message to this channel**,<@{author.id)>")
+      await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
     return
 
 # Actual start logging-in
