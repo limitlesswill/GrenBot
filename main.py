@@ -86,10 +86,13 @@ async def on_message(message):
     return
 
   if cmd and (msg.split()[0] == pfx+cmds[3]):
+    # channel format would be like <#1234>
     ch = msg.split()[1]
-    await message.channel.send(f"{ch}\n{msg[len(pfx)+len(ch):]}",delete_after=sf.settings["deltime"])
-    channel = client.get_channel(int(chan))
-    await channel.send(msg[len(pfx)+len(ch):],delete_after=sf.settings["deltime"])
+    lench = len(ch)
+    chid = ch[1:lench-1]
+    from = len(pfx)+len(cmds[3])+lench+1
+    mes = msg[from:]
+    await message.reply(f"send {mes}\nto {ch}\n**id**:{chid}",delete_after=sf.settings["deltime"])
     return
 
 # Actual start logging-in
