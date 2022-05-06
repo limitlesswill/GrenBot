@@ -87,11 +87,11 @@ async def on_message(message):
 
   if cmd and (msg.split()[0] == pfx+cmds[3]):
     # channel format would be like <#1234>
-    ch = message.split()[1]
+    ch = message.content.split()[1]
     lench = len(ch)
     chid = ch[2:lench-1]
     fr = len(pfx)+len(cmds[3])+lench+1
-    mes = message[fr:]
+    mes = message.content[fr:]
     await message.channel.send(f"<@{author.id}> send \n{mes}\nto **Name**: {ch}\n**id**:{chid}",delete_after=sf.settings["deltime"])
     try:
       chan = client.get_channel(int(chid))
