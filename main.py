@@ -90,9 +90,11 @@ async def on_message(message):
     ch = msg.split()[1]
     lench = len(ch)
     chid = ch[1:lench-1]
-    from = len(pfx)+len(cmds[3])+lench+1
-    mes = msg[from:]
+    fr = len(pfx)+len(cmds[3])+lench+1
+    mes = msg[fr:]
     await message.reply(f"send {mes}\nto {ch}\n**id**:{chid}",delete_after=sf.settings["deltime"])
+    chan = client.get_channel(chid)
+    chan.send(mes,delete_after=sf.settings["deltime"])
     return
 
 # Actual start logging-in
