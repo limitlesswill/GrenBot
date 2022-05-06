@@ -73,7 +73,6 @@ async def on_message(message):
     embed.set_thumbnail(url=client.user.display_avatar)
     embed.set_footer(text=f"{message.author}",icon_url=f"{message.author.display_avatar}")
     await message.channel.send(embed=embed,delete_after=sf.settings["deltime"])
-    await message.reply("https://media.discordapp.net/attachments/970599884157751306/971337061976125520/FB_IMG_1648960892703.jpg",delete_after=sf.settings["deltime"])
     return
 
   if "gren " in msg:
@@ -89,8 +88,8 @@ async def on_message(message):
   if cmd and (msg.split()[0] == pfx+cmds[3]):
     ch = msg.split()[1]
     chan = discord.utils.get(guild.text_channels, name=ch)
-    await chan.send(msg[len(pfx)+len(msg.split()[0])+1:],delete_after=sf.settings["deltime"])
     await message.channel.send(f"a copy of it {msg[len(pfx)+len(msg.split()[0])+1:]} to \n{str(channel)}",delete_after=sf.settings["deltime"])
+    await chan.send(msg[len(pfx)+len(msg.split()[0]):],delete_after=sf.settings["deltime"])
     return
 
 # Actual start logging-in
