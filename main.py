@@ -87,9 +87,9 @@ async def on_message(message):
 
   if cmd and (msg.split()[0] == pfx+cmds[3]):
     ch = msg.split()[1]
-    chan = discord.utils.get(guild.text_channels, name=ch)
-    await message.channel.send(f"a copy of it {msg[len(pfx)+len(msg.split()[0])+1:]} to \n{str(channel)}",delete_after=sf.settings["deltime"])
-    await chan.send(msg[len(pfx)+len(msg.split()[0]):],delete_after=sf.settings["deltime"])
+    await message.channel.send(f"{ch}\n{msg[len(pfx)+len(ch):]}",delete_after=sf.settings["deltime"])
+    channel = client.get_channel(int(chan))
+    channel.send(msg[len(pfx)+len(ch):],delete_after=sf.settings["deltime"])
     return
 
 # Actual start logging-in
