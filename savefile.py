@@ -1,3 +1,4 @@
+import os
 import dropbox
 
 file_name = "settings.ini"
