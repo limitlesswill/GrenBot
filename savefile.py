@@ -22,14 +22,17 @@ def load():
  global file_name
  global server_name
  global settings
- f, r = dbx.files_download(server_name)
+ with open(file_name,"wb") as f :
+  metadata, r = dbx.files_download(server_name)
+  f.write(r.content)
  newdic = {}
- for line in r.content:
+ file = open(file_name,"r")
+ for line in file:
   key=line.split(":")[0]
   value=line.split(":")[1]
   newdic[key] = int(value)
  settings = newdic
- f.close()
+ file.close()
 
 def peek():
  global file_name
