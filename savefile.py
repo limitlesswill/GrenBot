@@ -6,8 +6,22 @@ server_name = "/settings.ini"
 settings = {"deltime":20,"intval":6}
 dbx = dropbox.Dropbox(os.getenv('DROPBOX_TOKEN'))
 
-def save():
+def download(from_file_server,to_file_local):
  global dbx
+ with open(to_file_local,"wb") as f :
+  metadata, r = dbx.files_download(from_file_server)
+  f.write(r.content)
+ return
+
+def upload(from_file_server,to_file_local):
+ global dbx
+ file = open(to_file_local, "rb")
+ dbx.files_upload(file.read(), from_file_server)
+ file.close()
+ return
+
+
+def save():
  global file_name
  global server_name
  global settings
@@ -15,16 +29,14 @@ def save():
  for key,value in settings.items():
   file.write(f"{key}:{value}\n")
  file.close()
- dbx.files_upload(open(file_name, "rb").read(), server_name)
+ upload(server_name,file_name)
+ return
 
 def load():
- global dbx
  global file_name
- global server_name
  global settings
- with open(file_name,"wb") as f :
-  metadata, r = dbx.files_download(server_name)
-  f.write(r.content)
+ global server_name
+ download(server_name,file_name)
  newdic = {}
  file = open(file_name,"r")
  for line in file:
@@ -33,6 +45,7 @@ def load():
   newdic[key] = int(value)
  settings = newdic
  file.close()
+ return
 
 def peek():
  global file_name
