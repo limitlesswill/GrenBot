@@ -12,8 +12,8 @@ def save():
  file = open(file_name,"w")
  for key,value in settings.items():
   file.write(f"{key}:{value}\n")
- file.close()
  dbx.files_upload(file.read(), file_name, mute=True)
+ file.close()
 
 def load():
  global dbx
