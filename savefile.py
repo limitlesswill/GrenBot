@@ -13,7 +13,7 @@ def save():
  for key,value in settings.items():
   file.write(f"{key}:{value}\n")
  file.close()
- dbx.files_upload(file.read(), filename, mute=True)
+ dbx.files_upload(file.read(), file_name, mute=True)
 
 def load():
  global dbx
