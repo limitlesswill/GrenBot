@@ -2,24 +2,27 @@ import os
 import dropbox
 
 file_name = "settings.ini"
+server_name = "Apps/GrenBot/settings.ini"
 settings = {"deltime":20,"intval":6}
 dbx = dropbox.Dropbox(os.getenv('DROPBOX_TOKEN'))
 
 def save():
  global dbx
  global file_name
+ global server_name
  global settings
  file = open(file_name,"w")
  for key,value in settings.items():
   file.write(f"{key}:{value}\n")
- dbx.files_upload(file.read(), file_name, mute=True)
  file.close()
+ dbx.files_upload(open(computer_path, "rb").read(), server_name)
 
 def load():
  global dbx
  global file_name
+ global server_name
  global settings
- f, r = dbx.files_download(file_name)
+ f, r = dbx.files_download(server_name)
  newdic = {}
  for line in r.content:
   key=line.split(":")[0]
