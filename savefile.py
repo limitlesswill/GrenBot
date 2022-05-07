@@ -2,7 +2,7 @@ import os
 import dropbox
 
 file_name = "settings.ini"
-server_name = "Apps/GrenBot/settings.ini"
+server_name = "/settings.ini"
 settings = {"deltime":20,"intval":6}
 dbx = dropbox.Dropbox(os.getenv('DROPBOX_TOKEN'))
 
