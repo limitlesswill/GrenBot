@@ -16,7 +16,7 @@ client = discord.Client(intents=intent)
 
 # Prefix of the bot
 pfx = "."
-cmds = ["save","load","peek","send"]
+cmds = ["save","load","peek","send","edit"]
 
 # A decorator function to start
 @client.event
@@ -50,11 +50,11 @@ async def on_message(message):
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
     return
-  if (msg == (pfx+cmds[0])) and debug:
+  if (msg == (pfx+cmds[0]) ) and debug:
     sf.save()
     await message.reply("**Saved**",delete_after=sf.settings["deltime"])
     return
-  if (msg == (pfx+cmds[1])) and debug:
+  if (msg == (pfx+cmds[1]) ) and debug:
     sf.load()
     await message.reply("**Loaded**",delete_after=sf.settings["deltime"])
     return
@@ -63,6 +63,9 @@ async def on_message(message):
     await message.channel.send(f"Does it exist: {os.path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
     await message.reply(f"**Data**: {sf.peek()}",delete_after=sf.settings["deltime"])
     await message.reply("**Peek**",delete_after=sf.settings["deltime"])
+    return
+  if (msg == (pfx+cmds[4]) ) and debug:
+    await message.reply("under-construction",delete_after=sf.settings["deltime"])
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
