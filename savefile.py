@@ -1,10 +1,10 @@
-import os
-import dropbox
+from os import getenv
+from dropbox import Dropbox
 
 file_name = "settings.ini"
 server_name = "/settings.ini"
 settings = {"deltime":20,"intval":6}
-dbx = dropbox.Dropbox(os.getenv('DROPBOX_TOKEN'))
+dbx = Dropbox(getenv('DROPBOX_TOKEN'))
 
 def download(from_file_server,to_file_local):
  global dbx
