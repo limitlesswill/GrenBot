@@ -74,6 +74,10 @@ async def on_message(message):
       await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
       return
     chan = client.get_channel(int(chid))
+    if chan.last_message_id is None:
+      message.delete()
+      await message.reply(f"We couldn't get most recent message due to either we don't have permission or the most recent message is deleted and its ID no longer valid",delete_after=sf.settings["deltime"])
+      return
     mes = await chan.fetch_message(chan.last_message_id)
     await message.reply(f"The most recent message in <#{chid}>\n{mes.content}\nby **{str(mes.author)}**")
     return
