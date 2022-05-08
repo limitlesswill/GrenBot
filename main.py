@@ -1,9 +1,9 @@
-import os
+from os import getenv
 import savefile as sf
 import discord
 
 # Loading TOKEN from environment variables
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = getenv('DISCORD_TOKEN')
 
 intent = discord.Intents(messages=True, guilds=True)
 intent.reactions = True
@@ -107,7 +107,7 @@ async def on_message(message):
     mes = message.content[fr:]
     await message.channel.send(f"<@{author.id}> send \n{mes}\n**{ch}**\n**ID**:{chid}",delete_after=sf.settings["deltime"])
     chan = client.get_channel(int(chid))
-    if chan not None:
+    if chan is not None:
       await chan.send(mes)
       return
     message.delete()
