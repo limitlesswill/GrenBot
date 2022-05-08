@@ -1,4 +1,4 @@
-from os import getenv
+from os import getenv , path.isfile
 import savefile as sf
 import discord
 
@@ -60,7 +60,7 @@ async def on_message(message):
     return
   if (msg == (pfx+cmds[2])) and debug:
     await message.channel.send(f"file name: {sf.file_name}",delete_after=sf.settings["deltime"])
-    await message.channel.send(f"Does it exist: {os.path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
+    await message.channel.send(f"Does it exist: {isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
     await message.reply(f"**Data**: {sf.peek()}",delete_after=sf.settings["deltime"])
     await message.reply("**Peek**",delete_after=sf.settings["deltime"])
     return
@@ -69,7 +69,7 @@ async def on_message(message):
     ch = message.content.split()[1]
     lench = len(ch)
     chid = ch[2:lench-1]
-    if not isdecimal(chid):
+    if not chid.isdecimal():
       message.delete()
       await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
       return
@@ -105,7 +105,7 @@ async def on_message(message):
     chid = ch[2:lench-1]
     fr = len(pfx)+len(cmds[3])+lench+1
     mes = message.content[fr:]
-    await message.channel.send(f"<@{author.id}> send \n{mes}\n**{ch}**\n**ID**:{chid}",delete_after=sf.settings["deltime"])
+    await message.channel.send(f"<@{author.id}>\nsend \n{mes}\n**{ch}**\n**ID**:{chid}",delete_after=sf.settings["deltime"])
     chan = client.get_channel(int(chid))
     if chan is not None:
       await chan.send(mes)
