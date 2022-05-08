@@ -16,7 +16,7 @@ client = discord.Client(intents=intent)
 
 # Prefix of the bot
 pfx = "."
-cmds = ["save","load","peek","send","edit"]
+cmds = ["save","load","peek","send","recent"]
 
 # A decorator function to start
 @client.event
@@ -64,8 +64,18 @@ async def on_message(message):
     await message.reply(f"**Data**: {sf.peek()}",delete_after=sf.settings["deltime"])
     await message.reply("**Peek**",delete_after=sf.settings["deltime"])
     return
-  if (msg == (pfx+cmds[4]) ) and debug:
-    await message.reply("under-construction",delete_after=sf.settings["deltime"])
+  if (msg.split()[0] == (pfx+cmds[4]) ) and debug:
+    # channel format would be like <#1234>
+    ch = message.content.split()[1]
+    lench = len(ch)
+    chid = ch[2:lench-1]
+    if not isdecimal(chid):
+      message.delete()
+      await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
+      return
+    chan = client.get_channel(int(chid))
+    mes = await chan.fetch_message(chan.last_message_id)
+    await message.reply(f"The most recent message in <#{chid}>\n{mes.content}\nby **{str(mes.author)}**")
     return
 
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
@@ -95,13 +105,13 @@ async def on_message(message):
     chid = ch[2:lench-1]
     fr = len(pfx)+len(cmds[3])+lench+1
     mes = message.content[fr:]
-    await message.channel.send(f"<@{author.id}> send \n{mes}\nto **Name**: {ch}\n**id**:{chid}",delete_after=sf.settings["deltime"])
-    try:
-      chan = client.get_channel(int(chid))
+    await message.channel.send(f"<@{author.id}> send \n{mes}\n**{ch}**\n**ID**:{chid}",delete_after=sf.settings["deltime"])
+    chan = client.get_channel(int(chid))
+    if chan not None:
       await chan.send(mes)
-    except ValueError:
-      message.delete()
-      await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
+      return
+    message.delete()
+    await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
     return
 
 # Actual start logging-in
