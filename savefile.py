@@ -4,7 +4,12 @@ from dropbox import Dropbox
 file_name = "settings.ini"
 server_name = "/settings.ini"
 settings = {"deltime":20,"intval":6}
-dbx = Dropbox(getenv('DROPBOX_TOKEN'))
+
+dbx = Dropbox(
+ app_key = getenv('DROPBOX_APP_KEY'),
+ app_secret = getenv('DROPBOX_APP_SECRET'),
+ oauth2_refresh_token = getenv('DROPBOX_REFRESH_TOKEN')
+ )
 
 def download(from_file_server,to_file_local):
  global dbx
