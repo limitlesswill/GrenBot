@@ -1,4 +1,4 @@
-from os import getenv , path.isfile
+from os import getenv , path
 import savefile as sf
 import discord
 
@@ -60,7 +60,7 @@ async def on_message(message):
     return
   if (msg == (pfx+cmds[2])) and debug:
     await message.channel.send(f"file name: {sf.file_name}",delete_after=sf.settings["deltime"])
-    await message.channel.send(f"Does it exist: {isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
+    await message.channel.send(f"Does it exist: {path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
     await message.reply(f"**Data**: {sf.peek()}",delete_after=sf.settings["deltime"])
     await message.reply("**Peek**",delete_after=sf.settings["deltime"])
     return
