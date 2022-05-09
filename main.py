@@ -18,13 +18,13 @@ client = discord.Client(intents=intent)
 
 # Prefix of the bot
 pfx = "."
-cmds = ["save","load","peek","send","recent"]
+cmds = ["save","load","peek","send","recent","timestop","timerestart"]
 
 @tasks.loop(minutes=1)
 async def test():
     channel = client.get_channel(971240750731890738)
-    cur = datetime.datetime.utcnow()
-    await channel.send(f"Here: **{cur}**")
+    cur = datetime.datetime.utcnow().strftime("%Y/%D/%w\💚  %I:%M  %p  \💚")
+    await channel.send(f"\t\t\t\t\t**{cur}**")
 
 
 # A decorator function to start
@@ -53,28 +53,28 @@ async def on_message(message):
   debug = (str(author) == "User#3231")
   emoji = ["👀","👋","👉","👈","👍","💚"]
     
-  if (msg == pfx) and debug:
+  if debug and (msg == pfx):
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds),delete_after=sf.settings["deltime"])
     await message.add_reaction(emoji[1])
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
     return
-  if (msg == (pfx+cmds[0]) ) and debug:
+  if debug and (msg == (pfx+cmds[0]) ):
     sf.save()
     await message.reply("**Saved**",delete_after=sf.settings["deltime"])
     return
-  if (msg == (pfx+cmds[1]) ) and debug:
+  if debug and (msg == (pfx+cmds[1]) ):
     sf.load()
     await message.reply("**Loaded**",delete_after=sf.settings["deltime"])
     return
-  if (msg == (pfx+cmds[2])) and debug:
+  if debug and (msg == (pfx+cmds[2])):
     await message.channel.send(f"file name: {sf.file_name}",delete_after=sf.settings["deltime"])
     await message.channel.send(f"Does it exist: {path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
     await message.reply(f"**Data**: {sf.peek()}",delete_after=sf.settings["deltime"])
     await message.reply("**Peek**",delete_after=sf.settings["deltime"])
     return
-  if (msg.split()[0] == (pfx+cmds[4]) ) and debug:
+  if debug and (msg.split()[0] == (pfx+cmds[4]) ):
     # channel format would be like <#1234>
     ch = message.content.split()[1]
     lench = len(ch)
@@ -91,7 +91,14 @@ async def on_message(message):
     mes = await chan.fetch_message(chan.last_message_id)
     await message.reply(f"The most recent message in <#{chid}>\n{mes.content}\nby **{str(mes.author)}**")
     return
+  if debug and (msg.split()[0] == (pfx+cmds[5]):
+    test.stop()
+    return
+  if debug and (msg.split()[0] == (pfx+cmds[6]):
+    test.restart()
+    return
 
+             ###   END OF DEBUG ###
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
     await message.add_reaction(emoji[5])
     txt = msg[len(pfx):].lstrip().replace(" ","+")
