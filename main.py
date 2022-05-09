@@ -24,7 +24,7 @@ cmds = ["save","load","peek","send","recent","timestop","timerestart"]
 @tasks.loop(minutes=1)
 async def test():
     channel = client.get_channel(971240750731890738)
-    cur = datetime.datetime.utcnow().strftime("\t\t\t\t\t%Y/%B/%d\n\n\t\t\t\t\t\💚  %I:%M  %p  \💚")
+    cur = datetime.datetime.utcnow().strftime("\t\t\t\t\t    %Y/%B/%d\n\n\t\t\t\t\t\💚  %I:%M  %p  \💚")
     await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
 
 
@@ -58,7 +58,7 @@ async def on_message(message):
 
              ###   START OF DEBUG ###
 
-# prefix only (print all guilds then disappear)
+# Prefix only (print all guilds then disappear)
   if debug and (msg == pfx):
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds),delete_after=sf.settings["deltime"])
@@ -67,13 +67,13 @@ async def on_message(message):
     await message.add_reaction(emoji[3])
     return
 
-# saving settings to file
+# Saving settings to file
   if debug and (msg == (pfx+cmds[0]) ):
     sf.save()
     await message.reply("**Saved**",delete_after=sf.settings["deltime"])
     return
 
-# loading settings from file
+# Loading settings from file
   if debug and (msg == (pfx+cmds[1]) ):
     sf.load()
     await message.reply("**Loaded**",delete_after=sf.settings["deltime"])
@@ -142,7 +142,7 @@ async def on_message(message):
 
 # Respond to mention
   if client.user.mentioned_in(message):
-    await message.reply(f"I work with **commands** not mentions 😒 here is my fast growing list\n{str(cmds)}",delete_after=sf.settings["deltime"])
+    await message.reply(f"I work with **commands** not mentions 😒 \nhere is my fast growing list\n**{str(cmds)}**",delete_after=sf.settings["deltime"])
 
 # Send a message to another channel
   if cmd and (msg.split()[0] == pfx+cmds[3]):
@@ -164,8 +164,8 @@ async def on_message(message):
 # Response to other memeber whom try to debug
   if cmd and not debug and (msg.split()[0][len(pfx):] in cmds):
     await message.add_reaction(emoji[0])
-    await message.relpy("What are you trying to do?")
-    await message.channel.send(f"**Hey** <@{333529891163340801}>\nLook what <@{message.author.id}> have sent to me.\**{message.content}**")
+    await message.reply("What are you trying to do?")
+    await message.channel.send(f"**Hey** <@{333529891163340801}>\nLook what <@{message.author.id}> have sent to me.\n**{message.content}**")
 
 
 
