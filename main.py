@@ -24,7 +24,7 @@ cmds = ["save","load","peek","send","recent","timestop","timerestart"]
 async def test():
     channel = client.get_channel(971240750731890738)
     cur = datetime.datetime.utcnow().strftime("%Y/%D/%w\💚  %I:%M  %p  \💚")
-    await channel.send(f"\t\t\t\t\t**{cur}**")
+    await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
 
 
 # A decorator function to start
@@ -91,10 +91,10 @@ async def on_message(message):
     mes = await chan.fetch_message(chan.last_message_id)
     await message.reply(f"The most recent message in <#{chid}>\n{mes.content}\nby **{str(mes.author)}**")
     return
-  if debug and (msg.split()[0] == (pfx+cmds[5]):
+  if debug and (msg.split()[0] == (pfx+cmds[5]) ):
     test.stop()
     return
-  if debug and (msg.split()[0] == (pfx+cmds[6]):
+  if debug and (msg.split()[0] == (pfx+cmds[6]) ):
     test.restart()
     return
 
