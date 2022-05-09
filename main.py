@@ -20,6 +20,7 @@ client = discord.Client(intents=intent)
 pfx = "."
 cmds = ["save","load","peek","send","recent","timestop","timerestart"]
 
+# A cornjob loops every 1 minute (get time send it in a specific channel)
 @tasks.loop(minutes=1)
 async def test():
     channel = client.get_channel(971240750731890738)
@@ -27,19 +28,20 @@ async def test():
     await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
 
 
-# A decorator function to start
+# A decorator function to start on machine
 @client.event
 async def on_ready():
   print(f"{client.user} has connected to Discord!\nHello World")
   test.start()
   print("test function has started")
 
-# A decorator function to read message the send response
+# A decorator function to read message then send response (return immediately if the message from a bot)
 @client.event
 async def on_message(message):
   if (message.author == client.user) or (message.author.bot):
     return
 
+# (DM message handling)
   if message.guild is None:
     embed=discord.Embed(title="Invite me to your **server**", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", description="", color=0x00ff00)
     embed.set_author(name=f"{message.author}", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", icon_url=f"{message.author.display_avatar}")
@@ -53,7 +55,10 @@ async def on_message(message):
   author = message.author
   debug = (str(author) == "User#3231")
   emoji = ["👀","👋","👉","👈","👍","💚"]
-    
+
+             ###   START OF DEBUG ###
+
+# prefix only (print all guilds then disappear)
   if debug and (msg == pfx):
     gds = [x.name for x in client.guilds]
     await message.reply( "\n".join(gds),delete_after=sf.settings["deltime"])
@@ -61,20 +66,28 @@ async def on_message(message):
     await message.add_reaction(emoji[2])
     await message.add_reaction(emoji[3])
     return
+
+# saving settings to file
   if debug and (msg == (pfx+cmds[0]) ):
     sf.save()
     await message.reply("**Saved**",delete_after=sf.settings["deltime"])
     return
+
+# loading settings from file
   if debug and (msg == (pfx+cmds[1]) ):
     sf.load()
     await message.reply("**Loaded**",delete_after=sf.settings["deltime"])
     return
+
+# Peeking on current file stats 
   if debug and (msg == (pfx+cmds[2])):
     await message.channel.send(f"file name: {sf.file_name}",delete_after=sf.settings["deltime"])
     await message.channel.send(f"Does it exist: {path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
     await message.reply(f"**Data**: {sf.peek()}",delete_after=sf.settings["deltime"])
     await message.reply("**Peek**",delete_after=sf.settings["deltime"])
     return
+
+# Getting the most recent message from channels handling
   if debug and (msg.split()[0] == (pfx+cmds[4]) ):
     # channel format would be like <#1234>
     ch = message.content.split()[1]
@@ -92,14 +105,20 @@ async def on_message(message):
     mes = await chan.fetch_message(chan.last_message_id)
     await message.reply(f"The most recent message in <#{chid}>\n{mes.content}\nby **{str(mes.author)}**")
     return
+
+# Stoping cornjob
   if debug and (msg.split()[0] == (pfx+cmds[5]) ):
     test.stop()
     return
+
+# Restarting cornjob
   if debug and (msg.split()[0] == (pfx+cmds[6]) ):
     test.restart()
     return
 
              ###   END OF DEBUG ###
+
+# Text-to-speech if it isn't a command
   if cmd and (msg.split()[0][len(pfx):] not in cmds):
     await message.add_reaction(emoji[5])
     txt = msg[len(pfx):].lstrip().replace(" ","+")
@@ -110,6 +129,7 @@ async def on_message(message):
     await message.channel.send(embed=embed,delete_after=sf.settings["deltime"])
     return
 
+# Respond if message contains "gren "
   if not cmd and ("gren " in msg):
     await message.add_reaction(emoji[0])
     await message.add_reaction(emoji[1])
@@ -120,6 +140,11 @@ async def on_message(message):
     await message.channel.send("gren gren gren gren gren",delete_after=sf.settings["deltime"])
     return
 
+# Respond to mention
+  if client.user.mentioned_in(message):
+    await message.reply(f"I work with **commands** not mentions 😒 here is my fast growing list\n{str(cmds)}",delete_after=sf.settings["deltime"])
+
+# Send a message to another channel
   if cmd and (msg.split()[0] == pfx+cmds[3]):
     # channel format would be like <#1234>
     ch = message.content.split()[1]
@@ -136,6 +161,7 @@ async def on_message(message):
     await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
     return
 
+# Response to other memeber whom try to debug
   if cmd and not debug and (msg.split()[0][len(pfx):] in cmds):
     await message.add_reaction(emoji[0])
     await message.relpy("What are you trying to do?")
