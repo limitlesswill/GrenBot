@@ -23,7 +23,7 @@ cmds = ["save","load","peek","send","recent","timestop","timerestart"]
 @tasks.loop(minutes=1)
 async def test():
     channel = client.get_channel(971240750731890738)
-    cur = datetime.datetime.utcnow().strftime("%Y/%D/%w\💚  %I:%M  %p  \💚")
+    cur = datetime.datetime.utcnow().strftime("\t\t\t\t\t%Y/%B/%d\n\n\t\t\t\t\t\💚  %I:%M  %p  \💚")
     await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
 
 
@@ -32,6 +32,7 @@ async def test():
 async def on_ready():
   print(f"{client.user} has connected to Discord!\nHello World")
   test.start()
+  print("test function has started")
 
 # A decorator function to read message the send response
 @client.event
