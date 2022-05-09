@@ -135,5 +135,12 @@ async def on_message(message):
     await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
     return
 
+  if cmd and not debug and (msg.split()[0][len(pfx):] in cmds):
+    await message.add_reaction(emoji[0])
+    await message.relpy("What are you trying to do?")
+    await message.channel.send(f"**Hey** <@{333529891163340801}>\nLook what <@{message.author.id}> have sent to me.\**{message.content}**")
+
+
+
 # Actual start logging-in
 client.run(TOKEN)
