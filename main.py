@@ -1,4 +1,6 @@
 from os import getenv , path
+import datetime
+from discord.ext import tasks
 import savefile as sf
 import discord
 
@@ -18,10 +20,18 @@ client = discord.Client(intents=intent)
 pfx = "."
 cmds = ["save","load","peek","send","recent"]
 
+@tasks.loop(minutes=1)
+async def test():
+    channel = client.get_channel(971240750731890738)
+    cur = datetime.datetime.utcnow()
+    await channel.send(f"Here: **{cur}**")
+
+
 # A decorator function to start
 @client.event
 async def on_ready():
   print(f"{client.user} has connected to Discord!\nHello World")
+  test.start()
 
 # A decorator function to read message the send response
 @client.event
