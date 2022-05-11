@@ -41,8 +41,7 @@ async def slash2(interaction: discord.Interaction):
 async def on_ready():
   print(f"{client.user} has connected to Discord!\nHello World")
   test.start()
-  if not self.synced:
-    await tree.sync(guild = discord.Object(id=970576952257835059))
+  await tree.sync(guild = discord.Object(id=970576952257835059))
   print("test function has started")
 
 # A decorator function to read message then send response (return immediately if the message from a bot)
