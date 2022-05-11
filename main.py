@@ -15,6 +15,8 @@ intent.presences = False
 
 # Instantiate an object of the client
 client = discord.Client(intents=intent)
+tree = app_commands.CommandTree(client)
+
 
 # Prefix of the bot
 pfx = "."
@@ -26,6 +28,11 @@ async def test():
     channel = client.get_channel(971240750731890738)
     cur = datetime.datetime.utcnow().strftime("\t\t\t\t\t    %Y/%B/%d\n\n\t\t\t\t\t\💚  %I:%M  %p  \💚")
     await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
+
+# TESTING SLASH COMMANDS
+@tree.command()
+async def slash(interaction: discord.Interaction, number: int, string: str):
+    await interaction.response.send_message(f'{number=} {string=}', ephemeral=True)
 
 
 # A decorator function to start on machine
