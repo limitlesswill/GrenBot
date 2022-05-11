@@ -33,8 +33,11 @@ async def test():
 
 # TESTING SLASH COMMANDS
 @tree.command()
-async def send(interaction: discord.Interaction, number: int, string: str):
+async def first(interaction: discord.Interaction, number: int, string: str):
     await interaction.response.send_message(f'{number=} {string=}', ephemeral=False)
+
+# Registering the slash command
+tree.add_command(first)
 
 
 # A decorator function to start on machine
@@ -177,6 +180,6 @@ async def on_message(message):
     await message.channel.send(f"**Hey** <@{333529891163340801}>\nLook what <@{message.author.id}> have sent to me.\n**{message.content}**")
 
 
-tree.add_command(send)
+
 # Actual start logging-in
 client.run(TOKEN)
