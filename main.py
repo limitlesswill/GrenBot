@@ -32,19 +32,17 @@ async def test():
     await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
 
 # TESTING SLASH COMMANDS
-@tree.command(guild=discord.Object(id=970576952257835059))
-async def slash(interaction: discord.Interaction, number: int, string: str):
-    await interaction.response.send_message(f'{number=} {string=}', ephemeral=True)
-
-# Registering the slash command
-tree.add_command(slash)
-
+@tree.command(guild = discord.Object(id=970576952257835059), name = 'test', description='GrenBot TEST')
+async def slash2(interaction: discord.Interaction):
+    await interaction.response.send_message(f"Hello", ephemeral = True) 
 
 # A decorator function to start on machine
 @client.event
 async def on_ready():
   print(f"{client.user} has connected to Discord!\nHello World")
   test.start()
+  if not self.synced:
+    await tree.sync(guild = discord.Object(id=970576952257835059))
   print("test function has started")
 
 # A decorator function to read message then send response (return immediately if the message from a bot)
