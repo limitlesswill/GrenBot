@@ -32,9 +32,9 @@ async def test():
     await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
 
 # TESTING SLASH COMMANDS
-@app_commands.command()
+@tree.command(guild=discord.Object(id=970576952257835059))
 async def slash(interaction: discord.Interaction, number: int, string: str):
-    await interaction.response.send_message(f'{number=} {string=}', ephemeral=False)
+    await interaction.response.send_message(f'{number=} {string=}', ephemeral=True)
 
 # Registering the slash command
 tree.add_command(slash)
