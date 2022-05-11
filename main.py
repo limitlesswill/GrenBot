@@ -1,8 +1,10 @@
-from os import getenv , path
 import datetime
-from discord.ext import tasks
-import savefile as sf
+from os import getenv , path
 import discord
+from discord.ext import tasks
+from discord import app_commands
+import savefile as sf
+
 
 # Loading TOKEN from environment variables
 TOKEN = getenv('DISCORD_TOKEN')
