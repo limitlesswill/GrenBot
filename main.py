@@ -39,6 +39,7 @@ async def slash2(interaction: discord.Interaction):
 # A decorator function to start on machine
 @client.event
 async def on_ready():
+
   print(f"{client.user} has connected to Discord!\nHello World")
   test.start()
   await tree.sync(guild = discord.Object(id=970576952257835059))
@@ -175,6 +176,7 @@ async def on_message(message):
     await message.add_reaction(emoji[0])
     await message.reply("What are you trying to do?")
     await message.channel.send(f"**Hey** <@{333529891163340801}>\nLook what <@{message.author.id}> have sent to me.\n**{message.content}**")
+
 
 
 
