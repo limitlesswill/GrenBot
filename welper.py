@@ -1,49 +1,12 @@
 import datetime
-from os import getenv , path
-import discord
-from discord.ext import tasks
-from discord import app_commands
+from os import path
 import savefile as sf
-
-
-# Loading TOKEN from environment variables
-TOKEN = getenv('DISCORD_TOKEN')
-
-intent = discord.Intents(messages=True, guilds=True)
-intent.reactions = True
-intent.message_content = True
-intent.typing = False
-intent.presences = False
-
-# Instantiate an object of the client
-client = discord.Client(intents=intent)
-tree = app_commands.CommandTree(client)
 
 
 # Prefix of the bot
 pfx = "."
 cmds = ["save","load","peek","send","recent","timestop","timerestart"]
 
-# A cornjob loops every 1 minute (get time send it in a specific channel)
-@tasks.loop(minutes=1)
-async def test():
-    channel = client.get_channel(971240750731890738)
-    cur = datetime.datetime.utcnow().strftime("\t\t\t\t\t    %Y/%B/%d\n\n\t\t\t\t\t\💚  %I:%M  %p  \💚")
-    await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
-
-# TESTING SLASH COMMANDS
-@tree.command(guild = discord.Object(id=970576952257835059), name = 'test', description='GrenBot TEST')
-async def slash2(interaction: discord.Interaction):
-    await interaction.response.send_message(f"Hello", ephemeral = True) 
-
-# A decorator function to start on machine
-@client.event
-async def on_ready():
-
-  print(f"{client.user} has connected to Discord!\nHello World")
-  test.start()
-  await tree.sync(guild = discord.Object(id=970576952257835059))
-  print("test function has started")
 
 # A decorator function to read message then send response (return immediately if the message from a bot)
 @client.event
@@ -178,7 +141,3 @@ async def on_message(message):
     await message.channel.send(f"**Hey** <@{333529891163340801}>\nLook what <@{message.author.id}> have sent to me.\n**{message.content}**")
 
 
-
-
-# Actual start logging-in
-client.run(TOKEN)
