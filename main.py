@@ -3,10 +3,18 @@ import discord
 from discord import app_commands
 from discord.ext import tasks
 from os import getenv
+import datetime
+
 
 # Loading TOKEN from environment variables
 TOKEN = getenv('DISCORD_TOKEN')
+
 MY_GUILD = discord.Object(id=970576952257835059)  # replace with your guild id
+
+LOG_CHANNEL = 970576952698220555
+APP_ID = 569724616210382875 # from Discord developer portal
+CORNJOB_CHANNEL_ID = 971240750731890738
+
 
 
 class MyClient(discord.Client):
@@ -38,12 +46,12 @@ intent.presences = False
 
 # In order to use a basic synchronization of the app commands in the setup_hook,
 # you have to replace the 0 with your bot's application_id that you find in the developer portal.
-client = MyClient(intents=intent, application_id=569724616210382875)
+client = MyClient(intents=intent, application_id=APP_ID)
 
 # A cornjob loops every 1 minute (get time send it in a specific channel)
 @tasks.loop(minutes=1)
 async def test():
-    channel = client.get_channel(971240750731890738)
+    channel = client.get_channel(CORNJOB_CHANNEL_ID)
     cur = datetime.datetime.utcnow().strftime("\t\t\t\t\t    %Y/%B/%d\n\n\t\t\t\t\t\💚  %I:%M  %p  \💚")
     await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
 
@@ -58,18 +66,18 @@ async def on_ready():
 
 @client.tree.command()
 async def hello(interaction: discord.Interaction):
-    """Says hello!"""
+    """Says hi!"""
     await interaction.response.send_message(f'Hi, {interaction.user.mention}')
 
 
 @client.tree.command()
 @app_commands.describe(
     first_value='The first value you want to add something to',
-    second_value='The value you want to add to the first value',
-)
-async def add(interaction: discord.Interaction, first_value: int, second_value: int):
-    """Adds two numbers together."""
-    await interaction.response.send_message(f'{first_value} + {second_value} = {first_value + second_value}')
+    second_value='The value you want to add to the first value')
+
+async def multi(interaction: discord.Interaction, first_value: int, second_value: int):
+    """Multiplying two numbers together."""
+    await interaction.response.send_message(f'{first_value} * {second_value} = {first_value * second_value}')
 
 
 # The rename decorator allows us to change the display of the parameter on Discord.
@@ -116,7 +124,7 @@ async def report_message(interaction: discord.Interaction, message: discord.Mess
     )
 
     # Handle report by sending it into a log channel
-    log_channel = interaction.guild.get_channel(0)  # replace with your channel id
+    log_channel = interaction.guild.get_channel(LOG_CHANNEL)  # replace with your channel id
 
     embed = discord.Embed(title='Reported Message')
     if message.content:
