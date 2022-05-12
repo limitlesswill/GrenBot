@@ -2,7 +2,7 @@ import discord
 import datetime
 from os import path
 import savefile as sf
-
+from main import client
 
 # Prefix of the bot
 pfx = "."
