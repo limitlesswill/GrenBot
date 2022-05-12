@@ -1,3 +1,4 @@
+import discord
 import datetime
 from os import path
 import savefile as sf
