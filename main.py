@@ -4,7 +4,7 @@ from discord import app_commands
 from discord.ext import tasks
 from os import getenv
 import datetime
-from extra import on_message
+
 
 # Loading TOKEN from environment variables
 TOKEN = getenv('DISCORD_TOKEN')
@@ -48,6 +48,8 @@ intent.presences = False
 # In order to use a basic synchronization of the app commands in the setup_hook,
 # you have to replace the 0 with your bot's application_id that you find in the developer portal.
 client = MyClient(intents=intent, application_id=APP_ID)
+
+client.run(TOKEN)
 
 # A cornjob loops every 1 minute (get time send it in a specific channel)
 @tasks.loop(minutes=1)
@@ -106,4 +108,4 @@ async def joined(interaction: discord.Interaction, member: Optional[discord.Memb
 
 
 
-client.run(TOKEN)
+
