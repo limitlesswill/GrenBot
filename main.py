@@ -105,10 +105,6 @@ async def joined(interaction: discord.Interaction, member: Optional[discord.Memb
  await interaction.response.send_message(f'{member} joined {discord.utils.format_dt(member.joined_at)}')
 
 
-@client.event
-async def on_message(message):
- await extra.on_message(message)
-
 
 
 client.run(TOKEN)
