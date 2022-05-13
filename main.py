@@ -19,7 +19,8 @@ CORNJOB_CHANNEL_ID = 971240750731890738
 
 class MyClient(discord.Client):
  def __init__(self, *, intents: discord.Intents, application_id: int):
- super().__init__(intents=intents, application_id=application_id)
+  super().__init__(intents=intents, application_id=application_id)
+
  # A CommandTree is a special type that holds all the application command
  # state required to make it work. This is a separate class because it
  # allows all the extra state to be opt-in.
@@ -34,8 +35,8 @@ class MyClient(discord.Client):
  # By doing so, we don't have to wait up to an hour until they are shown to the end-user.
  async def setup_hook(self):
  # This copies the global commands over to your guild.
- self.tree.copy_global_to(guild=MY_GUILD)
- await self.tree.sync(guild=MY_GUILD)
+  self.tree.copy_global_to(guild=MY_GUILD)
+  await self.tree.sync(guild=MY_GUILD)
 
 
 intent = discord.Intents.default()
