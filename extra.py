@@ -7,8 +7,7 @@ pfx = "."
 cmds = ["save","load","peek","send","recent","timestop","timerestart"]
 
 
-# A decorator function to read message then send response (return immediately if the message from a bot)
-@discord.Client.event
+
 async def on_message(message):
   if (message.author == client.user) or (message.author.bot):
     return
