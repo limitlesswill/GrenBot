@@ -4,7 +4,7 @@ from discord import app_commands
 from discord.ext import tasks
 from os import getenv
 import datetime
-import extra
+from extra import on_message
 
 # Loading TOKEN from environment variables
 TOKEN = getenv('DISCORD_TOKEN')
@@ -100,7 +100,6 @@ async def joined(interaction: discord.Interaction, member: Optional[discord.Memb
  """Says when a member joined."""
  # If no member is explicitly provided then we use the command user here
  member = member or interaction.user
-
  # The format_dt function formats the date time into a human readable representation in the official client
  await interaction.response.send_message(f'{member} joined {discord.utils.format_dt(member.joined_at)}')
 
