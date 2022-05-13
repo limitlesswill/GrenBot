@@ -9,17 +9,17 @@ cmds = ["save","load","peek","send","recent","timestop","timerestart"]
 
 
 async def on_message(message):
-  if (message.author == client.user) or (message.author.bot):
+  if message.author.bot:
     return
 
 # (DM message handling)
-  if message.guild is None:
-    embed=discord.Embed(title="Invite me to your **server**", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", description="", color=0x00ff00)
-    embed.set_author(name=f"{message.author}", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", icon_url=f"{message.author.display_avatar}")
-    embed.set_thumbnail(url=client.user.display_avatar)
-    embed.set_footer(text=f"I'm a nice bot under construction")
-    await message.reply(embed=embed)
-    return
+#  if message.guild is None:
+#    embed=discord.Embed(title="Invite me to your **server**", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", description="", color=0x00ff00)
+#    embed.set_author(name=f"{message.author}", url="https://discordapp.com/oauth2/authorize?client_id=569724616210382875&scope=bot&permissions=277129284672", icon_url=f"{message.author.display_avatar}")
+#    embed.set_thumbnail(url=client.user.display_avatar)
+#    embed.set_footer(text=f"I'm a nice bot under construction")
+#    await message.reply(embed=embed)
+#    return
 
   msg = message.content.lower()
   cmd = msg.startswith(pfx)
