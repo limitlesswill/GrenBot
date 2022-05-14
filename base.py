@@ -1,7 +1,5 @@
 import discord
-from discord.ext import tasks
 from os import getenv
-import datetime
 
 
 # Loading TOKEN from environment variables
@@ -9,7 +7,6 @@ TOKEN = getenv('DISCORD_TOKEN')
 
 MY_GUILD = discord.Object(id=970576952257835059)  # replace with your guild id
 
-LOG_CHANNEL = 970576952698220555
 APP_ID = 569724616210382875 # from Discord developer portal
 CORNJOB_CHANNEL_ID = 971240750731890738
 
@@ -48,21 +45,3 @@ intent.presences = False
 client = MyClient(intents=intent, application_id=APP_ID)
 
 client.run(TOKEN)
-
-# A cornjob loops every 1 minute (get time send it in a specific channel)
-@tasks.loop(minutes=1)
-async def test():
- channel = client.get_channel(CORNJOB_CHANNEL_ID)
- cur = datetime.datetime.utcnow().strftime("\t\t\t\t\t    %Y/%B/%d\n\n\t\t\t\t\t\💚  %I:%M  %p  \💚")
- await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
-
-
-@client.event
-async def on_ready():
- print(f"{client.user} has connected to Discord!\nHello World")
- test.start()
- print('------')
- print("test function has started")
-
-
-
