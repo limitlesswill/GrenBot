@@ -1,3 +1,7 @@
+from discord import app_commands
+from typing import Optional
+import discord
+
 
 @client.tree.command()
 async def hello(interaction: discord.Interaction):
