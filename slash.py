@@ -1,5 +1,6 @@
 from discord import app_commands
 from typing import Optional
+from base import client
 import discord
 
 
