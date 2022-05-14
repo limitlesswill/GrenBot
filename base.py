@@ -1,14 +1,13 @@
 import discord
-from os import getenv
 
 
-# Loading TOKEN from environment variables
-TOKEN = getenv('DISCORD_TOKEN')
+ID_APP = 569724616210382875 # from Discord developer portal
+ID_GUILD = 970576952257835059 # Guild id which bot in
 
-MY_GUILD = discord.Object(id=970576952257835059)  # replace with your guild id
 
-APP_ID = 569724616210382875 # from Discord developer portal
-CORNJOB_CHANNEL_ID = 971240750731890738
+
+MY_GUILD = discord.Object(id=ID_GUILD)  # replace with your guild id
+
 
 
 
@@ -40,8 +39,6 @@ intent.message_content = True
 intent.typing = False
 intent.presences = False
 
-# In order to use a basic synchronization of the app commands in the setup_hook,
-# you have to replace the 0 with your bot's application_id that you find in the developer portal.
-client = MyClient(intents=intent, application_id=APP_ID)
+# In order to use a basic synchronization of the app commands in the setup_hook
+client = MyClient(intents=intent, application_id=ID_APP)
 
-client.run(TOKEN)
