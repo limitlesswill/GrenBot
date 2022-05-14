@@ -1,6 +1,5 @@
 from discord.ext import tasks
 from datetime import datetime
-import discord
 from base import client
 
 ID_CHANNEL_CORNJOB = 971240750731890738
