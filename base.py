@@ -1,6 +1,4 @@
-from typing import Optional
 import discord
-from discord import app_commands
 from discord.ext import tasks
 from os import getenv
 import datetime
