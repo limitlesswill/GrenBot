@@ -1,6 +1,5 @@
 from os import path
 import discord
-from main import client
 import savefile as sf
 
 # Prefix of the bot
