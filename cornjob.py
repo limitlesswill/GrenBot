@@ -27,6 +27,6 @@ async def test():
 @client.event
 async def on_ready():
  print(f"{client.user} has connected to Discord!\nHello World")
- test.start()
+ await test.start()
  print('------')
  print("test function has started")
