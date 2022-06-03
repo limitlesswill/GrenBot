@@ -54,7 +54,10 @@ async def on_message(message):
 # Peeking on current file stats 
   if debug and (msg == (pfx+cmds[2])):
     await message.channel.send(f"file name: {sf.file_name}",delete_after=sf.settings["deltime"])
-    await message.channel.send(f"Does it exist: {path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
+    try:
+     await message.channel.send(f"Does it exist: {path.isfile(sf.file_name)}",delete_after=sf.settings["deltime"])
+    except Exception as e:
+     pass
     await message.reply(f"**Data**: {sf.peek()}",delete_after=sf.settings["deltime"])
     await message.reply("**Peek**",delete_after=sf.settings["deltime"])
     return
