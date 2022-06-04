@@ -20,7 +20,7 @@ second = time.strftime("%S")
 @tasks.loop(minutes=1)
 async def test():
  channel = client.get_channel(ID_CHANNEL_CORNJOB)
- cur = datetime.utcnow().strftime("\t\t\t\t\t   %Y/%B/%d\n\n\t\t\t\t\💚    %I:%M  %p    \💚")
+ cur = datetime.utcnow().strftime("\n\n\t\t\t\t\t   %Y/%B/%d\n\n\t\t\t\t\t\💚    %I:%M  %p    \💚")
  await channel.send(f"\t\t\t\t\t**{cur}**",delete_after=59)
 
 
