@@ -1,6 +1,6 @@
 from discord.ext import tasks
 from base import client
-import grendate
+from grendate import GrenDate
 
 ID_CHANNEL_CORNJOB = 971240750731890738
 
@@ -17,7 +17,7 @@ async def test():
 @client.event
 async def on_ready():
  print(f"{client.user} has connected to Discord!\nHello World")
- print('------')
+ print("------")
  print("test function is starting ...")
  await test.start()
 
