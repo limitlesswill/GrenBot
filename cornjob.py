@@ -11,7 +11,7 @@ async def test():
  year,month,day,month_name,hour,minute,meridiem = GrenDate().now()
  season = GrenDate(int(year),int(month),int(day)).season()
  sp = " "
- cur = f"\n\n{sp*26}{int(year)}/{month_name}/{day}\n\n{sp*16}\💚{sp*6}{hour}:{minute}{sp*2}{meridiem}{sp*6}\💚"  
+ cur = f"\n\n{sp*26}{int(year)}/{month_name}/{day}\n\n{sp*16}\💙{sp*6}{hour}:{minute}{sp*2}{meridiem}{sp*6}\💙"  
  await channel.send(f"**{cur}**\n{sp*31}**{season}**",delete_after=59)
 
 
