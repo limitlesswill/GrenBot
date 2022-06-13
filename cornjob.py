@@ -9,7 +9,7 @@ ID_CHANNEL_CORNJOB = 971240750731890738
 async def test():
  channel = client.get_channel(ID_CHANNEL_CORNJOB)
  year,month,day,month_name,hour,minute,meridiem = GrenDate().now()
- season = GrenDate(year,month,day).season()
+ season = GrenDate(int(year),int(month),int(day)).season()
  cur = f"\n\n\t\t\t\t\t    {year}/{month_name}/{day}\n\n\t\t\t\t\t\💚    {hour}:{minute}  {meridiem}    \💚"  
  await channel.send(f"\t\t\t\t\t**{cur}**\n\t\t\t\t\t{season}",delete_after=59)
 
