@@ -10,9 +10,9 @@ async def test():
  channel = client.get_channel(ID_CHANNEL_CORNJOB)
  year,month,day,month_name,hour,minute,meridiem = GrenDate().now()
  season = GrenDate(int(year),int(month),int(day)).season()
- sp = "\t"
- cur = f"\n\n{sp*4}{int(year)}/{month_name}/{day}\n\n{sp*2}\💚{sp*3}{hour}:{minute}{sp*2}{meridiem}{sp*3}\💚"  
- await channel.send(f"{sp*5}**{cur}**\n{sp*4}**{season}**",delete_after=59)
+ sp = " "
+ cur = f"\n\n{sp*26}{int(year)}/{month_name}/{day}\n\n{sp*16}\💚{sp*6}{hour}:{minute}{sp*2}{meridiem}{sp*6}\💚"  
+ await channel.send(f"**{cur}**\n{sp*31}**{season}**",delete_after=59)
 
 
 @client.event
