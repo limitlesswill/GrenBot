@@ -17,7 +17,7 @@ async def hello(interaction: discord.Interaction):
 
 async def multi(interaction: discord.Interaction, first_value: int, second_value: int):
  """Multiplying two numbers together."""
- await interaction.response.send_message(f'{first_value} * {second_value} = {first_value * second_value}')
+ await interaction.response.send_message(f'{first_value} * {second_value} = {first_value * second_value}',ephemeral=True)
 
 
 # The rename decorator allows us to change the display of the parameter on Discord.
