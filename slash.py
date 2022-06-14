@@ -28,7 +28,7 @@ async def multi(interaction: discord.Interaction, first_value: int, second_value
 @app_commands.describe(text_to_send='Text to send in the current channel')
 async def send(interaction: discord.Interaction, text_to_send: str):
  """Sends the text into the current channel."""
- await interaction.response.send_message(text_to_send)
+ await interaction.response.send_message(text_to_send+"\n"+str(interaction.response.channel))
 
 
 # To make an argument optional, you can either give it a supported default argument
