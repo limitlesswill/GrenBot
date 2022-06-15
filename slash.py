@@ -28,7 +28,7 @@ async def multi(interaction: discord.Interaction, first_value: int, second_value
 @app_commands.describe(text_to_send='Text to send in the current channel')
 async def send(interaction: discord.Interaction, text_to_send: str,channel: str):
  """Sends the text into a channel weeeeeee."""
- channel = #
+ channel = "#"
  await interaction.response.send_message(text_to_send+"\n**interaction.author** :\n"+str(interaction.message))
 
 
