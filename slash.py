@@ -25,11 +25,11 @@ async def multi(interaction: discord.Interaction, first_value: int, second_value
 # Note that other decorators will still refer to it as `text_to_send` in the code.
 @client.tree.command()
 @app_commands.rename(text_to_send='text')
-@app_commands.describe(text_to_send='Text to send in the current channel')
-async def send(interaction: discord.Interaction, text_to_send: str,channel: str = ""):
+@app_commands.describe(text_to_send='Text to send in the current channel',channel="for testing purposes only")
+async def send(interaction: discord.Interaction, text_to_send: str,channel: str = "#"):
  """Sends the text into a channel weeeeeee."""
- channel = "#"+channel
- await interaction.response.send_message(text_to_send+"\n**interaction.user** :\n"+str(interaction.user))
+ await interaction.user.voice.channel.join()
+ await interaction.response.send_message(text_to_send+"\n"+str(interaction.user))
 
 
 # To make an argument optional, you can either give it a supported default argument
