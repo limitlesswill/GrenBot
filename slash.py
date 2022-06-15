@@ -26,9 +26,10 @@ async def multi(interaction: discord.Interaction, first_value: int, second_value
 @client.tree.command()
 @app_commands.rename(text_to_send='text')
 @app_commands.describe(text_to_send='Text to send in the current channel')
-async def send(interaction: discord.Interaction, text_to_send: str):
- """Sends the text into the current channel."""
- await interaction.response.send_message(text_to_send+"\n**interaction.author** :\n"+str(interaction.message.author))
+async def send(interaction: discord.Interaction, text_to_send: str,channel: discord.channel):
+ """Sends the text into a channel."""
+ await channel.send(text_to_send)
+ await interaction.response.send_message(text_to_send+"\n**interaction.author** :\n"+str(interaction.message))
 
 
 # To make an argument optional, you can either give it a supported default argument
