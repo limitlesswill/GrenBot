@@ -11,7 +11,7 @@ async def hello(interaction: discord.Interaction):
 
 @client.tree.command()
 async def join(interaction: discord.Interaction):
-"""Joins you in Voice channel"""
+ """Joins you in Voice channel"""
  vc = interaction.user.voice
  if vc:
   await interaction.response.send_message(f"{interaction.user.mention} I have joined you in {str(vc)}",ephemeral = True)
