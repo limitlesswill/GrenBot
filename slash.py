@@ -26,7 +26,7 @@ async def multi(interaction: discord.Interaction, first_value: int, second_value
 @client.tree.command()
 @app_commands.rename(text_to_send='text')
 @app_commands.describe(text_to_send='Text to send in the current channel',channel="for testing purposes only")
-async def send(interaction: discord.Interaction, text_to_send: str,channel: Optional[discord.Interaction.guild.text_channels]):
+async def send(interaction: discord.Interaction, text_to_send: str,channel: Optional[discord.TextChannel] = None):
  """Sends the text into a channel weeeeeee."""
  ch = interaction.user.voice.channel
  if ch is not None:
