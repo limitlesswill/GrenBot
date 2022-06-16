@@ -9,6 +9,15 @@ async def hello(interaction: discord.Interaction):
  """Says hi!"""
  await interaction.response.send_message(f'Hi, {interaction.user.mention}')
 
+@client.tree.command()
+async def join(interaction: discord.Interaction):
+"""Joins you in Voice channel"""
+ vc = interaction.user.voice
+ if vc:
+  await interaction.response.send_message(f"{interaction.user.mention} I have joined you in {str(vc)}",ephemeral = True)
+  await vc.channel.connect()
+ else:
+  await interaction.response.send_message(f"Please join a voice channel then i will follow you,\n{interaction.user.mention}",ephemeral=True)
 
 @client.tree.command()
 @app_commands.describe(
@@ -26,13 +35,13 @@ async def multi(interaction: discord.Interaction, first_value: int, second_value
 @client.tree.command()
 @app_commands.rename(text_to_send='text')
 @app_commands.describe(text_to_send='Text to send in the current channel',channel="for testing purposes only")
-async def send(interaction: discord.Interaction, text_to_send: str,channel: Optional[discord.TextChannel] = None):
- """Sends the text into a channel weeeeeee."""
- ch = interaction.user.voice.channel
- if ch is not None:
-  await interaction.response.send_message(f"{discord.Interaction.user.mention} I have joined you in {str(ch)}",ephemeral = True)
-  await ch.connect()
- await interaction.response.send_message(text_to_send+"\n"+str(interaction.user))
+async def send(interaction: discord.Interaction, text_to_send: str, channel: Optional[discord.TextChannel] = None):
+ """Sends the text into a channel."""
+ if channel:
+  await channel.send(text_to_send)
+  await interaction.response.send_message(f"{interaction.user.mention}, your message has been went to {str(channel)}",ephemeral=True)
+ else:
+  await interaction.response.send_message(text_to_send)
 
 
 # To make an argument optional, you can either give it a supported default argument
