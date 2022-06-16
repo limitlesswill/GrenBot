@@ -26,9 +26,12 @@ async def multi(interaction: discord.Interaction, first_value: int, second_value
 @client.tree.command()
 @app_commands.rename(text_to_send='text')
 @app_commands.describe(text_to_send='Text to send in the current channel',channel="for testing purposes only")
-async def send(interaction: discord.Interaction, text_to_send: str,channel: Optional[discord.ChannelType] = discord.ChannelType.text):
+async def send(interaction: discord.Interaction, text_to_send: str,channel: Optional[discord.Interaction.guild.text_channels] = None):
  """Sends the text into a channel weeeeeee."""
- await interaction.user.voice.channel.connect()
+ ch = interaction.user.voice.channel
+ if ch:
+  await interaction.response.send_message(f"{discord.Interaction.user.mention} I have joined you in {str(ch)}",ephemeral = True)
+  await ch.connect()
  await interaction.response.send_message(text_to_send+"\n"+str(interaction.user))
 
 
