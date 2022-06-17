@@ -13,7 +13,7 @@ async def date(interaction: discord.Interaction, id: str = "1420070400000"):
  DISCORD_EPOCH = 1420070400000
  milliseconds = (int(id) >> 22) + DISCORD_EPOCH
  milliseconds = int(milliseconds/1000)
- await interaction.response.send_message(f"<t:{milliseconds}:F>")
+ await interaction.response.send_message(f"{milliseconds}\n<t:{milliseconds}:F>")
 
 @client.tree.command()
 async def join(interaction: discord.Interaction):
