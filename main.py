@@ -2,7 +2,6 @@ from os import getenv
 from base import client
 from message import on_message
 from cornjob import on_ready,test
-from slash import hello,multi,send,joined
 
 
 # Loading TOKEN from environment variables
