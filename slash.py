@@ -7,8 +7,11 @@ from base import client
 @client.tree.command()
 @app_commands.describe(id="Enter any valid Discord ID")
 async def date(interaction: discord.Interaction, id: Optional[app_commands.Range[int, 1420070400000]] = 1420070400000):
- """Prints Date"""
- await interaction.response.send_message(f"<t:{id}:F>")
+ """Prints Time that ID created at"""
+ DISCORD_EPOCH = 1420070400000
+ milliseconds = (id >> 22) + DISCORD_EPOCH
+ milliseconds = int(milliseconds/1000)
+ await interaction.response.send_message(f"<t:{milliseconds}:F>")
 
 @client.tree.command()
 async def join(interaction: discord.Interaction):
