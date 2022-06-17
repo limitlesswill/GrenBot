@@ -6,7 +6,7 @@ from base import client
 
 @client.tree.command()
 @app_commands.describe(id="Enter any valid Discord ID")
-async def date(interaction: discord.Interaction, id: Optional[app_commands.Range[int, 1420070400000,1420070400000**10]] = 1420070400000):
+async def date(interaction: discord.Interaction, id: Optional[app_commands.Range[int, 1420070400000,9007199254740991]] = 1420070400000):
  """Prints Time that ID created at"""
  DISCORD_EPOCH = 1420070400000
  milliseconds = (id >> 22) + DISCORD_EPOCH
