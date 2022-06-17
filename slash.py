@@ -6,9 +6,9 @@ from base import client
 
 @client.tree.command()
 @app_commands.describe(ID="Enter any valid Discord ID")
-async def date(interaction: discord.Interaction,ID: Optional[app_commands.Range[int, 1420070400000]] = 1420070400000):
+async def date(interaction: discord.Interaction,id: Optional[app_commands.Range[int, 1420070400000]] = 1420070400000):
  """Prints Date"""
- await interaction.response.send_message(f"<t:{ID}:F>")
+ await interaction.response.send_message(f"<t:{id}:F>")
 
 @client.tree.command()
 async def join(interaction: discord.Interaction):
