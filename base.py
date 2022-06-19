@@ -2,7 +2,6 @@ from discord import app_commands
 import discord
 
 
-ID_APP = 569724616210382875 # from Discord developer portal
 ID_GUILD = 970576952257835059 # Guild id which bot in
 
 
@@ -13,8 +12,8 @@ MY_GUILD = discord.Object(id=ID_GUILD)  # replace with your guild id
 
 
 class MyClient(discord.Client):
- def __init__(self, *, intents: discord.Intents, application_id: int):
-  super().__init__(intents=intents, application_id=application_id)
+ def __init__(self, *, intents: discord.Intents):
+  super().__init__(intents=intents)
 
  # A CommandTree is a special type that holds all the application command
  # state required to make it work. This is a separate class because it
@@ -41,5 +40,5 @@ intent.typing = False
 intent.presences = False
 
 # In order to use a basic synchronization of the app commands in the setup_hook
-client = MyClient(intents=intent, application_id=ID_APP)
+client = MyClient(intents=intent)
 
