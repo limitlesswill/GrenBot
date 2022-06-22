@@ -1,4 +1,5 @@
 from os import getenv
+from os import path
 from dropbox import Dropbox
 
 file_name = "settings.ini"
@@ -54,11 +55,14 @@ def load():
 
 def peek():
  global file_name
- file = open(file_name,"r")
  txt = ""
- for line in file:
-  txt += line
- file.close()
+ if not path.isfile(file_name):
+  txt = f"{file_name} doesn't exist"
+ else:
+  file = open(file_name,"r")
+  for line in file:
+   txt += line
+  file.close()
  return txt
 
 
