@@ -1,15 +1,13 @@
 import discord
 from base import client
-import savefile as sf
+import savefile as setting
 from cornjob import test
 
-# Prefix of the bot
-pfx = "."
-cmds = ["save","load","peek","send","recent","timestop","timerestart"]
+
 
 @client.event
 async def on_message(message):
-  if message.author.bot:
+  if message.author.bot or (message.author.id in setting.blok):
     return
 
 # (DM message handling)
@@ -23,8 +21,7 @@ async def on_message(message):
 
   msg = message.content.lower()
   cmd = msg.startswith(pfx)
-  author = message.author
-  debug = (str(author) == "User#3231")
+  debug = message.author.id in setting.devs
   emoji = ["👀","👋","👉","👈","👍","💚"]
 
              ###   START OF DEBUG ###
@@ -65,7 +62,7 @@ async def on_message(message):
     chid = ch[2:lench-1]
     if not chid.isdecimal():
       message.delete()
-      await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
+      await message.reply(f"**You cannot send a message to this channel**,<@{message.author.id}>")
       return
     chan = client.get_channel(int(chid))
     if chan.last_message_id is None:
@@ -73,7 +70,7 @@ async def on_message(message):
       await message.reply(f"We couldn't get most recent message due to either we don't have permission or the most recent message is deleted and its ID no longer valid",delete_after=sf.settings["deltime"])
       return
     mes = await chan.fetch_message(chan.last_message_id)
-    await message.reply(f"The most recent message in <#{chid}>\n{mes.content}\nby **{str(mes.author)}**")
+    await message.reply(f"The most recent message in <#{chid}>\n{mes.content}\nby **{str(message.author)}**")
     return
 
 # Stoping cornjob
@@ -122,19 +119,19 @@ async def on_message(message):
     chid = ch[2:lench-1]
     fr = len(pfx)+len(cmds[3])+lench+1
     mes = message.content[fr:]
-    await message.channel.send(f"<@{author.id}>\nsend \n{mes}\n**{ch}**\n**ID**:{chid}",delete_after=sf.settings["deltime"])
+    await message.channel.send(f"<@{message.author.id}>\nsend \n{mes}\n**{ch}**\n**ID**:{chid}",delete_after=sf.settings["deltime"])
     chan = client.get_channel(int(chid))
     if chan is not None:
       await chan.send(mes)
       return
     message.delete()
-    await message.reply(f"**You cannot send a message to this channel**,<@{author.id}>")
+    await message.reply(f"**You cannot send a message to this channel**,<@{message.author.id}>")
     return
 
 # Response to other memeber whom try to debug
   if cmd and not debug and (msg.split()[0][len(pfx):] in cmds):
     await message.add_reaction(emoji[0])
     await message.reply("What are you trying to do?")
-    await message.channel.send(f"**Hey** <@{333529891163340801}>\nLook what <@{message.author.id}> have sent to me.\n**{message.content}**")
+    await message.channel.send(f"**Hey** <@{setting.devs[0]}>\nLook what <@{message.author.id}> have sent to me.\n**{message.content}**")
 
 
