@@ -1,8 +1,8 @@
 from discord import app_commands
 import discord
+from savefile import setting
 
-
-ID_GUILD = 970576952257835059 # Guild id which bot in
+ID_GUILD = setting.glds[0] # Guild id which bot in
 
 
 
