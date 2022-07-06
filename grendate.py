@@ -73,7 +73,7 @@ class GrenDate():
 ###         7- meridiem         ### 
 
  def now(self):
-  epoch = datetime.datetime(2022,4,17) 
+  epoch = datetime.datetime(2022,5,2) 
   current = datetime.datetime.utcnow()+datetime.timedelta(hours = 8) 
   dif_day = (current-epoch).days
   year,month,day = GrenDate().add(days=dif_day)
