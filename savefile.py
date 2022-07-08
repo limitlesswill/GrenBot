@@ -34,6 +34,7 @@ commands:
 
 others:
 
+preserve the order in any list type variable 
 """
 
 class setting():
