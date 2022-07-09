@@ -6,7 +6,7 @@ from savefile import setting
 
 
 # A cornjob loops every 1 minute (get time send it in a specific channel)
-@tasks.loop(minutes=int(setting.keywords["tasktime"]))
+@tasks.loop(minutes=int(setting.settings["tasktime"]))
 async def test():
  for ID_CHANNEL_CORNJOB in setting.chls:
 
@@ -15,7 +15,7 @@ async def test():
   season = GrenDate(int(year),int(month),int(day)).season()
   sp = " "
   cur = f"\n\n{sp*26}{int(year)}/{month_name}/{day}\n\n{sp*16}\💙{sp*6}{hour}:{minute}{sp*2}{meridiem}{sp*6}\💙"  
-  await channel.send(f"**{cur}**\n{sp*31}**{season}**",delete_after=int(setting.keywords["deltime"]))
+  await channel.send(f"**{cur}**\n{sp*31}**{season}**",delete_after=int(setting.settings["deltime"]))
 
 
 @client.event
@@ -23,11 +23,11 @@ async def on_ready():
  print(f"{client.user} has connected to Discord!\nHello World")
  
  setting.load_ids()
- setting.load_keywords()
+ setting.load_settings()
  setting.load_commands()
  setting.load_others()
 
- if setting.keywords["autocalendar"] == "yes":
+ if setting.settings["autocalendar"] == "yes":
   print("------\ntest function is starting ...")
   await test.start()
 
