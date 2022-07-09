@@ -40,7 +40,7 @@ preserve the order in any list type variable
 class setting():
 
  file_ids = "/ids.txt"
- file_keywords = "/keywords.txt"
+ file_settings = "/settings.txt"
  file_commands = "/commands.txt"
  file_others = "/others.txt"
  
@@ -49,14 +49,14 @@ class setting():
  glds = [970576952257835059]
  chls = [971240750731890738]
  
- keywords={"gren ":"gren gren gren gren ","blu ":"blu blu blu","autocalendar":"no","tasktime":"1","deltime":"59"}
+ settings={"autocalendar":"no","tasktime":"1","deltime":"59"}
  
  commands=[".","save","load","peek","send","recent","timestop","timerestart"]
  others= ["https://www.google.com","time machine"]
  
  def peek():
   try:
-   files = [setting.file_ids,setting.file_keywords,setting.file_commands,setting.file_others]
+   files = [setting.file_ids,setting.file_settings,setting.file_commands,setting.file_others]
    
    txt = ""
    for file in files:
@@ -122,32 +122,32 @@ class setting():
   return True
 
  
- def save_keywords():
+ def save_settings():
   try:
-   a = "\n".join(f"{x}:{y}" for x,y in setting.keywords.items())
-   file = open(setting.file_keywords,"w")
+   a = "\n".join(f"{x}:{y}" for x,y in setting.settings.items())
+   file = open(setting.file_settings,"w")
    file.write(f"{a}")
    file.close()
   except:
    return False
-  return upload(setting.file_keywords,setting.file_keywords)
+  return upload(setting.file_settings,setting.file_settings)
   
  
- def load_keywords():
-  download(setting.file_keywords,setting.file_keywords)
+ def load_settings():
+  download(setting.file_settings,setting.file_settings)
   
   try:
    txt = ""
-   file = open(setting.file_keywords,"r")
+   file = open(setting.file_settings,"r")
    txt = file.read().split("\n")
    file.close()
-   setting.keywords.clear()
+   setting.settings.clear()
   
    for x in txt:
     line = x.split(":")
     key=line[0]
     value=line[1]
-    setting.keywords[key] = value
+    setting.settings[key] = value
   except:
    return False
   return True
@@ -247,26 +247,26 @@ class setting():
 
 # don't forget keyword argument **{key:value}
 
- def add_keywords(**args):
+ def add_settings(**args):
 
   for x in args:
-   setting.keywords[x] = str(args[x])
-  return setting.save_keywords()
+   setting.settings[x] = str(args[x])
+  return setting.save_settings()
 
- def delete_keywords(*args):
+ def delete_settings(*args):
  
   for x in args:
-   if x in setting.keywords:
-    setting.keywords.pop(x)
-  return setting.save_keywords()
+   if x in setting.settings:
+    setting.settings.pop(x)
+  return setting.save_settings()
 
- def edit_keywords(**args):
+ def edit_settings(**args):
 
   for x in args:
-   if x in setting.keywords:
-    setting.keywords.pop(x)
-    setting.keywords[x] = str(args[x])
-  return setting.save_keywords()
+   if x in setting.settings:
+    setting.settings.pop(x)
+    setting.settings[x] = str(args[x])
+  return setting.save_settings()
  
 ## Only changes the name of a command
 
