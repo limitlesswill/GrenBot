@@ -324,7 +324,7 @@ class setting():
  def add_users(id:int):
   try:
    if int(id) in setting.users:
-    return True
+    return False
   except:
    return False
   setting.users.add(int(id))
