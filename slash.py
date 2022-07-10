@@ -1,13 +1,18 @@
 import discord
 from discord import app_commands
-from typing import Optional
 from base import client
+from savefile import setting
 
 
 @client.tree.command()
 @app_commands.describe(id="Enter any valid Discord ID")
 async def date(interaction: discord.Interaction, id: str = "1420070400000"):
  """Prints Time that ID created at"""
+
+ if interaction.user.id in setting.blok:
+  return
+ setting.add_users(interaction.user.id)
+
  if len(id) < 18:
   await interaction.response.send_message(f"please enter a valid Discord ID",ephemeral=True)
  DISCORD_EPOCH = 1420070400000
@@ -18,6 +23,11 @@ async def date(interaction: discord.Interaction, id: str = "1420070400000"):
 @client.tree.command()
 async def join(interaction: discord.Interaction):
  """Joins you in Voice channel"""
+
+ if interaction.user.id in setting.blok:
+  return
+ setting.add_users(interaction.user.id)
+
  vc = interaction.user.voice
  if vc:
   await interaction.response.send_message(f"{interaction.user.mention} I have joined you in {str(vc)}",ephemeral = True)
@@ -32,6 +42,11 @@ async def join(interaction: discord.Interaction):
 
 async def multi(interaction: discord.Interaction, first_value: int, second_value: int):
  """Multiplying two numbers together."""
+
+ if interaction.user.id in setting.blok:
+  return
+ setting.add_users(interaction.user.id)
+
  await interaction.response.send_message(f'{first_value} * {second_value} = {first_value * second_value}',ephemeral=True)
 
 
@@ -43,6 +58,11 @@ async def multi(interaction: discord.Interaction, first_value: int, second_value
 @app_commands.describe(text_to_send='Text to send in the current channel',channel="for testing purposes only")
 async def send(interaction: discord.Interaction, text_to_send: str, channel: Optional[discord.TextChannel] = None):
  """Sends the text into a channel."""
+
+ if interaction.user.id in setting.blok:
+  return
+ setting.add_users(interaction.user.id)
+
  if channel:
   await channel.send(text_to_send)
   await interaction.response.send_message(f"{interaction.user.mention}, your message has been went to {str(channel)}",ephemeral=True)
@@ -56,6 +76,11 @@ async def send(interaction: discord.Interaction, text_to_send: str, channel: Opt
 @app_commands.describe(member='The member you want to get the joined date from; defaults to the user who uses the command')
 async def joined(interaction: discord.Interaction, member: Optional[discord.Member] = None):
  """Says when a member joined."""
+
+ if interaction.user.id in setting.blok:
+  return
+ setting.add_users(interaction.user.id)
+
  # If no member is explicitly provided then we use the command user here
  member = member or interaction.user
  # The format_dt function formats the date time into a human readable representation in the official client
