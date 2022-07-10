@@ -252,21 +252,7 @@ class setting():
 
 # don't forget keyword argument **{key:value}
 
- def add_settings(**args):
-
-  for x in args:
-   setting.settings[x] = str(args[x])
-  return setting.save_settings()
-
- def delete_settings(*args):
- 
-  for x in args:
-   if x in setting.settings:
-    setting.settings.pop(x)
-  return setting.save_settings()
-
  def edit_settings(**args):
-
   for x in args:
    if x in setting.settings:
     setting.settings.pop(x)
