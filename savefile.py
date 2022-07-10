@@ -43,7 +43,9 @@ class setting():
  file_settings = "/settings.txt"
  file_commands = "/commands.txt"
  file_others = "/others.txt"
- 
+ file_users = "/users.txt"
+
+
  devs = [333529891163340801]
  blok = []
  glds = [970576952257835059]
@@ -54,6 +56,9 @@ class setting():
  commands=[".","save","load","peek","send","recent","timestop","timerestart"]
  others= ["https://www.google.com","time machine"]
  
+ users = set()
+
+
  def peek():
   try:
    files = [setting.file_ids,setting.file_settings,setting.file_commands,setting.file_others]
@@ -290,6 +295,45 @@ class setting():
     setting.others.remove(x)
   return setting.save_others()
 
+
+ def save_users():
+  txt = "\n".join(str(x) for x in setting.users)
+  try:
+   file = open(setting.file_users,"w")
+   file.write(f"{txt}")
+   file.close()
+  except:
+   return False
+  return upload(setting.file_users,setting.file_users)
+
+
+ def load_users():
+  download(setting.file_users,setting.file_users)
+ 
+  try:
+   file = open(setting.file_users,"r")
+   for line in file:
+    setting.users.add(int(line))
+   file.close()
+  except:
+   return False
+  return True
+
+## highly used function ,I needed to slow it down by using if statment
+
+ def add_users(id:int):
+  try:
+   if int(id) in setting.users:
+    return True
+  except:
+   return False
+  setting.users.add(int(id))
+  return setting.save_users()
+  
+ def peek_users():
+  if setting.load_users():
+   return len(setting.users) , "\n".join(str(x) for x in setting.users)
+  return 0,""
 
 
 
