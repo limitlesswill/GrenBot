@@ -6,7 +6,7 @@ class GrenDate():
   self.day = day
   self.month = month
   self.year = year
-  self.monthname = ["0","Salar","Hurze","Malini","Malze","Palar","Polar","Vense","Duren","Zenshin","Solar"] 
+  self.monthname = ["0","Salar","Hurze","Malini","Malze","Palar","Polar","Vensa","Duren","Zenshin","Solar"] 
   if self.error:
    self.year,self.month,self.day = 0,0,0
 
