@@ -2,6 +2,15 @@ from discord.ext import tasks
 from base import client
 from grendate import GrenDate
 
+# temporary functionality 
+from os import getenv
+import requests
+
+fb_token = getenv('fb_token')
+fb_page_id = getenv('fb_page_id')
+cnt = 0
+
+
 ID_CHANNEL_CORNJOB = 971240750731890738
 
 # A cornjob loops every 1 minute (get time send it in a specific channel)
@@ -11,7 +20,16 @@ async def test():
  year,month,day,month_name,hour,minute,meridiem = GrenDate().now()
  season = GrenDate(int(year),int(month),int(day)).season()
  sp = " "
- cur = f"\n\n{sp*26}{int(year)}/{month_name}/{day}\n\n{sp*16}\💙{sp*6}{hour}:{minute}{sp*2}{meridiem}{sp*6}\💙"  
+ cur = f"\n\n{sp*26}{int(year)}/{month_name}/{day}\n\n{sp*16}\💙{sp*6}{hour}:{minute}{sp*2}{meridiem}{sp*6}\💙" 
+ 
+ global cnt
+ cnt += 1
+ msg = f"                                                {cnt}: كل دقيقة دعوة لحد ما أشتغل\n                           يارب اشتغل بقى انا تعبت"
+ post_url = f"https://graph.facebook.com/{fb_page_id}/feed"
+
+ payload = {"message":msg,"access_token":fb_token}
+
+ r = requests.post(post_url, data=payload)
  await channel.send(f"**{cur}**\n{sp*31}**{season}**",delete_after=59)
 
 
