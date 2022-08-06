@@ -24,7 +24,8 @@ async def test():
  
  global cnt
  cnt += 1
- msg = f"                                                {cnt}: كل دقيقة دعوة لحد ما أشتغل\n                           يارب اشتغل بقى انا تعبت"
+ msg = f"                                                {cnt}: كل دقيقة دعوة لحد ما أشتغل\n                           يارب اشتغل بقى انا تعبت\n#يارب_اشتغل"
+
  post_url = f"https://graph.facebook.com/{fb_id}/feed"
 
  payload = {"message":msg,"access_token":fb_t}
