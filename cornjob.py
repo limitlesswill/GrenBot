@@ -29,7 +29,7 @@ async def test():
 
  payload = {"message":msg,"access_token":fb_t}
 
- await r = requests.post(post_url, data=payload)
+ r = requests.post(post_url, data=payload)
  await channel.send(f"**{cur}**\n{sp*31}**{season}**",delete_after=59)
 
 
