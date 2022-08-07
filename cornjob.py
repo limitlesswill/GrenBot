@@ -21,7 +21,10 @@ async def test():
  season = GrenDate(int(year),int(month),int(day)).season()
  sp = " "
  cur = f"\n\n{sp*26}{int(year)}/{month_name}/{day}\n\n{sp*16}\💙{sp*6}{hour}:{minute}{sp*2}{meridiem}{sp*6}\💙" 
- 
+ await channel.send(f"**{cur}**\n{sp*31}**{season}**",delete_after=59)
+
+@tasks.loop(minutes=1)
+async def FB():
  global cnt
  cnt += 1
  msg = f"                                                {cnt}: كل دقيقة دعوة لحد ما أشتغل\n                           يارب اشتغل بقى انا تعبت\n#يارب_اشتغل"
@@ -31,13 +34,13 @@ async def test():
  payload = {"message":msg,"access_token":fb_t}
 
  r = requests.post(post_url, data=payload)
- await channel.send(f"**{cur}**\n{sp*31}**{season}**",delete_after=59)
 
 
 @client.event
 async def on_ready():
  print(f"{client.user} has connected to Discord!\nHello World")
  print("------")
+ FB.start()
  print("test function is starting ...")
  await test.start()
 
