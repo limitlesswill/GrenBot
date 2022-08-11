@@ -1,7 +1,7 @@
 import discord
 from base import client
 import savefile as sf
-from cornjob import test
+from cornjob import test,FB
 
 # Prefix of the bot
 pfx = "."
