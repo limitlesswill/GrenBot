@@ -27,7 +27,9 @@ async def test():
 async def FB():
  global cnt
  cnt += 1
- msg = f"                                                {cnt}: كل دقيقة دعوة لحد ما أشتغل\n                           يارب اشتغل بقى انا تعبت\n#يارب_اشتغل"
+ names =["رحمن","رحيم","ملك","قدوس","سلام","مؤمن","مهيمن","عزيز","غفار","وهاب","رازق","فتاح","عليم","باسط","رافع","معز","سميع","بصير","حكم","عدل","لطيف","خبير","عظيم","غفور","شكور","كبير","حفيظ","جليل","كريم","مجيب","واسع","حكيم","ودود","مجيد","باعث","شهيد","حق","وكيل","قوي","متين","ولي","حميد","مبدئ","معين","محيي","حي","قيوم","احد","صمد","قادر","مقتدر","مقدم","أول","آخر","ظاهر","باطن","ولي","متعالي","بر","عفو","رؤوف","مالك الملك","ذو الإجلال والإكرام"," مقسط","جامع","غني","مغني","نافع","نور","هادي","بديع","باقي","وارث"]
+ lng = len(names)
+ msg = f"                                                {cnt}: كل دقيقة دعوة لحد ما أشتغل\n                            يارب يا {names[cnt%lng]} اشتغل بقى انا تعبت"
 
  post_url = f"https://graph.facebook.com/{fb_id}/feed"
 
@@ -40,7 +42,10 @@ async def FB():
 async def on_ready():
  print(f"{client.user} has connected to Discord!\nHello World")
  print("------")
- FB.start()
- print("test function is starting ...")
- await test.start()
+ try:
+  FB.start()
+  print("test function is starting ...")
+  await test.start()
+ except:
+  print("Exception in on_ready check it fast")
 
