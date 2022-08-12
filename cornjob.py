@@ -46,6 +46,6 @@ async def on_ready():
   FB.start()
   print("test function is starting ...")
   await test.start()
- except:
-  print("Exception in on_ready check it fast")
+ except Exception as e:
+  print(f"Exception in on_ready check it fast\n{str(e)}")
 
