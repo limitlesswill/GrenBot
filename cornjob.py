@@ -30,12 +30,13 @@ async def FB():
  names =["رحمن","رحيم","ملك","قدوس","سلام","مؤمن","مهيمن","عزيز","غفار","وهاب","رازق","فتاح","عليم","باسط","رافع","معز","سميع","بصير","حكم","عدل","لطيف","خبير","عظيم","غفور","شكور","كبير","حفيظ","جليل","كريم","مجيب","واسع","حكيم","ودود","مجيد","باعث","شهيد","حق","وكيل","قوي","متين","ولي","حميد","مبدئ","معين","محيي","حي","قيوم","احد","صمد","قادر","مقتدر","مقدم","أول","آخر","ظاهر","باطن","ولي","متعالي","بر","عفو","رؤوف","مالك الملك","ذو الإجلال والإكرام"," مقسط","جامع","غني","مغني","نافع","نور","هادي","بديع","باقي","وارث"]
  lng = len(names)
  msg = f"                                                {cnt}: كل دقيقة دعوة لحد ما أشتغل\n                            يارب يا {names[cnt%lng]} اشتغل بقى انا تعبت"
+ img = "https://picsum.photos/450/250"
+ post_url = f"https://graph.facebook.com/{fb_page_id2}/photos"
+ data = { 'url': img, 'caption': msg }
+ payload = {"access_token":fb_t}
+ r = requests.post(url=post_url,params=payload ,data=data)
 
- post_url = f"https://graph.facebook.com/{fb_id}/feed"
 
- payload = {"message":msg,"access_token":fb_t}
-
- r = requests.post(post_url, data=payload)
 
 
 @client.event
