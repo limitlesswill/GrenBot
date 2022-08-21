@@ -42,3 +42,5 @@ intent.presences = False
 # In order to use a basic synchronization of the app commands in the setup_hook
 client = MyClient(intents=intent)
 
+
+ 
