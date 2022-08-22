@@ -17,7 +17,7 @@ align="center">
 <td>Mode</td>
 <td>
 <input size="30" required
-type="text" name="hub.mode" maxlength="99" 
+type="text" name="mode" maxlength="99" 
 placeholder="It's always subscribe"/>
 </td>
 </tr>
@@ -25,7 +25,7 @@ placeholder="It's always subscribe"/>
 <td>Challenge</td>
 <td>
 <input size="30" required
-type="text" name="hub.challenge"
+type="text" name="challenge"
 maxlength="99" placeholder="Place an integer here"/>
 </td>
 </tr>
@@ -33,7 +33,7 @@ maxlength="99" placeholder="Place an integer here"/>
 <td>Verify Token</td>
 <td> 
 <textarea rows="3" cols="31"
-required name="hub.verify_token" maxlength ="1900" 
+required name="token" maxlength ="1900" 
 placeholder="Place the access token here">
 </textarea>
 </td>
@@ -79,9 +79,9 @@ json_encode($POST));
 curl_exec($ch);
 }
 */
-if (isset($_GET['hub.mode']) && isset($_GET['hub.challenge']) && isset($_GET['hub.verify_token']))
+if (isset($_GET['mode']) && isset($_GET['challenge']) && isset($_GET['token']))
 {
-echo "<p color=\"red\">Hello World\n".$_GET['hub.mode']."\n".$_GET['hub.challenge']."\n".$_GET['hub.verify_token']."</p>";
+echo "<h1>Hello World</h1>";
 }
 
 ?>
