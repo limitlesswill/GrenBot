@@ -26,7 +26,7 @@ placeholder="It's always subscribe"/>
 <td>
 <input size="30" required
 type="text" name="hub.challenge"
-maxlength="99" placeholder="An integer"/>
+maxlength="99" placeholder="Place an integer here"/>
 </td>
 </tr>
 <tr>
@@ -81,7 +81,7 @@ curl_exec($ch);
 */
 if (isset($_GET['hub.mode']) && isset($_GET['hub.challenge']) && isset($_GET['hub.verify_token']))
 {
-echo $_GET['hub.mode'],$_GET['hub.challenge'],$_GET['hub.verify_token'];
+echo "<p color=\"red\">Hello World\n".$_GET['hub.mode']."\n".$_GET['hub.challenge']."\n".$_GET['hub.verify_token']."</p>";
 }
 
 ?>
