@@ -81,7 +81,7 @@ curl_exec($ch);
 */
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
-echo $_GET['hub_challenge'];
+return $_GET['hub_challenge'];
 }
 
 ?>
