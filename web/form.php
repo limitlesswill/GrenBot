@@ -1,4 +1,6 @@
-<html lang="en">
+<?php
+
+$content = '<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" 
@@ -48,9 +50,9 @@ placeholder="Place the access token here">
 style="text-decoration:none;">
 Go Home</a>
 </body>
-</html>
+</html>';
 
-<?php
+
 /*
 if( isset($_POST['title']) )
 {
@@ -81,9 +83,10 @@ curl_exec($ch);
 */
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
-echo http_response_code($_GET['hub_challenge']);
+echo json_encode($_GET['hub_challenge']);
 }else{
-echo http_response_code("Go away.");
+echo json_encode("Go away.");
+echo $content;
 }
 
 ?>
