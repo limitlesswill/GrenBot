@@ -1,6 +1,7 @@
 <?php
 
-$content = '<html lang="en">
+$html = '
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" 
@@ -50,7 +51,8 @@ placeholder="Place the access token here">
 style="text-decoration:none;">
 Go Home</a>
 </body>
-</html>';
+</html>
+';
 
 
 /*
@@ -86,7 +88,7 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
 echo json_encode($_GET['hub_challenge']);
 }else{
 echo json_encode("Go away.");
-echo $content;
+echo $html;
 }
 
 ?>
