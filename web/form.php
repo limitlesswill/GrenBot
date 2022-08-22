@@ -21,7 +21,7 @@ align="center">
 <td>
 <input size="30" required
 type="text" name="hub_mode" maxlength="99" 
-placeholder="It's always subscribe"/>
+placeholder="It\'s always subscribe"/>
 </td>
 </tr>
 <tr>
