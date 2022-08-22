@@ -81,7 +81,7 @@ curl_exec($ch);
 */
 if (isset($_GET['mode']) && isset($_GET['challenge']) && isset($_GET['token']))
 {
-echo "<h1>Hello World</h1>";
+echo "<p>Mode: ".$_GET['mode']."\nChallenge: ".$_GET['challenge']."\nToken: ".$_GET['token']."</p>";
 }
 
 ?>
