@@ -85,9 +85,9 @@ curl_exec($ch);
 */
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
-echo json_encode($_GET['hub_challenge']);
+echo $_GET['hub_challenge'];
 }else{
-echo json_encode("Go away.");
+echo "Go away.";
 echo $html;
 }
 
