@@ -9,24 +9,32 @@ initial-scale=1.0">
 <body align ="center" style=
 "color:black;background-color:white;">
 
-<form method="post" autocomplete="off" 
+<form method="get" autocomplete="off" 
 align="center">
 
 <table align="center">
 <tr>  
-<td>Title</td>
+<td>Mode</td>
 <td>
 <input size="30" required
-type="text" name="title" maxlength="99" 
-placeholder="Place your title here"/>
+type="text" name="hub.mode" maxlength="99" 
+placeholder="It's always subscribe"/>
 </td>
 </tr>
 <tr>
-<td>Content</td>
+<td>Challenge</td>
+<td>
+<input size="30" required
+type="text" name="hub.challenge"
+maxlength="99" placeholder="An integer"/>
+</td>
+</tr>
+<tr>
+<td>Verify Token</td>
 <td> 
 <textarea rows="3" cols="31"
-required name="content" maxlength ="1900" 
-placeholder="place your content here">
+required name="hub.verify_token" maxlength ="1900" 
+placeholder="Place the access token here">
 </textarea>
 </td>
 </tr> 
@@ -43,7 +51,7 @@ Go Home</a>
 </html>
 
 <?php
-
+/*
 if( isset($_POST['title']) )
 {
 $url = $_SERVER['DISCORD_WEBHOOK'];
@@ -69,6 +77,11 @@ $headers);
 curl_setopt($ch, CURLOPT_POSTFIELDS, 
 json_encode($POST));
 curl_exec($ch);
-
 }
+*/
+if (isset($_GET['hub.mode']) && isset($_GET['hub.challenge']) && isset($_GET['hub.verify_token']))
+{
+echo $_GET['hub.mode'],$_GET['hub.challenge'],$_GET['hub.verify_token'];
+}
+
 ?>
