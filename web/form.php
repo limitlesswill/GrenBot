@@ -86,8 +86,10 @@ curl_exec($ch);
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
 echo $_GET['hub_challenge'];
+}else if(isset($_POST['post_id']))
+{
+echo $_POST['message'];
 }else{
-echo "Go away.";
 echo $html;
 }
 
