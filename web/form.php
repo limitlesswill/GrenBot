@@ -57,7 +57,7 @@ Go Home</a>
 /*
 if( isset($_POST['title']) )
 {
-$url = $_SERVER['DISCORD_WEBHOOK'];
+$url = $_SERVER['WEBHOOK'];
 $headers = 
 [
 'Content-Type: application/json; charset=utf-8' 
@@ -67,7 +67,7 @@ $POST =
 [ 
 'username' => 'Guest', 
 'content' => 
-"<@333529891163340801>
+"title is: 
              **".$_POST['title']."**\r\n"
 .$_POST['content'] 
 ];
@@ -87,8 +87,26 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
 echo $_GET['hub_challenge'];
 }else if(isset($_POST['value']['post_id']))
 {
-echo $_POST['value']['post_id'];
-echo $_POST['value']['message'];
+$url = 'https://graph.facebook.com/'.$_SERVER['fb_page_id'].'_'.$_POST['value']['post_id'].'/comments';
+$headers = 
+[
+'Content-Type: application/json; charset=utf-8' 
+];
+
+$POST = 
+[ 
+'access_token' => $_SERVER['fb_token'], 
+'message' => $_POST['value']['message']
+];
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, 
+$headers);
+curl_setopt($ch, CURLOPT_POSTFIELDS, 
+json_encode($POST));
+curl_exec($ch);
 }else{
 echo $html;
 }
