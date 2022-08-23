@@ -1,7 +1,6 @@
 <?php
 
-$html = '
-<html lang="en">
+$html = '<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" 
@@ -86,11 +85,11 @@ curl_exec($ch);
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
 echo $_GET['hub_challenge'];
-}else if(isset($_POST['post_id']))
+}else if(isset($_POST['value']['post_id']))
 {
-echo $_POST['message'];
+echo $_POST['value']['post_id'];
+echo $_POST['value']['message'];
 }else{
 echo $html;
 }
-
 ?>
