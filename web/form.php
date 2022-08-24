@@ -82,8 +82,8 @@ $comment_id = $data['entry'][0]['changes'][0]['value']['comment_id'];
 $url = 'https://graph.facebook.com/v14.0/'.$comment_id;
 $msg = $data['entry'][0]['changes'][0]['value']['message'];
 $payload = ['access_token' => $_SERVER['fb_token'],'message' => $name.chr(10).$msg.chr(10).'😂'];
-$react = ['access_token' => $_SERVER['fb_token'],'type' => 'HAHA'];
-sendit($url.'/reactions',$react);
+$react = ['access_token' => $_SERVER['fb_token']];
+sendit($url.'/likes',$react);
 sendit($url.'/comments',$payload);
 }
 $fb_payload = ['access_token' => $_SERVER['fb_token'],'message' => $msg];
