@@ -71,11 +71,11 @@ return curl_exec($ch);
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
 echo $_GET['hub_challenge'];
-}else if($_POST['changes']['value']['item'] === 'comment')
+}else if(isset($_POST['value']['item']))
 {
-$name = $_POST['changes']['value']['from']['name'];
-$comment_id = $_POST['changes']['value']['comment_id'];
-$msg = 'Hello\r\n'.$name.'\r\nWhy did you say\r\n'.$_POST['changes']['value']['message'].'\r\n?????????????';
+$name = $_POST['value']['from']['name'];
+$comment_id = $_POST['value']['comment_id'];
+$msg = 'Hello\r\n'.$name.'\r\nWhy did you say\r\n'.$_POST['value']['message'].'\r\n?????????????';
 $url = 'https://graph.facebook.com/v14.0/'.$comment_id.'/comments';
 $fb_payload = 
 ['access_token' => $_SERVER['fb_token'],
