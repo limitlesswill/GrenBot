@@ -81,7 +81,7 @@ $url = 'https://graph.facebook.com/v14.0/'.$comment_id.'/comments';
 $msg = $data['entry'][0]['changes'][0]['value']['message'];
 if($item === 'comment')
 {
-$payload = {'access_token' => $_SERVER['fb_token'],'message' => $name.'\n'.$msg.'\n😂'};
+$payload = ['access_token' => $_SERVER['fb_token'],'message' => $name.'\n'.$msg.'\n😂'];
 sendit($url,payload);
 }
 $fb_payload = ['access_token' => $_SERVER['fb_token'],'message' => $msg];
