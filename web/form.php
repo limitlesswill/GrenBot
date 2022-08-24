@@ -74,7 +74,7 @@ echo $_GET['hub_challenge'];
 }else if($_SERVER['REQUEST_METHOD'] === 'POST')
 {
 $data = json_decode(file_get_contents('php://input'), true);
-if($data['entry'][0]['changes'][0]['value']['from']['id'] != $_SERVER['fb_page_id'])
+if(($data['entry'][0]['changes'][0]['value']['from']['id'] != $_SERVER['fb_page_id']) && $data['entry'][0]['changes'][0]['value']['verb'] == 'add')
 {
 $item = $data['entry'][0]['changes'][0]['value']['item'];
 $name = $data['entry'][0]['changes'][0]['value']['from']['name'];
