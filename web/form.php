@@ -78,15 +78,14 @@ echo $_GET['hub_challenge'];
 $name = isset($_POST['entry']['changes']['value']['from']['name']);
 $comment_id = isset($_POST['entry']['changes']['value']['comment_id']);
 $url = 'https://graph.facebook.com/v14.0/'.$comment_id.'/comments';
-$msg = 'name\n'.$name.'\nid\n'.$comment_id.'\nurl\n'.$url.'\nmessage\n'.$_POST['entry']['changes']['value']['message'];
+$msg = isset($_POST['entry']['changes']['value']['message']);
 $fb_payload = ['access_token' => $_SERVER['fb_token'],'message' => $msg];
-$roro = sendit($url,$fb_payload);
 $dc = $_SERVER['DISCORD_WEBHOOK'];
 $dc_payload = 
 [ 
 'username' => 'Facebook',
 'avatar_url' => 'https://scontent.fcai1-3.fna.fbcdn.net/v/t39.8562-6/109960336_274477960450922_1306319190754819753_n.png?_nc_cat=107&ccb=1-7&_nc_sid=6825c5&_nc_eui2=AeEW0Tv6csstYDgEbtnMu-g4JxDCgWesWeInEMKBZ6xZ4jN15myTe-sJn1pUwiWyt2YnTf0E3QM3nWkTaegX1JNZ&_nc_ohc=creb8yK0R18AX-xUJZ5&_nc_ht=scontent.fcai1-3.fna&oh=00_AT8xmtU5v_S4xoW_zAaW9OWXh3wjta-Qk79nNkCqbXb_ow&oe=630A31B0',
-'content' => '**name**: '.$name.'\n**commend_id**: '.$comment_id.'\n**url**: '.$url.'\n**Message**: '.$msg.'\n**return value**: '.$roro
+'content' => '**name**: '.$name.'\n**commend_id**: '.$comment_id.'\n**url**: '.$url.'\n**Message**: '.$msg
 ];
 sendit($dc,$dc_payload);
 echo 200;
