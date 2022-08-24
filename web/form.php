@@ -71,7 +71,7 @@ return curl_exec($ch);
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
 echo $_GET['hub_challenge'];
-}else if(isset($_POST['entry']['changes']['value']['from']['id']) && $_POST['entry']['changes']['value']['from']['id'] != $_SERVER['fb_page_id'])
+}else if(isset($_POST['entry']['changes']['value']['from']['id']))
 {
 $name = $_POST['entry']['changes']['value']['from']['name'];
 $comment_id = $_POST['entry']['changes']['value']['comment_id'];
