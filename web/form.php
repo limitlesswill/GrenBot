@@ -74,11 +74,16 @@ echo $_GET['hub_challenge'];
 }else if($_SERVER['REQUEST_METHOD'] === 'POST')
 {
 $data = json_decode(file_get_contents('php://input'), true);
-
-$name = empty($data['entry']['changes']['value']['from']['name']);
-$comment_id = empty($data['entry']['changes']['value']['comment_id']);
+$item = $data['entry'][0]['changes'][0]['value']['item'];
+$name = $data['entry'][0]['changes'][0]['value']['from']['name'];
+$comment_id = $data['entry'][0]['changes'][0]['value']['comment_id'];
 $url = 'https://graph.facebook.com/v14.0/'.$comment_id.'/comments';
-$msg = empty($data['entry']['changes']['value']['message']);
+$msg = $data['entry'][0]['changes'][0]['value']['message'];
+if($item === 'comment')
+{
+$payload = {'access_token' => $_SERVER['fb_token'],'message' => $name.'\n'.$msg.'\n😂'};
+sendit($url,payload);
+}
 $fb_payload = ['access_token' => $_SERVER['fb_token'],'message' => $msg];
 $dc = $_SERVER['DISCORD_WEBHOOK'];
 $dc_payload = 
