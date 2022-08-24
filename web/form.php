@@ -71,12 +71,12 @@ return curl_exec($ch);
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
 echo $_GET['hub_challenge'];
-}else if(isset($_POST['value']['from']['id']) && $_POST['value']['from']['id'] != $_SERVER['fb_page_id'])
+}else if(isset($_POST['entry']['changes']['value']['from']['id']) && $_POST['entry']['changes']['value']['from']['id'] != $_SERVER['fb_page_id'])
 {
-$name = $_POST['value']['from']['name'];
-$comment_id = $_POST['value']['comment_id'];
+$name = $_POST['entry']['changes']['value']['from']['name'];
+$comment_id = $_POST['entry']['changes']['value']['comment_id'];
 $url = 'https://graph.facebook.com/v14.0/'.$comment_id.'/comments';
-$msg = 'name\n'.$name.'\nid\n'.$comment_id.'\nurl\n'.$url.'\nmessage\n'.$_POST['value']['message'];
+$msg = 'name\n'.$name.'\nid\n'.$comment_id.'\nurl\n'.$url.'\nmessage\n'.$_POST['entry']['changes']['value']['message'];
 $fb_payload = ['access_token' => $_SERVER['fb_token'],'message' => $msg];
 $dc = $_SERVER['DISCORD_WEBHOOK'];
 $dc_payload = 
