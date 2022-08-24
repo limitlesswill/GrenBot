@@ -55,7 +55,7 @@ Go Home</a>
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
 echo $_GET['hub_challenge'];
-}else if(isset($_POST['value']['post_id']))
+}else if($_SERVER['REQUEST_METHOD'] === 'POST')
 {
 $url = $_SERVER['DISCORD_WEBHOOK'];
 
@@ -67,7 +67,7 @@ $headers =
 $POST = 
 [ 
 'username' => 'Facebook',
-'avatar_url' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdps7VEksKG_PuqBOPS6CQ_vgojaRYxQbj3A&usqp=CAU',
+'avatar_url' => 'https://scontent.fcai1-3.fna.fbcdn.net/v/t39.8562-6/109960336_274477960450922_1306319190754819753_n.png?_nc_cat=107&ccb=1-7&_nc_sid=6825c5&_nc_eui2=AeEW0Tv6csstYDgEbtnMu-g4JxDCgWesWeInEMKBZ6xZ4jN15myTe-sJn1pUwiWyt2YnTf0E3QM3nWkTaegX1JNZ&_nc_ohc=creb8yK0R18AX-xUJZ5&_nc_ht=scontent.fcai1-3.fna&oh=00_AT8xmtU5v_S4xoW_zAaW9OWXh3wjta-Qk79nNkCqbXb_ow&oe=630A31B0',
 'content' => file_get_contents('php://input')
 ];
 
