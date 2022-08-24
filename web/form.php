@@ -52,33 +52,47 @@ Go Home</a>
 </body>
 </html>';
 
-if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
+function sendit($url,$payload)
 {
-echo $_GET['hub_challenge'];
-}else if($_SERVER['REQUEST_METHOD'] === 'POST')
-{
-$url = $_SERVER['DISCORD_WEBHOOK'];
-
 $headers = 
 [
 'Content-Type: application/json; charset=utf-8' 
 ];
-
-$POST = 
-[ 
-'username' => 'Facebook',
-'avatar_url' => 'https://scontent.fcai1-3.fna.fbcdn.net/v/t39.8562-6/109960336_274477960450922_1306319190754819753_n.png?_nc_cat=107&ccb=1-7&_nc_sid=6825c5&_nc_eui2=AeEW0Tv6csstYDgEbtnMu-g4JxDCgWesWeInEMKBZ6xZ4jN15myTe-sJn1pUwiWyt2YnTf0E3QM3nWkTaegX1JNZ&_nc_ohc=creb8yK0R18AX-xUJZ5&_nc_ht=scontent.fcai1-3.fna&oh=00_AT8xmtU5v_S4xoW_zAaW9OWXh3wjta-Qk79nNkCqbXb_ow&oe=630A31B0',
-'content' => file_get_contents('php://input')
-];
-
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, 
 $headers);
 curl_setopt($ch, CURLOPT_POSTFIELDS, 
-json_encode($POST));
-curl_exec($ch);
+json_encode($payload));
+return curl_exec($ch);
+}
+
+if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
+{
+echo $_GET['hub_challenge'];
+}else if($_POST['value']['item'] === 'comment')
+{
+$name = $_POST['value']['from']['name'];
+$comment_id = $_POST['value']['comment_id'];
+$msg = 'Hello\r\n'.$name.'\r\nWhy did you say\r\n'.$_POST['value']['message'].'\r\n?????????????';
+$url = 'https://graph.facebook.com/v14.0/'.$comment_id.'/comments';
+$fb_payload = 
+['access_token' => $_SERVER['fb_token'],
+'message' => $msg];
+echo sendit($url,$fb_payload);
+echo 200;
+}else if($_SERVER['REQUEST_METHOD'] === 'POST')
+{
+$dc = $_SERVER['DISCORD_WEBHOOK'];
+
+$dc_payload = 
+[ 
+'username' => 'Facebook',
+'avatar_url' => 'https://scontent.fcai1-3.fna.fbcdn.net/v/t39.8562-6/109960336_274477960450922_1306319190754819753_n.png?_nc_cat=107&ccb=1-7&_nc_sid=6825c5&_nc_eui2=AeEW0Tv6csstYDgEbtnMu-g4JxDCgWesWeInEMKBZ6xZ4jN15myTe-sJn1pUwiWyt2YnTf0E3QM3nWkTaegX1JNZ&_nc_ohc=creb8yK0R18AX-xUJZ5&_nc_ht=scontent.fcai1-3.fna&oh=00_AT8xmtU5v_S4xoW_zAaW9OWXh3wjta-Qk79nNkCqbXb_ow&oe=630A31B0',
+'content' => file_get_contents('php://input')
+];
+echo sendit($dc,$dc_payload);
 echo 200;
 }else{
 echo $html;
