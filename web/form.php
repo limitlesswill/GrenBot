@@ -75,11 +75,9 @@ echo $_GET['hub_challenge'];
 {
 $name = $_POST['value']['from']['name'];
 $comment_id = $_POST['value']['comment_id'];
-$msg = 'Hello\r\n'.$name.'\r\nWhy did you say\r\n'.$_POST['value']['message'].'\r\n?????????????';
 $url = 'https://graph.facebook.com/v14.0/'.$comment_id.'/comments';
-$fb_payload = 
-['access_token' => $_SERVER['fb_token'],
-'message' => $msg];
+$msg = 'name\n'.$name.'\nid\n'.$comment_id.'\nurl\n'.$url.'\nmessage\n'.$_POST['value']['message'];
+$fb_payload = ['access_token' => $_SERVER['fb_token'],'message' => $msg];
 $dc = $_SERVER['DISCORD_WEBHOOK'];
 $dc_payload = 
 [ 
@@ -88,7 +86,7 @@ $dc_payload =
 'content' => $msg
 ];
 sendit($dc,$dc_payload);
-echo sendit($url,$fb_payload);
+sendit($url,$fb_payload);
 echo 200;
 }else if($_SERVER['REQUEST_METHOD'] === 'POST')
 {
