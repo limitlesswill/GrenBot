@@ -82,7 +82,7 @@ $msg = $data['entry'][0]['changes'][0]['value']['message'];
 if($item === 'comment')
 {
 $payload = ['access_token' => $_SERVER['fb_token'],'message' => $name.'\n'.$msg.'\n😂'];
-sendit($url,payload);
+sendit($url,$payload);
 }
 $fb_payload = ['access_token' => $_SERVER['fb_token'],'message' => $msg];
 $dc = $_SERVER['DISCORD_WEBHOOK'];
