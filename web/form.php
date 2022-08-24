@@ -50,44 +50,15 @@ placeholder="Place the access token here">
 style="text-decoration:none;">
 Go Home</a>
 </body>
-</html>
-';
+</html>';
 
-
-/*
-if( isset($_POST['title']) )
-{
-$url = $_SERVER['WEBHOOK'];
-$headers = 
-[
-'Content-Type: application/json; charset=utf-8' 
-];
-
-$POST = 
-[ 
-'username' => 'Guest', 
-'content' => 
-"title is: 
-             **".$_POST['title']."**\r\n"
-.$_POST['content'] 
-];
-
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, 
-$headers);
-curl_setopt($ch, CURLOPT_POSTFIELDS, 
-json_encode($POST));
-curl_exec($ch);
-}
-*/
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
 echo $_GET['hub_challenge'];
 }else if(isset($_POST['value']['post_id']))
 {
-$url = 'https://graph.facebook.com/'.$_SERVER['fb_page_id'].'_'.$_POST['value']['post_id'].'/comments';
+$url = $_SERVER['DISCORD_WEBHOOK'];
+
 $headers = 
 [
 'Content-Type: application/json; charset=utf-8' 
@@ -95,8 +66,9 @@ $headers =
 
 $POST = 
 [ 
-'access_token' => $_SERVER['fb_token'], 
-'message' => $_POST['value']['message']
+'username' => 'Facebook',
+'avatar_url' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdps7VEksKG_PuqBOPS6CQ_vgojaRYxQbj3A&usqp=CAU',
+'content' => file_get_contents('php://input')
 ];
 
 $ch = curl_init();
@@ -107,6 +79,7 @@ $headers);
 curl_setopt($ch, CURLOPT_POSTFIELDS, 
 json_encode($POST));
 curl_exec($ch);
+echo 200;
 }else{
 echo $html;
 }
