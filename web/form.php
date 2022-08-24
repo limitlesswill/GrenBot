@@ -73,12 +73,12 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
 echo $_GET['hub_challenge'];
 }else if($_SERVER['REQUEST_METHOD'] === 'POST')
 {
-//$data = json_decode(file_get_contents('php://input'), true);
+$data = json_decode(file_get_contents('php://input'), true);
 
-$name = empty($_POST['value']['from']['name']);
-$comment_id = empty($_POST['value']['comment_id']);
+$name = empty($data['entry']['changes']['value']['from']['name']);
+$comment_id = empty($data['entry']['changes']['value']['comment_id']);
 $url = 'https://graph.facebook.com/v14.0/'.$comment_id.'/comments';
-$msg = empty($_POST['value']['message']);
+$msg = empty($data['entry']['changes']['value']['message']);
 $fb_payload = ['access_token' => $_SERVER['fb_token'],'message' => $msg];
 $dc = $_SERVER['DISCORD_WEBHOOK'];
 $dc_payload = 
