@@ -74,19 +74,18 @@ echo $_GET['hub_challenge'];
 }else if($_SERVER['REQUEST_METHOD'] === 'POST')
 {
 $data = json_decode(file_get_contents('php://input'), true);
-if(($data['entry'][0]['changes'][0]['value']['from']['id'] != $_SERVER['fb_page_id']) && $data['entry'][0]['changes'][0]['value']['verb'] == 'add')
+if(($data['entry'][0]['changes'][0]['value']['from']['id'] != $_SERVER['fb_page_id']) && $data['entry'][0]['changes'][0]['value']['item'] == 'comment')
 {
 $item = $data['entry'][0]['changes'][0]['value']['item'];
 $name = $data['entry'][0]['changes'][0]['value']['from']['name'];
 $comment_id = $data['entry'][0]['changes'][0]['value']['comment_id'];
-$url = 'https://graph.facebook.com/v14.0/'.$comment_id;
 $msg = $data['entry'][0]['changes'][0]['value']['message'];
-$payload = ['access_token' => $_SERVER['fb_token'],'message' => $name.chr(10).$msg.chr(10).'😂'];
-$react = ['access_token' => $_SERVER['fb_token']];
-sendit($url.'/likes',$react);
-sendit($url.'/comments',$payload);
+$url = 'https://graph.facebook.com/v14.0/';
+$token_payload = ['access_token' => $_SERVER['fb_token']];
+$comment_payload = ['message' => $name.chr(10).$msg.chr(10).'😂'];
+sendit($url.$comment_id.'/likes',$token_payload);
+sendit($url.$comment_id.'/comments',$comment_payload+$token_payload);
 }
-$fb_payload = ['access_token' => $_SERVER['fb_token'],'message' => $msg];
 $dc = $_SERVER['DISCORD_WEBHOOK'];
 $dc_payload = 
 [ 
