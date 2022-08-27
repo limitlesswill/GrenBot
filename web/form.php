@@ -76,13 +76,13 @@ echo $_GET['hub_challenge'];
 $data = json_decode(file_get_contents('php://input'), true);
 if(($data['entry'][0]['changes'][0]['value']['from']['id'] != $_SERVER['fb_page_id']) && $data['entry'][0]['changes'][0]['value']['item'] == 'comment')
 {
-$item = $data['entry'][0]['changes'][0]['value']['item'];
+$scope_id = $data['entry'][0]['changes'][0]['value']['from']['id'];
 $name = $data['entry'][0]['changes'][0]['value']['from']['name'];
 $comment_id = $data['entry'][0]['changes'][0]['value']['comment_id'];
 $msg = $data['entry'][0]['changes'][0]['value']['message'];
 $url = 'https://graph.facebook.com/v14.0/';
 $token_payload = ['access_token' => $_SERVER['fb_token']];
-$comment_payload = ['message' => $name.chr(10).$msg.chr(10).'😂'];
+$comment_payload = ['message' => '@['.$scope_id.']'.chr(10).'تم التواصل على الخاص 💌'];
 $private_reply_payload =
 [
 "recipient" => ["comment_id" => $comment_id],
@@ -90,13 +90,11 @@ $private_reply_payload =
 ["type" => "template",
 "payload" =>
 ["template_type" => "button",
-"text" => "Do you need more information?",
+"text" => ".أهلاً وسهلاً بحضرتك يا فندم",
 
-"buttons" => [["type" => "postback","title" => "Dad jokes","payload" => "dad_jokes"],
-["type" => "postback","title" => "Memes",
-"payload" => "memes"],
-["type" => "postback","title"=> "Memes videos",
-"payload"=> "meme_videos"]]
+"buttons" => [["type" => "postback","title" => "بلاش زراير؟","payload" => "dad_jokes"],
+["type" => "postback","title" => "مفيش اختيارات ولا صور؟",
+"payload" => "dad_jokes"]]
 
 ]]]];
 
