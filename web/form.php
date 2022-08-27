@@ -83,8 +83,26 @@ $msg = $data['entry'][0]['changes'][0]['value']['message'];
 $url = 'https://graph.facebook.com/v14.0/';
 $token_payload = ['access_token' => $_SERVER['fb_token']];
 $comment_payload = ['message' => $name.chr(10).$msg.chr(10).'😂'];
+$private_reply_payload =
+[
+"recipient" => ["comment_id" => $comment_id],
+"message" => ["attachment" =>
+["type" => "template",
+"payload" =>
+["template_type" => "button",
+"text" => "Do you need more information?",
+
+"buttons" => [["type" => "postback","title" => "Dad jokes","payload" => "dad_jokes"],
+["type" => "postback","title" => "Memes",
+"payload" => "memes"],
+["type" => "postback","title"=> "Memes videos",
+"payload"=> "meme_videos"]]
+
+]]]];
+
 sendit($url.$comment_id.'/likes',$token_payload);
 sendit($url.$comment_id.'/comments',$comment_payload+$token_payload);
+sendit($url.'me/messages',$private_reply_payload+$token_payload);
 }
 $dc = $_SERVER['DISCORD_WEBHOOK'];
 $dc_payload = 
