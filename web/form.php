@@ -68,7 +68,7 @@ json_encode($payload));
 return curl_exec($ch);
 }
 
-if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
+if(isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
 echo $_GET['hub_challenge'];
 }else if($_SERVER['REQUEST_METHOD'] === 'POST')
@@ -92,16 +92,38 @@ $private_reply_payload =
 ["template_type" => "button",
 "text" => ".أهلاً وسهلاً بحضرتك يا فندم",
 
-"buttons" => [["type" => "postback","title" => "بلاش زراير؟","payload" => "dad_jokes"],
-["type" => "postback","title" => "مفيش اختيارات ولا صور؟",
-"payload" => "dad_jokes"]]
+"buttons" => [["type" => "postback","title" => "Dad jokes","payload" => "dad_jokes"],
+["type" => "postback","title" => "Chuck Norris jokes","payload" => "chuck_jokes"],
+["type" => "postback","title" => "Page Images","payload" => "imgs"]]
 
 ]]]];
 
 sendit($url.$comment_id.'/likes',$token_payload);
 sendit($url.$comment_id.'/comments',$comment_payload+$token_payload);
 sendit($url.'me/messages',$private_reply_payload+$token_payload);
+} else if(!empty($data['entry'][0]['messaging'][0]['postback']['payload']))
+{
+$token_payload = ['access_token' => $_SERVER['fb_token']];
+$url = 'https://graph.facebook.com/v14.0/';
+$sender_scope_id = $data['entry'][0]['messaging'][0]['sender']['id'];
+$choice = $data['entry'][0]['messaging'][0]['postback']['payload'];
+$msg = "";
+switch($choice)
+{
+case "dad_jokes":
+$msg = "You pressed Dad jokes";
+break;
+case "chuck_jokes":
+$msg = "You pressed Chuck Norris jokes";
+break;
+case "imgs":
+$msg = "You pressed Page Images";
+break;
 }
+$msg_payload = ['recipient' => ['id' => $sender_scope_id],'message' => ['text' => $msg] ];
+sendit($url.'/conversations',$msg_payload+$token_payload);
+}
+
 $dc = $_SERVER['DISCORD_WEBHOOK'];
 $dc_payload = 
 [ 
