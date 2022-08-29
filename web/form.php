@@ -72,7 +72,7 @@ function getit($url)
 {
 $headers = 
 [
-'Content-Type: application/json; charset=utf-8' 
+'Accept: application/json;' 
 ];
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
@@ -125,7 +125,7 @@ $msg = "";
 switch($choice)
 {
 case "dad_jokes":
-$msg = getit('https://www.icanhazdadjoke.com')['joke'];
+$msg = getit('https://icanhazdadjoke.com')['joke'];
 break;
 case "chuck_jokes":
 $msg = getit('https://api.chucknorris.io/jokes/random')['value'];
