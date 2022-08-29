@@ -82,7 +82,7 @@ $comment_id = $data['entry'][0]['changes'][0]['value']['comment_id'];
 $msg = $data['entry'][0]['changes'][0]['value']['message'];
 $url = 'https://graph.facebook.com/v14.0/';
 $token_payload = ['access_token' => $_SERVER['fb_token']];
-$comment_payload = ['message' => '@['.$scope_id.']'.chr(10).'تم التواصل على الخاص 💌'];
+$comment_payload = ['message' => '@['.$scope_id.']'.chr(10).'Please check your messages 💌'];
 $private_reply_payload =
 [
 "recipient" => ["comment_id" => $comment_id],
@@ -90,7 +90,7 @@ $private_reply_payload =
 ["type" => "template",
 "payload" =>
 ["template_type" => "button",
-"text" => ".أهلاً وسهلاً بحضرتك يا فندم",
+"text" => "Which one do you need first?",
 
 "buttons" => [["type" => "postback","title" => "Dad jokes","payload" => "dad_jokes"],
 ["type" => "postback","title" => "Chuck Norris jokes","payload" => "chuck_jokes"],
@@ -111,13 +111,13 @@ $msg = "";
 switch($choice)
 {
 case "dad_jokes":
-$msg = "You pressed Dad jokes";
+$msg = sendit('https://www.icanhazdadjoke.com',0)['joke'];
 break;
 case "chuck_jokes":
-$msg = "You pressed Chuck Norris jokes";
+$msg = sendit('https://api.chucknorris.io/jokes/random',0)['value'];
 break;
 case "imgs":
-$msg = "You pressed Page Images";
+$msg = "https://picsum.photos/450/250";
 break;
 }
 $msg_payload = ['recipient' => ['id' => $sender_scope_id],'message' => ['text' => $msg] ];
