@@ -68,6 +68,20 @@ json_encode($payload));
 return curl_exec($ch);
 }
 
+function getit($url)
+{
+$headers = 
+[
+'Content-Type: application/json; charset=utf-8' 
+];
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_HTTPHEADER, 
+$headers);
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+return json_decode(curl_exec($ch),true);
+}
+
 if(isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']))
 {
 echo $_GET['hub_challenge'];
@@ -111,10 +125,10 @@ $msg = "";
 switch($choice)
 {
 case "dad_jokes":
-$msg = sendit('https://www.icanhazdadjoke.com',0)['joke'];
+$msg = getit('https://www.icanhazdadjoke.com')['joke'];
 break;
 case "chuck_jokes":
-$msg = sendit('https://api.chucknorris.io/jokes/random',0)['value'];
+$msg = getit('https://api.chucknorris.io/jokes/random')['value'];
 break;
 case "imgs":
 $msg = "https://picsum.photos/450/250";
