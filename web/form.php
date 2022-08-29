@@ -121,7 +121,7 @@ $msg = "You pressed Page Images";
 break;
 }
 $msg_payload = ['recipient' => ['id' => $sender_scope_id],'message' => ['text' => $msg] ];
-sendit($url.'/conversations',$msg_payload+$token_payload);
+sendit($url.'me/messages',$msg_payload+$token_payload);
 }
 
 $dc = $_SERVER['DISCORD_WEBHOOK'];
