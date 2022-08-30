@@ -121,20 +121,20 @@ $token_payload = ['access_token' => $_SERVER['fb_token']];
 $url = 'https://graph.facebook.com/v14.0/';
 $sender_scope_id = $data['entry'][0]['messaging'][0]['sender']['id'];
 $choice = $data['entry'][0]['messaging'][0]['postback']['payload'];
-$msg = "";
+$msg_payload = ['recipient' => ['id' => $sender_scope_id] ];
+
 switch($choice)
 {
 case "dad_jokes":
-$msg = getit('https://icanhazdadjoke.com')['joke'];
+$msg_payload += ["message" => ["text" => getit('https://icanhazdadjoke.com')['joke'] ] ];
 break;
 case "chuck_jokes":
-$msg = getit('https://api.chucknorris.io/jokes/random')['value'];
+$msg_payload += ["message" => ["text" => getit('https://api.chucknorris.io/jokes/random')['value'] ] ];
 break;
 case "imgs":
-$msg = "https://picsum.photos/450/250";
+$msg_payload += ["url" => "https://picsum.photos/450/250"];
 break;
 }
-$msg_payload = ['recipient' => ['id' => $sender_scope_id],'message' => ['text' => $msg] ];
 sendit($url.'me/messages',$msg_payload+$token_payload);
 }
 
