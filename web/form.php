@@ -104,7 +104,7 @@ $private_reply_payload =
 ["type" => "template",
 "payload" =>
 ["template_type" => "button",
-"text" => "Which one do you need first?",
+"text" => 'Which one do you need first?'.chr(10).'It may take few seconds to respond',
 
 "buttons" => [["type" => "postback","title" => "Dad jokes","payload" => "dad_jokes"],
 ["type" => "postback","title" => "Chuck Norris jokes","payload" => "chuck_jokes"],
@@ -132,7 +132,7 @@ case "chuck_jokes":
 $msg_payload += ["message" => ["text" => getit('https://api.chucknorris.io/jokes/random')['value'] ] ];
 break;
 case "imgs":
-$msg_payload +=  ["message" => ["attachment" => ["type" => "image" , "payload" => ["url" => "https://picsum.photos/300/450"]] ] ];
+$msg_payload +=  ["message" => ["attachment" => ["type" => "image" , "payload" => ["url" => "https://picsum.photos/300/450?nocache=".microtime()]] ] ];
 break;
 }
 sendit($url.'me/messages',$msg_payload+$token_payload);
