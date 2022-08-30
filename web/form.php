@@ -132,7 +132,7 @@ case "chuck_jokes":
 $msg_payload += ["message" => ["text" => getit('https://api.chucknorris.io/jokes/random')['value'] ] ];
 break;
 case "imgs":
-$msg_payload +=  ["message" => ["attachment" => ["type" => "image" , "payload" => ["url" => "https://picsum.photos/450/250"]] ] ];
+$msg_payload +=  ["message" => ["attachment" => ["type" => "image" , "payload" => ["url" => "https://picsum.photos/300/450"]] ] ];
 break;
 }
 sendit($url.'me/messages',$msg_payload+$token_payload);
