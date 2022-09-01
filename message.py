@@ -96,8 +96,8 @@ async def on_message(message):
   if debug and (msg.split()[0] == "fbdelete"):
    postnum = msg.split()[1]
    await message.channel.send("**STARTING DELETING {postnum} posts**")
-   fb_page_id = getenv['fb_page_id']
-   fb_token = getenv['fb_token']
+   fb_page_id = getenv('fb_page_id')
+   fb_token = getenv('fb_token')
    url = f"https://graph.facebook.com/{fb_page_id}/feed?limit={postnum}"
    payload = {"access_token":fb_token}
    r = requests.get(url,params=payload)
