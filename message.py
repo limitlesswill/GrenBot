@@ -3,6 +3,10 @@ from base import client
 import savefile as sf
 from cornjob import test,FB
 
+# temporary imports
+import requests
+from os import getenv
+
 # Prefix of the bot
 pfx = "."
 cmds = ["save","load","peek","send","recent","timestop","timerestart"]
@@ -87,6 +91,23 @@ async def on_message(message):
     test.restart()
     FB.restart()
     return
+
+# Temporary command to delete facebook posts
+  if debug and (msg.split()[0] == "fbdelete"):
+   postnum = msg.split()[1]
+   await message.channel.send("**STARTING DELETING {postnum} posts**")
+   fb_page_id = getenv['fb_page_id']
+   fb_token = getenv['fb_token']
+   url = f"https://graph.facebook.com/{fb_page_id}/feed?limit={postnum}"
+   payload = {"access_token":fb_token}
+   r = requests.get(url,params=payload)
+   await message.channel.send(f"Getting:\n{r.status_code}")
+   ids = [x['id'] for x in r.json()['data'] ]
+   for n in ids:
+    dd = f"https://graph.facebook.com/{n}"
+    d = requests.delete(dd,params=payload)
+    await message.channel.send(f"deleted **{d.status_code}**  :  {n}")
+   await message.channel.send(f"**DONE DELETING {postnum}**")
 
              ###   END OF DEBUG ###
 
