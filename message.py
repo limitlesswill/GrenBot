@@ -84,12 +84,14 @@ async def on_message(message):
   if debug and (msg.split()[0] == (pfx+cmds[5]) ):
     test.stop()
     FB.stop()
+    await message.reply("Stopped")
     return
 
 # Restarting cornjob
   if debug and (msg.split()[0] == (pfx+cmds[6]) ):
     test.restart()
     FB.restart()
+    await message.reply("Restarted")
     return
 
 # Temporary command to delete facebook posts
