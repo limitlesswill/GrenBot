@@ -59,7 +59,8 @@ async def post_reddit():
  m = 0
  while m != 200:
   cnt += 1
-  m = requests.post(url=url,params=payload ,data=data).status_code
+  r = requests.post(url=url,params=payload ,data=data)
+  m = r.status_code
 
 
 
