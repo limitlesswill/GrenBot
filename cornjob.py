@@ -53,7 +53,7 @@ async def post_reddit():
  global cnt
  vars = reddit()
 
- while vars['is_video'] or vars['over_18'] :
+ while vars['is_video'] :
   vars = reddit()
   cnt += 1
 
