@@ -40,7 +40,6 @@ def FB():
 @tasks.loop(minutes=3)
 async def post_reddit():
  global cnt
- cnt += 1
  subreddit = ['programmerhumor','aww','marvel']
  ss = len(subreddit)
  url1 = f'https://www.reddit.com/r/{subreddit[cnt%ss]}/random.json?include_over_18=off'
@@ -59,8 +58,12 @@ async def post_reddit():
  m = 0
  while m != 200:
   cnt += 1
-  z = requests.post(url,params=payload ,data=data)
-  m = int(z.status_code)
+  z = 0
+  try:
+   z = requests.post(url,params=payload ,data=data)
+   m = int(z.status_code)
+  except:
+   pass
 
 
 
