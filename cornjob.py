@@ -76,7 +76,7 @@ async def on_ready():
  print(f"{client.user} has connected to Discord!\nHello World")
  print("------")
  try:
-  async post_reddit.start()
+  post_reddit.start()
   print("test function is starting ...")
   await test.start()
  except Exception as e:
