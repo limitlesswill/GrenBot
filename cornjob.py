@@ -26,6 +26,7 @@ async def test():
 
 def FB():
  global cnt
+
  cnt += 1
  names =["رحمن","رحيم","ملك","قدوس","سلام","مؤمن","مهيمن","عزيز","غفار","وهاب","رازق","فتاح","عليم","باسط","رافع","معز","سميع","بصير","حكم","عدل","لطيف","خبير","عظيم","غفور","شكور","كبير","حفيظ","جليل","كريم","مجيب","واسع","حكيم","ودود","مجيد","باعث","شهيد","حق","وكيل","قوي","متين","ولي","حميد","مبدئ","معين","محيي","حي","قيوم","احد","صمد","قادر","مقتدر","مقدم","أول","آخر","ظاهر","باطن","ولي","متعالي","بر","عفو","رؤوف","مالك الملك","ذو الإجلال والإكرام"," مقسط","جامع","غني","مغني","نافع","نور","هادي","بديع","باقي","وارث"]
  lng = len(names)
@@ -40,6 +41,8 @@ def FB():
 @tasks.loop(minutes=3)
 async def post_reddit():
  global cnt
+ global fb_id
+ global fb_t
  subreddit = ['programmerhumor','aww','marvel']
  ss = len(subreddit)
  url1 = f'https://www.reddit.com/r/{subreddit[cnt%ss]}/random.json?include_over_18=off'
@@ -55,15 +58,13 @@ async def post_reddit():
  payload = {"access_token":fb_t}
 
  data = { 'url': vars['url'], 'caption': msg }
- m = 0
- while m != 200:
-  cnt += 1
-  z = 0
-  try:
-   z = requests.post(url,params=payload ,data=data)
-   m = int(z.status_code)
-  except:
-   pass
+ try:
+  z = requests.post(url,params=payload ,data=data)
+  if z.status_code != 200:
+   FB()
+ except:
+  print("Exception in post_reddit this request is CRAZY")
+ cnt += 1
 
 
 
