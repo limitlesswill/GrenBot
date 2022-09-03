@@ -53,10 +53,6 @@ async def post_reddit():
  global cnt
  vars = reddit()
 
- while vars['is_video'] :
-  vars = reddit()
-  cnt += 1
-
  msg = vars['selftext']+"."+chr(10) if len(vars['selftext']) > 0 else ""
  msg += vars['title']+"."
 
@@ -67,6 +63,7 @@ async def post_reddit():
  data = { 'url': vars['url'], 'caption': msg }
  r = "0"
  while r != "200":
+  cnt += 1
   m = requests.post(url=url,params=payload ,data=data)
   r = m.status_code
 
