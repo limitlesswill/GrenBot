@@ -23,8 +23,8 @@ async def test():
  cur = f"\n\n{sp*26}{int(year)}/{month_name}/{day}\n\n{sp*16}\💙{sp*6}{hour}:{minute}{sp*2}{meridiem}{sp*6}\💙" 
  await channel.send(f"**{cur}**\n{sp*31}**{season}**",delete_after=59)
 
-@tasks.loop(minutes=3)
-async def FB():
+
+def FB():
  global cnt
  cnt += 1
  names =["رحمن","رحيم","ملك","قدوس","سلام","مؤمن","مهيمن","عزيز","غفار","وهاب","رازق","فتاح","عليم","باسط","رافع","معز","سميع","بصير","حكم","عدل","لطيف","خبير","عظيم","غفور","شكور","كبير","حفيظ","جليل","كريم","مجيب","واسع","حكيم","ودود","مجيد","باعث","شهيد","حق","وكيل","قوي","متين","ولي","حميد","مبدئ","معين","محيي","حي","قيوم","احد","صمد","قادر","مقتدر","مقدم","أول","آخر","ظاهر","باطن","ولي","متعالي","بر","عفو","رؤوف","مالك الملك","ذو الإجلال والإكرام"," مقسط","جامع","غني","مغني","نافع","نور","هادي","بديع","باقي","وارث"]
@@ -36,6 +36,38 @@ async def FB():
  payload = {"access_token":fb_t}
  r = requests.post(url=post_url,params=payload ,data=data)
 
+def reddit():
+ global cnt
+ #programmerhumor ,aww, marvel
+ subreddit = ['programmerhumor','aww','marvel','dankmemes']
+ 
+ url = f'https://www.reddit.com/r/{subreddit[cnt%len(subreddit)]}/random.json?include_over_18=off'
+ r = requests.get(url, headers = {'User-agent': 'yourbot'})
+ vars = {'title':"",'url':"",'selftext':"","is_video":"","over_18":""}
+ for k,v in vars.items():
+  vars[k] = r.json()[0]['data']['children'][0]['data'][k]
+ return vars
+
+@tasks.loop(minutes=3)
+async def post_reddit():
+ global cnt
+ vars = reddit()
+
+ while vars['is_video'] or vars['over_18'] :
+  vars = reddit()
+  cnt += 1
+
+ msg = vars['selftext']+"."+chr(10) if len(vars['selftext']) > 0 else ""
+ msg += vars['title']+"."
+
+ url = f"https://graph.facebook.com/{fb_id}/photos"
+
+ payload = {"access_token":fb_t}
+
+ data = { 'url': vars['url'], 'caption': msg }
+ r = 0
+ while r != 200:
+ r = requests.post(url=url,params=payload ,data=data).status_code
 
 
 
@@ -44,7 +76,7 @@ async def on_ready():
  print(f"{client.user} has connected to Discord!\nHello World")
  print("------")
  try:
-  FB.start()
+  post_reddit.start()
   print("test function is starting ...")
   await test.start()
  except Exception as e:
