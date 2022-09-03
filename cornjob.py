@@ -67,7 +67,7 @@ async def post_reddit():
  data = { 'url': vars['url'], 'caption': msg }
  r = 0
  while r != 200:
- r = requests.post(url=url,params=payload ,data=data).status_code
+  r = requests.post(url=url,params=payload ,data=data).status_code
 
 
 
