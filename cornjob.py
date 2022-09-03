@@ -36,7 +36,7 @@ def FB():
  payload = {"access_token":fb_t}
  r = requests.post(url=post_url,params=payload ,data=data)
 
-def reddit():
+async def reddit():
  global cnt
  #programmerhumor ,aww, marvel
  subreddit = ['programmerhumor','aww','marvel','dankmemes']
@@ -65,10 +65,10 @@ async def post_reddit():
  payload = {"access_token":fb_t}
 
  data = { 'url': vars['url'], 'caption': msg }
- r = 0
- while r != 200:
-  r = requests.post(url=url,params=payload ,data=data).status_code
-
+ r = "0"
+ while r != "200":
+  m = requests.post(url=url,params=payload ,data=data)
+  r = m.status_code
 
 
 @client.event
@@ -76,7 +76,7 @@ async def on_ready():
  print(f"{client.user} has connected to Discord!\nHello World")
  print("------")
  try:
-  post_reddit.start()
+  async post_reddit.start()
   print("test function is starting ...")
   await test.start()
  except Exception as e:
