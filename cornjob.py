@@ -41,7 +41,7 @@ def FB():
 async def post_reddit():
  global cnt
  cnt += 1
- subreddit = ['programmerhumor','aww','marvel','dankmemes']
+ subreddit = ['programmerhumor','aww','marvel']
  ss = len(subreddit)
  url1 = f'https://www.reddit.com/r/{subreddit[cnt%ss]}/random.json?include_over_18=off'
  r = requests.get(url1, headers = {'User-agent': 'yourbot'})
