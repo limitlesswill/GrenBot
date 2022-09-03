@@ -36,7 +36,9 @@ def FB():
  payload = {"access_token":fb_t}
  r = requests.post(url=post_url,params=payload ,data=data)
 
-async def reddit():
+
+@tasks.loop(minutes=3)
+async def post_reddit():
  global cnt
  #programmerhumor ,aww, marvel
  subreddit = ['programmerhumor','aww','marvel','dankmemes']
@@ -46,12 +48,6 @@ async def reddit():
  vars = {'title':"",'url':""}
  for k,v in vars.items():
   vars[k] = r.json()[0]['data']['children'][0]['data'][k]
- return vars
-
-@tasks.loop(minutes=3)
-async def post_reddit():
- global cnt
- vars = reddit()
 
  msg = vars['title']
 
@@ -60,11 +56,11 @@ async def post_reddit():
  payload = {"access_token":fb_t}
 
  data = { 'url': vars['url'], 'caption': msg }
- r = "0"
- while r != "200":
+ m = 0
+ while m != 200:
   cnt += 1
-  m = requests.post(url=url,params=payload ,data=data)
-  r = m.status_code
+  m = requests.post(url=url,params=payload ,data=data).status_code
+
 
 
 @client.event
