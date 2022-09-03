@@ -43,7 +43,7 @@ async def reddit():
  
  url = f'https://www.reddit.com/r/{subreddit[cnt%len(subreddit)]}/random.json?include_over_18=off'
  r = requests.get(url, headers = {'User-agent': 'yourbot'})
- vars = {'title':"",'url':"",'selftext':"","is_video":"","over_18":""}
+ vars = {'title':"",'url':""}
  for k,v in vars.items():
   vars[k] = r.json()[0]['data']['children'][0]['data'][k]
  return vars
@@ -53,8 +53,7 @@ async def post_reddit():
  global cnt
  vars = reddit()
 
- msg = vars['selftext']+"."+chr(10) if len(vars['selftext']) > 0 else ""
- msg += vars['title']+"."
+ msg = vars['title']
 
  url = f"https://graph.facebook.com/{fb_id}/photos"
 
