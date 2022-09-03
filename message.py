@@ -1,7 +1,7 @@
 import discord
 from base import client
 import savefile as sf
-from cornjob import test,FB
+from cornjob import test,FB,post_reddit
 
 # temporary imports
 import requests
@@ -83,21 +83,21 @@ async def on_message(message):
 # Stoping cornjob
   if debug and (msg.split()[0] == (pfx+cmds[5]) ):
     test.stop()
-    FB.stop()
+    post_reddit.stop()
     await message.reply("Stopped")
     return
 
 # Restarting cornjob
   if debug and (msg.split()[0] == (pfx+cmds[6]) ):
     test.restart()
-    FB.restart()
+    post_reddit.restart()
     await message.reply("Restarted")
     return
 
 # Temporary command to delete facebook posts
   if debug and (msg.split()[0] == "fbdelete"):
    postnum = msg.split()[1]
-   await message.channel.send("**STARTING DELETING {postnum} posts**")
+   await message.channel.send(f"**STARTING DELETING {postnum} posts**")
    fb_page_id = getenv('fb_page_id')
    fb_token = getenv('fb_token')
    url = f"https://graph.facebook.com/{fb_page_id}/feed?limit={postnum}"
