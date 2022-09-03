@@ -38,7 +38,7 @@ def FB():
 
 
 @tasks.loop(minutes=3)
-async def post_reddit():
+def post_reddit():
  global cnt
  #programmerhumor ,aww, marvel
  subreddit = ['programmerhumor','aww','marvel','dankmemes']
