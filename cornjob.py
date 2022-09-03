@@ -38,13 +38,13 @@ def FB():
 
 
 @tasks.loop(minutes=3)
-def post_reddit():
+async def post_reddit():
  global cnt
- #programmerhumor ,aww, marvel
+ cnt += 1
  subreddit = ['programmerhumor','aww','marvel','dankmemes']
- 
- url = f'https://www.reddit.com/r/{subreddit[cnt%len(subreddit)]}/random.json?include_over_18=off'
- r = requests.get(url, headers = {'User-agent': 'yourbot'})
+ ss = len(subreddit)
+ url1 = f'https://www.reddit.com/r/{subreddit[cnt%ss]}/random.json?include_over_18=off'
+ r = requests.get(url1, headers = {'User-agent': 'yourbot'})
  vars = {'title':"",'url':""}
  for k,v in vars.items():
   vars[k] = r.json()[0]['data']['children'][0]['data'][k]
@@ -59,8 +59,8 @@ def post_reddit():
  m = 0
  while m != 200:
   cnt += 1
-  r = requests.post(url=url,params=payload ,data=data)
-  m = r.status_code
+  z = requests.post(url,params=payload ,data=data)
+  m = int(z.status_code)
 
 
 
