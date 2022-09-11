@@ -11,12 +11,12 @@ fb_id = getenv('fb_page_id')
 cnt = 0
 
 
-ID_CHANNEL_CORNJOB = 971240750731890738
+ID_CHANNEL_CRONJOB = 971240750731890738
 
-# A cornjob loops every 1 minute (get time send it in a specific channel)
+# A cronjob loops every 1 minute (get time send it in a specific channel)
 @tasks.loop(minutes=1)
 async def test():
- channel = client.get_channel(ID_CHANNEL_CORNJOB)
+ channel = client.get_channel(ID_CHANNEL_CRONJOB)
  year,month,day,month_name,hour,minute,meridiem = GrenDate().now()
  season = GrenDate(int(year),int(month),int(day)).season()
  sp = " "
