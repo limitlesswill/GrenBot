@@ -97,7 +97,7 @@ async def on_message(message):
 # Temporary command to delete facebook posts
   if debug and (msg.split()[0] == "fbdelete"):
    postnum = msg.split()[1]
-   countnum = postnum if len(postnum) > 0 else 1000000
+   countnum = int(postnum) if len(postnum) > 0 else 1000000
    await message.channel.send(f"**STARTING DELETING {postnum} posts**")
    fb_page_id = getenv('fb_page_id')
    fb_token = getenv('fb_token')
