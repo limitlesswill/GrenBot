@@ -107,7 +107,7 @@ async def on_message(message):
     r = requests.get(url,params=payload)
     if r.status_code != 200:
      countnum = 0
-    await message.channel.send("**Almost done**")
+     await message.channel.send("**Almost done**")
     else:
      countnum -= 100
     await message.channel.send(f"Getting data: **{r.status_code == 200}**")
