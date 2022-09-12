@@ -97,26 +97,27 @@ async def on_message(message):
 # Temporary command to delete facebook posts
   if debug and (msg.split()[0] == "fbdelete"):
    postnum = msg.split()[1]
-   countnum = int(postnum) if len(postnum) > 0 else 1000000
-   await message.channel.send(f"**STARTING DELETING {postnum} posts**")
+   countnum = int(postnum) if len(postnum) > 0 else 100000
+   await message.channel.send(f"**STARTING DELETING {countnum} posts**")
    fb_page_id = getenv('fb_page_id')
    fb_token = getenv('fb_token')
    payload = {"access_token":fb_token}
    while countnum > 0:
-    url = f"https://graph.facebook.com/{fb_page_id}/feed?limit={countnum}"
+    tmpcounter = countnum if countnum < 100 else 100
+    url = f"https://graph.facebook.com/{fb_page_id}/feed?limit={tmpcounter}"
     r = requests.get(url,params=payload)
+    await message.channel.send(f"Getting data: **{r.status_code == 200}**")
     if r.status_code != 200:
      countnum = 0
      await message.channel.send("**Almost done**")
     else:
      countnum -= 100
-    await message.channel.send(f"Getting data: **{r.status_code == 200}**")
     ids = [x['id'] for x in r.json()['data'] ]
     for n in ids:
      dd = f"https://graph.facebook.com/{n}"
      d = requests.delete(dd,params=payload)
-     await message.channel.send(f"delete: **{d.status_code == 200}**  :  {n}")
-   await message.channel.send(f"**DONE DELETING {postnum}**")
+     await message.channel.send(f"delete: **{d.status_code == 200}**\n**{n}**")
+   await message.channel.send(f"**DONE DELETING {postnum} posts**")
 
              ###   END OF DEBUG ###
 
