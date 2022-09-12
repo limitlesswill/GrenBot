@@ -1,7 +1,7 @@
 import discord
 from base import client
 import savefile as sf
-from cornjob import test,FB,post_reddit
+from cronjob import test,FB,post_reddit
 
 # temporary imports
 import requests
@@ -80,14 +80,14 @@ async def on_message(message):
     await message.reply(f"The most recent message in <#{chid}>\n{mes.content}\nby **{str(mes.author)}**")
     return
 
-# Stoping cornjob
+# Stoping cronjob
   if debug and (msg.split()[0] == (pfx+cmds[5]) ):
     test.stop()
     post_reddit.stop()
     await message.reply("Stopped")
     return
 
-# Restarting cornjob
+# Restarting cronjob
   if debug and (msg.split()[0] == (pfx+cmds[6]) ):
     test.restart()
     post_reddit.restart()
@@ -97,18 +97,25 @@ async def on_message(message):
 # Temporary command to delete facebook posts
   if debug and (msg.split()[0] == "fbdelete"):
    postnum = msg.split()[1]
+   countnum = postnum if len(postnum) > 0 else 1000000
    await message.channel.send(f"**STARTING DELETING {postnum} posts**")
    fb_page_id = getenv('fb_page_id')
    fb_token = getenv('fb_token')
-   url = f"https://graph.facebook.com/{fb_page_id}/feed?limit={postnum}"
    payload = {"access_token":fb_token}
-   r = requests.get(url,params=payload)
-   await message.channel.send(f"Getting:\n{r.status_code}")
-   ids = [x['id'] for x in r.json()['data'] ]
-   for n in ids:
-    dd = f"https://graph.facebook.com/{n}"
-    d = requests.delete(dd,params=payload)
-    await message.channel.send(f"deleted **{d.status_code}**  :  {n}")
+   while countnum > 0:
+    url = f"https://graph.facebook.com/{fb_page_id}/feed?limit={countnum}"
+    r = requests.get(url,params=payload)
+    if r.status_code != 200:
+     countnum = 0
+    await message.channel.send("**Almost done**")
+    else:
+     countnum -= 100
+    await message.channel.send(f"Getting data: **{r.status_code == 200}**")
+    ids = [x['id'] for x in r.json()['data'] ]
+    for n in ids:
+     dd = f"https://graph.facebook.com/{n}"
+     d = requests.delete(dd,params=payload)
+     await message.channel.send(f"delete: **{d.status_code == 200}**  :  {n}")
    await message.channel.send(f"**DONE DELETING {postnum}**")
 
              ###   END OF DEBUG ###
